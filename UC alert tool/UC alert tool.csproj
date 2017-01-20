@@ -200,10 +200,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductenController.cs" />
+    <Compile Include="Controllers\StoringenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AlertToolContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -212,10 +215,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\alertDatabase.mdf" />
-    <Content Include="App_Data\alertDatabase_log.ldf">
-      <DependentUpon>alertDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -288,8 +287,20 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Storingen\Create.cshtml" />
+    <Content Include="Views\Storingen\Delete.cshtml" />
+    <Content Include="Views\Storingen\Details.cshtml" />
+    <Content Include="Views\Storingen\Edit.cshtml" />
+    <Content Include="Views\Storingen\Index.cshtml" />
+    <Content Include="Views\Producten\Create.cshtml" />
+    <Content Include="Views\Producten\Delete.cshtml" />
+    <Content Include="Views\Producten\Details.cshtml" />
+    <Content Include="Views\Producten\Edit.cshtml" />
+    <Content Include="Views\Producten\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

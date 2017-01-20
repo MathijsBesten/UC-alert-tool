@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UC_alert_tool.Models.Storing>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.eigenaarID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.begindatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.einddatum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isGesloten)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eigenaarID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.begindatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.einddatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isGesloten)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
