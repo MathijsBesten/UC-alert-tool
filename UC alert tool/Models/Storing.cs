@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -14,5 +15,9 @@ namespace UC_alert_tool.Models
         public DateTime begindatum { get; set; }
         public DateTime einddatum { get; set; }
         public bool isGesloten { get; set; }
+    }
+    public class StoringDBContext : DbContext 
+    {
+        public DbSet<Storing> Storingen { get; set; }
     }
 }
