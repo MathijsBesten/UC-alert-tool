@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<UC_alert_tool.Models.Storing>
+@{
     ViewBag.Title = "Home";
 }
 
@@ -6,58 +7,25 @@
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
 </div>
-
 <div class="row">
-    <div class="col-md-4"> 
-        <div class="panel panel-primary">
-            <div class="panel-heading">Storing Office 365</div>
-            <div class="panel-body">
-                Helaas is zijn er de afgelopen dagen al enkelen problemen met office 365,
-                wij zullen de aankomend dagen proberen om de server om te zetten naar office 2016
-            </div>
-            <div class="panel-footer">
-                van 17 januari 2017 14.31<br />
-                Tot heden - Geen einddatum bekend
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Storing Office 365</div>
-            <div class="panel-body">
-                Helaas is zijn er de afgelopen dagen al enkelen problemen met office 365,
-                wij zullen de aankomend dagen proberen om de server om te zetten naar office 2016
-            </div>
-            <div class="panel-footer">
-                van 17 januari 2017 14.31<br />
-                Tot heden - Geen einddatum bekend
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@Html.DisplayFor(modelItem => item.Titel)</div>
+                <div class="panel-body">@Html.DisplayFor(modelItem => item.inhoud)</div>
+                <div class="panel-footer">
+                    van @Html.DisplayFor(modelItem => item.begindatum)<br />
+                    @if (item.isGesloten == false)
+                {
+                        @:Tot heden - Geen einddatum bekend
+                }
+                else
+                {
+                        @:tot @Html.DisplayFor(modelItem => item.einddatum)
+                    }
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Storing Office 365</div>
-            <div class="panel-body">
-                Helaas is zijn er de afgelopen dagen al enkelen problemen met office 365,
-                wij zullen de aankomend dagen proberen om de server om te zetten naar office 2016
-            </div>
-            <div class="panel-footer">
-                van 17 januari 2017 14.31<br />
-                Tot heden - Geen einddatum bekend
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Storing Office 365</div>
-            <div class="panel-body">
-                Helaas is zijn er de afgelopen dagen al enkelen problemen met office 365,
-                wij zullen de aankomend dagen proberen om de server om te zetten naar office 2016
-            </div>
-            <div class="panel-footer">
-                van 17 januari 2017 14.31<br />
-                Tot heden - Geen einddatum bekend
-            </div>
-        </div>
-    </div>
+    }
 </div>

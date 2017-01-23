@@ -12,6 +12,7 @@ namespace UC_alert_tool.Models
         public int ID { get; set; }
         public int productID { get; set; }
         public string Titel { get; set; }
+        public string inhoud { get; set; }
         public int eigenaarID { get; set; }
         public DateTime? begindatum { get; set; }
         public DateTime? einddatum { get; set; }

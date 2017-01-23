@@ -46,7 +46,7 @@ namespace UC_alert_tool.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,productID,Titel,eigenaarID,begindatum,einddatum,isGesloten")] Storing storing)
+        public ActionResult Create([Bind(Include = "ID,productID,Titel,inhoud,eigenaarID,begindatum,einddatum,isGesloten")] Storing storing)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace UC_alert_tool.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,productID,Titel,eigenaarID,begindatum,einddatum,isGesloten")] Storing storing)
+        public ActionResult Edit([Bind(Include = "ID,productID,Titel,inhoud,eigenaarID,begindatum,einddatum,isGesloten")] Storing storing)
         {
             if (ModelState.IsValid)
             {
