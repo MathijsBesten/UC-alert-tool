@@ -15,9 +15,9 @@ namespace UC_alert_tool.Models
         public string Titel { get; set; }
         public string inhoud { get; set; }
         public int eigenaarID { get; set; }
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime? begindatum { get; set; }
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime? einddatum { get; set; }
         public bool isGesloten { get; set; }
 

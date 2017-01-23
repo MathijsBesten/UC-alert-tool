@@ -10,6 +10,7 @@ using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
+    [Authorize]
     public class StoringenController : Controller
     {
         private AlertToolContext db = new AlertToolContext();
