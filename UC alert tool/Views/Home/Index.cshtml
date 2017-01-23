@@ -7,25 +7,30 @@
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
 </div>
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-md-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">@Html.DisplayFor(modelItem => item.Titel)</div>
-                <div class="panel-body">@Html.DisplayFor(modelItem => item.inhoud)</div>
-                <div class="panel-footer">
-                    van @Html.DisplayFor(modelItem => item.begindatum)<br />
-                    @if (item.isGesloten == false)
-                {
-                        @:Tot heden - Geen einddatum bekend
-                }
-                else
-                {
-                        @:tot @Html.DisplayFor(modelItem => item.einddatum)
+@for (int i = 0; i < Model.Count(); i += 3)
+{
+    <div class="row">
+        @foreach (var item in Model.Skip(i).Take(3)) // use 3 if the collumn width is 4 - use 4 if the collomn width is 3
+        {
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">@Html.DisplayFor(modelItem => item.Titel)</div>
+                    <div class="panel-body">@Html.DisplayFor(modelItem => item.inhoud)</div>
+                    <div class="panel-footer">
+                        van @Html.DisplayFor(modelItem => item.begindatum)<br />
+                        @if (item.isGesloten == false)
+                        {
+                            @:Tot heden - Geen einddatum bekend
                     }
+                        else
+                        {
+                            @:tot @Html.DisplayFor(modelItem => item.einddatum)
+                    }
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-</div>
+        }
+    </div>
+}
+
+
