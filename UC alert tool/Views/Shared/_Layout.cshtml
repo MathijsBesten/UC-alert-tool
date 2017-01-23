@@ -20,12 +20,16 @@
                 @Html.ActionLink("UC Storingen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Storingen","Index","Storingen")</li>
-                    <li>@Html.ActionLink("Producten","Index","Producten")</li>
-                </ul>
+                @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Storingen", "Index", "Storingen")</li>
+                        <li>@Html.ActionLink("Producten", "Index", "Producten")</li>
+                    </ul>
+                }
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
