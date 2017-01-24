@@ -202,6 +202,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductenController.cs" />
+    <Compile Include="Controllers\RapporterenController.cs" />
     <Compile Include="Controllers\StoringenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -294,6 +295,7 @@
     <Content Include="Views\Storingen\Details.cshtml" />
     <Content Include="Views\Storingen\Edit.cshtml" />
     <Content Include="Views\Storingen\Index.cshtml" />
+    <Content Include="Views\Rapporteren\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
