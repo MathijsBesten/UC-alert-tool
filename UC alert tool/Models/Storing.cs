@@ -16,8 +16,10 @@ namespace UC_alert_tool.Models
         public string inhoud { get; set; }
         public int eigenaarID { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? begindatum { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? einddatum { get; set; }
         public bool isGesloten { get; set; }
 

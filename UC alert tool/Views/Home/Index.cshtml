@@ -19,22 +19,22 @@
                             @Html.DisplayFor(modelItem => item.Titel)
                             @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                             {
-                                <a href="~/storingen/edit/@(item.ID)" class="glyphicon glyphicon-cog pull-right"></a> 
+                                <a href="~/storingen/edit/@(item.ID)" class="glyphicon glyphicon-cog pull-right"></a>
                             }
                         </h3>
-                                    
-                    </div>  
+
+                    </div>
                     <div class="panel-body">@Html.DisplayFor(modelItem => item.inhoud)</div>
                     <div class="panel-footer">
                         van @Html.DisplayFor(modelItem => item.begindatum)<br />
                         @if (item.isGesloten == false)
                         {
                             @:Tot heden - Geen einddatum bekend
-                    }
+                        }
                         else
                         {
                             @:tot @Html.DisplayFor(modelItem => item.einddatum)
-                    }
+                        }
                     </div>
                 </div>
             </div>
