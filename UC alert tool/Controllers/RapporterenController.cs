@@ -9,6 +9,7 @@ namespace UC_alert_tool.Controllers
     public class RapporterenController : Controller
     {
         // GET: Rapporteren
+        [Authorize]
         public ActionResult Index()
         {
             return View();

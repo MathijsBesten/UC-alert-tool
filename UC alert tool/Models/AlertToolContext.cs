@@ -14,5 +14,6 @@ namespace UC_alert_tool.Models
         }
         public DbSet<Storing> Storingen { get; set; }
         public DbSet<Product> Producten { get; set; }
+        public DbSet<Klant> Klanten { get; set; }
     }
 }
