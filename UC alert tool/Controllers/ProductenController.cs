@@ -10,10 +10,9 @@ using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
-    [Authorize]
     public class ProductenController : Controller
     {
-        private AlertToolContext db = new AlertToolContext();
+        private alertDatabaseEntities db = new alertDatabaseEntities();
 
         // GET: Producten
         public ActionResult Index()
@@ -28,12 +27,12 @@ namespace UC_alert_tool.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Producten.Find(id);
-            if (product == null)
+            Producten producten = db.Producten.Find(id);
+            if (producten == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(producten);
         }
 
         // GET: Producten/Create
@@ -47,16 +46,16 @@ namespace UC_alert_tool.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,naam,helpdeskID")] Product product)
+        public ActionResult Create([Bind(Include = "Id,Naam,HelpdeskID")] Producten producten)
         {
             if (ModelState.IsValid)
             {
-                db.Producten.Add(product);
+                db.Producten.Add(producten);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            return View(producten);
         }
 
         // GET: Producten/Edit/5
@@ -66,12 +65,12 @@ namespace UC_alert_tool.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Producten.Find(id);
-            if (product == null)
+            Producten producten = db.Producten.Find(id);
+            if (producten == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(producten);
         }
 
         // POST: Producten/Edit/5
@@ -79,15 +78,15 @@ namespace UC_alert_tool.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,naam,helpdeskID")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,Naam,HelpdeskID")] Producten producten)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(producten).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            return View(producten);
         }
 
         // GET: Producten/Delete/5
@@ -97,12 +96,12 @@ namespace UC_alert_tool.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Producten.Find(id);
-            if (product == null)
+            Producten producten = db.Producten.Find(id);
+            if (producten == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(producten);
         }
 
         // POST: Producten/Delete/5
@@ -110,8 +109,8 @@ namespace UC_alert_tool.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Producten.Find(id);
-            db.Producten.Remove(product);
+            Producten producten = db.Producten.Find(id);
+            db.Producten.Remove(producten);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

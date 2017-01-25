@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UC_alert_tool.Models.Producten>
+﻿@model IEnumerable<UC_alert_tool.Models.Klanten>
 
 @{
     ViewBag.Title = "Index";
@@ -15,7 +15,13 @@
             @Html.DisplayNameFor(model => model.Naam)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HelpdeskID)
+            @Html.DisplayNameFor(model => model.PrimaireEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecundaireEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefoonnummer)
         </th>
         <th></th>
     </tr>
@@ -26,7 +32,13 @@
             @Html.DisplayFor(modelItem => item.Naam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HelpdeskID)
+            @Html.DisplayFor(modelItem => item.PrimaireEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecundaireEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefoonnummer)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

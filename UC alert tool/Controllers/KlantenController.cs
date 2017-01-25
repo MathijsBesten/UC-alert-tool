@@ -10,112 +10,107 @@ using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
-    public class StoringenController : Controller
+    public class KlantenController : Controller
     {
         private alertDatabaseEntities db = new alertDatabaseEntities();
 
-        // GET: Storingen
+        // GET: Klanten
         public ActionResult Index()
         {
-            var storingen = db.Storingen.Include(s => s.Producten);
-            return View(storingen.ToList());
+            return View(db.Klanten.ToList());
         }
 
-        // GET: Storingen/Details/5
+        // GET: Klanten/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Storingen storingen = db.Storingen.Find(id);
-            if (storingen == null)
+            Klanten klanten = db.Klanten.Find(id);
+            if (klanten == null)
             {
                 return HttpNotFound();
             }
-            return View(storingen);
+            return View(klanten);
         }
 
-        // GET: Storingen/Create
+        // GET: Klanten/Create
         public ActionResult Create()
         {
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
             return View();
         }
 
-        // POST: Storingen/Create
+        // POST: Klanten/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProductID,Titel,Inhoud,EigenaarID,Begindatum,Einddatum,IsGesloten")] Storingen storingen)
+        public ActionResult Create([Bind(Include = "Id,Naam,PrimaireEmail,SecundaireEmail,Telefoonnummer")] Klanten klanten)
         {
             if (ModelState.IsValid)
             {
-                db.Storingen.Add(storingen);
+                db.Klanten.Add(klanten);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam", storingen.ProductID);
-            return View(storingen);
+            return View(klanten);
         }
 
-        // GET: Storingen/Edit/5
+        // GET: Klanten/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Storingen storingen = db.Storingen.Find(id);
-            if (storingen == null)
+            Klanten klanten = db.Klanten.Find(id);
+            if (klanten == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam", storingen.ProductID);
-            return View(storingen);
+            return View(klanten);
         }
 
-        // POST: Storingen/Edit/5
+        // POST: Klanten/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductID,Titel,Inhoud,EigenaarID,Begindatum,Einddatum,IsGesloten")] Storingen storingen)
+        public ActionResult Edit([Bind(Include = "Id,Naam,PrimaireEmail,SecundaireEmail,Telefoonnummer")] Klanten klanten)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(storingen).State = EntityState.Modified;
+                db.Entry(klanten).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam", storingen.ProductID);
-            return View(storingen);
+            return View(klanten);
         }
 
-        // GET: Storingen/Delete/5
+        // GET: Klanten/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Storingen storingen = db.Storingen.Find(id);
-            if (storingen == null)
+            Klanten klanten = db.Klanten.Find(id);
+            if (klanten == null)
             {
                 return HttpNotFound();
             }
-            return View(storingen);
+            return View(klanten);
         }
 
-        // POST: Storingen/Delete/5
+        // POST: Klanten/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Storingen storingen = db.Storingen.Find(id);
-            db.Storingen.Remove(storingen);
+            Klanten klanten = db.Klanten.Find(id);
+            db.Klanten.Remove(klanten);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

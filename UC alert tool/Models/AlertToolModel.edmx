@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="alertDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrators">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Naam" Type="varchar(max)" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" Nullable="false" />
+          <Property Name="Wachtwoord" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Klanten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Naam" Type="varchar(max)" Nullable="false" />
+          <Property Name="PrimaireEmail" Type="varchar(max)" />
+          <Property Name="SecundaireEmail" Type="varchar(max)" />
+          <Property Name="Telefoonnummer" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Producten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Naam" Type="varchar(max)" Nullable="false" />
+          <Property Name="HelpdeskID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Storingen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="Titel" Type="nvarchar(max)" />
+          <Property Name="Inhoud" Type="nvarchar(max)" />
+          <Property Name="EigenaarID" Type="int" Nullable="false" />
+          <Property Name="Begindatum" Type="date" Nullable="false" />
+          <Property Name="Einddatum" Type="date" />
+          <Property Name="IsGesloten" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Storingen_Producten">
+          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
+          <End Role="Storingen" Type="Self.Storingen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Storingen">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="alertDatabaseModelStoreContainer">
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producten" EntityType="Self.Producten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Storingen" EntityType="Self.Storingen" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Storingen_Producten" Association="Self.FK_Storingen_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Storingen" EntitySet="Storingen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="alertDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrators">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Wachtwoord" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Klanten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrimaireEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecundaireEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefoonnummer" Type="String" FixedLength="false" MaxLength="Max" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Producten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HelpdeskID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Storingen" Relationship="Self.FK_Storingen_Producten" FromRole="Producten" ToRole="Storingen" />
+        </EntityType>
+        <EntityType Name="Storingen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="Titel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Inhoud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EigenaarID" Type="Int32" Nullable="false" />
+          <Property Name="Begindatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Einddatum" Type="DateTime" Precision="0" />
+          <Property Name="IsGesloten" Type="Boolean" />
+          <NavigationProperty Name="Producten" Relationship="Self.FK_Storingen_Producten" FromRole="Storingen" ToRole="Producten" />
+        </EntityType>
+        <Association Name="FK_Storingen_Producten">
+          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
+          <End Role="Storingen" Type="Self.Storingen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Storingen">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="alertDatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrators" EntityType="Self.Administrators" />
+          <EntitySet Name="Klanten" EntityType="Self.Klanten" />
+          <EntitySet Name="Producten" EntityType="Self.Producten" />
+          <EntitySet Name="Storingen" EntityType="Self.Storingen" />
+          <AssociationSet Name="FK_Storingen_Producten" Association="Self.FK_Storingen_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Storingen" EntitySet="Storingen" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="alertDatabaseModelStoreContainer" CdmEntityContainer="alertDatabaseEntities">
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Administrators">
+              <MappingFragment StoreEntitySet="Administrators">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Wachtwoord" ColumnName="Wachtwoord" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klanten">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Klanten">
+              <MappingFragment StoreEntitySet="Klanten">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="PrimaireEmail" ColumnName="PrimaireEmail" />
+                <ScalarProperty Name="SecundaireEmail" ColumnName="SecundaireEmail" />
+                <ScalarProperty Name="Telefoonnummer" ColumnName="Telefoonnummer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producten">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Producten">
+              <MappingFragment StoreEntitySet="Producten">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="HelpdeskID" ColumnName="HelpdeskID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Storingen">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Storingen">
+              <MappingFragment StoreEntitySet="Storingen">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="Inhoud" ColumnName="Inhoud" />
+                <ScalarProperty Name="EigenaarID" ColumnName="EigenaarID" />
+                <ScalarProperty Name="Begindatum" ColumnName="Begindatum" />
+                <ScalarProperty Name="Einddatum" ColumnName="Einddatum" />
+                <ScalarProperty Name="IsGesloten" ColumnName="IsGesloten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

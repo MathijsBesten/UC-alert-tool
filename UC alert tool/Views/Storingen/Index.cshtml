@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UC_alert_tool.Models.Storing>
+﻿@model IEnumerable<UC_alert_tool.Models.Storingen>
 
 @{
     ViewBag.Title = "Index";
@@ -12,25 +12,25 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.productID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Titel)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.inhoud)
+            @Html.DisplayNameFor(model => model.Inhoud)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.eigenaarID)
+            @Html.DisplayNameFor(model => model.EigenaarID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.begindatum)
+            @Html.DisplayNameFor(model => model.Begindatum)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.einddatum)
+            @Html.DisplayNameFor(model => model.Einddatum)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.isGesloten)
+            @Html.DisplayNameFor(model => model.IsGesloten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producten.Naam)
         </th>
         <th></th>
     </tr>
@@ -38,30 +38,30 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.productID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Titel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.inhoud)
+            @Html.DisplayFor(modelItem => item.Inhoud)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.eigenaarID)
+            @Html.DisplayFor(modelItem => item.EigenaarID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.begindatum)
+            @Html.DisplayFor(modelItem => item.Begindatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.einddatum)
+            @Html.DisplayFor(modelItem => item.Einddatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.isGesloten)
+            @Html.DisplayFor(modelItem => item.IsGesloten)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.DisplayFor(modelItem => item.Producten.Naam)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

@@ -1,4 +1,4 @@
-﻿@model UC_alert_tool.Models.Storing
+﻿@model UC_alert_tool.Models.Storingen
 
 @{
     ViewBag.Title = "Delete";
@@ -8,17 +8,9 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Storing</h4>
+    <h4>Storingen</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.productID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.productID)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Titel)
         </dt>
@@ -28,43 +20,51 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.inhoud)
+            @Html.DisplayNameFor(model => model.Inhoud)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.inhoud)
+            @Html.DisplayFor(model => model.Inhoud)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.eigenaarID)
+            @Html.DisplayNameFor(model => model.EigenaarID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.eigenaarID)
+            @Html.DisplayFor(model => model.EigenaarID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.begindatum)
+            @Html.DisplayNameFor(model => model.Begindatum)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.begindatum)
+            @Html.DisplayFor(model => model.Begindatum)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.einddatum)
+            @Html.DisplayNameFor(model => model.Einddatum)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.einddatum)
+            @Html.DisplayFor(model => model.Einddatum)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.isGesloten)
+            @Html.DisplayNameFor(model => model.IsGesloten)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.isGesloten)
+            @Html.DisplayFor(model => model.IsGesloten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producten.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producten.Naam)
         </dd>
 
     </dl>

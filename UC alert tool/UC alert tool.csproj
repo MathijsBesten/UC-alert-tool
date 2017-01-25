@@ -200,6 +200,7 @@
     <Compile Include="Attributes\RedirectToHomepageIfNotAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KlantenController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductenController.cs" />
     <Compile Include="Controllers\RapporterenController.cs" />
@@ -208,12 +209,35 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AlertToolContext.cs" />
+    <Compile Include="Models\Administrators.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlertToolModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlertToolModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlertToolModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlertToolModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlertToolModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Klant.cs" />
+    <Compile Include="Models\Klanten.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\Storing.cs" />
+    <Compile Include="Models\Producten.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Storingen.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -224,10 +248,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\AlertToolModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlertToolModel.edmx</DependentUpon>
+      <LastGenOutput>AlertToolModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AlertToolModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlertToolModel.edmx</DependentUpon>
+      <LastGenOutput>AlertToolModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\AlertToolModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AlertToolModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AlertToolModel.edmx.diagram">
+      <DependentUpon>AlertToolModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\ToFile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -286,6 +327,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Rapporteren\Index.cshtml" />
     <Content Include="Views\Producten\Create.cshtml" />
     <Content Include="Views\Producten\Delete.cshtml" />
     <Content Include="Views\Producten\Details.cshtml" />
@@ -296,7 +338,11 @@
     <Content Include="Views\Storingen\Details.cshtml" />
     <Content Include="Views\Storingen\Edit.cshtml" />
     <Content Include="Views\Storingen\Index.cshtml" />
-    <Content Include="Views\Rapporteren\Index.cshtml" />
+    <Content Include="Views\Klanten\Create.cshtml" />
+    <Content Include="Views\Klanten\Delete.cshtml" />
+    <Content Include="Views\Klanten\Details.cshtml" />
+    <Content Include="Views\Klanten\Edit.cshtml" />
+    <Content Include="Views\Klanten\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

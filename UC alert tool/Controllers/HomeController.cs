@@ -9,7 +9,7 @@ namespace UC_alert_tool.Controllers
 {
     public class HomeController : Controller
     {
-        private AlertToolContext db = new AlertToolContext();
+        private alertDatabaseEntities db = new alertDatabaseEntities();
 
         public ActionResult Index()
         {

@@ -1,0 +1,50 @@
+﻿@model UC_alert_tool.Models.Klanten
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Klanten</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaireEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaireEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecundaireEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecundaireEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefoonnummer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefoonnummer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

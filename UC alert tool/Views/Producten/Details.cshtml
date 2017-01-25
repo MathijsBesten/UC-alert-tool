@@ -1,4 +1,4 @@
-﻿@model UC_alert_tool.Models.Product
+﻿@model UC_alert_tool.Models.Producten
 
 @{
     ViewBag.Title = "Details";
@@ -7,28 +7,28 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Product</h4>
+    <h4>Producten</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.naam)
+            @Html.DisplayNameFor(model => model.Naam)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.naam)
+            @Html.DisplayFor(model => model.Naam)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.helpdeskID)
+            @Html.DisplayNameFor(model => model.HelpdeskID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.helpdeskID)
+            @Html.DisplayFor(model => model.HelpdeskID)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
