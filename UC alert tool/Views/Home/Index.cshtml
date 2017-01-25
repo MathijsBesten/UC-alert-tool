@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UC_alert_tool.Models.Storing>
+﻿@model IEnumerable<UC_alert_tool.Models.Storingen>
 @{
     ViewBag.Title = "Home";
 }
@@ -19,21 +19,21 @@
                             @Html.DisplayFor(modelItem => item.Titel)
                             @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                             {
-                                <a href="~/storingen/edit/@(item.ID)" class="glyphicon glyphicon-cog pull-right"></a>
+                                <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
                             }
                         </h3>
 
                     </div>
-                    <div class="panel-body">@Html.DisplayFor(modelItem => item.inhoud)</div>
+                    <div class="panel-body">@Html.DisplayFor(modelItem => item.Inhoud)</div>
                     <div class="panel-footer">
-                        van @Html.DisplayFor(modelItem => item.begindatum)<br />
-                        @if (item.isGesloten == false)
+                        van @Html.DisplayFor(modelItem => item.Begindatum)<br />
+                        @if (item.IsGesloten == false)
                         {
                             @:Tot heden - Geen einddatum bekend
                         }
                         else
                         {
-                            @:tot @Html.DisplayFor(modelItem => item.einddatum)
+                            @:tot @Html.DisplayFor(modelItem => item.Einddatum)
                         }
                     </div>
                 </div>
