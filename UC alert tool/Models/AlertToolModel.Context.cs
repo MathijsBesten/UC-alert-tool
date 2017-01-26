@@ -29,5 +29,6 @@ namespace UC_alert_tool.Models
         public virtual DbSet<Klanten> Klanten { get; set; }
         public virtual DbSet<Producten> Producten { get; set; }
         public virtual DbSet<Storingen> Storingen { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

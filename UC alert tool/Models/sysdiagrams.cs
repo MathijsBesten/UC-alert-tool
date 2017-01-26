@@ -12,17 +12,12 @@ namespace UC_alert_tool.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Storingen
+    public partial class sysdiagrams
     {
-        public int Id { get; set; }
-        public int ProductID { get; set; }
-        public string Titel { get; set; }
-        public string Inhoud { get; set; }
-        public int EigenaarID { get; set; }
-        public System.DateTime Begindatum { get; set; }
-        public Nullable<System.DateTime> Einddatum { get; set; }
-        public bool IsGesloten { get; set; }
-    
-        public virtual Producten Producten { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
