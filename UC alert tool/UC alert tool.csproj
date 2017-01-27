@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ProductenController.cs" />
     <Compile Include="Controllers\RapporterenController.cs" />
     <Compile Include="Controllers\StoringenController.cs" />
+    <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +228,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlertToolModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\EmailViewController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Klanten.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
@@ -273,6 +275,7 @@
     <Content Include="Models\AlertToolModel.edmx.diagram">
       <DependentUpon>AlertToolModel.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\ToFile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cldr.js" />
@@ -349,6 +352,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Functions\SMS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
