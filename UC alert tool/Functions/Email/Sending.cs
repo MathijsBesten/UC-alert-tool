@@ -10,11 +10,15 @@ namespace UC_alert_tool.Functions.Email
 {
     public class Sending
     {
-        public static void sendEmailToOne(string fromEmailAddress, string toEmailAddress, string smtpServerAddress, string username, string password, string subject, string body)
+        public static void sendEmailToOne(email Email)
         {
-            MailMessage mail = new MailMessage(fromEmailAddress, toEmailAddress, subject, body);
-            SmtpClient smtpClient = new SmtpClient(smtpServerAddress);
-            smtpClient.Credentials = new NetworkCredential(username, password);
+            MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress, Email.EmailSubject, Email.EmailBody);
+            foreach (string recipientEmailAddress in Email.Recipients)
+            {
+                mail.Bcc.Add(recipientEmailAddress);
+            }
+            SmtpClient smtpClient = new SmtpClient(Email.SMTPServerURL);
+            smtpClient.Credentials = new NetworkCredential(Email.SMTPUsername, Email.SMTPPassword);
             smtpClient.EnableSsl = true;
             try
             {
