@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
     [Authorize]
     public class RapporterenController : Controller
     {
+        private alertDatabaseEntities db = new alertDatabaseEntities();
+
         // GET: Rapporteren
         public ActionResult Index()
         {
@@ -16,6 +19,7 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult Melding()
         {
+            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
             return View();
         }
         public ActionResult MeldingMetSMS()
