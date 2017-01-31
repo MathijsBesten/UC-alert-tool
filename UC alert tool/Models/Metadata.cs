@@ -24,8 +24,6 @@ namespace UC_alert_tool.Models
         public Nullable<System.DateTime> Einddatum { get; set; }
         [Display(Name = "Is gesloten")]
         public bool IsGesloten { get; set; }
-
-        public virtual Producten Producten { get; set; }
     }
     public class ProductMetaData
     {
