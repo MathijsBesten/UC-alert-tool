@@ -3,9 +3,11 @@
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+<div id="homepageTopWrapper" class="jumbotron text-center" >
+    <div id="homepageTop" class="container">
+        <h1 class="jumbotron-heading">UC Systems</h1>
+        <p class="lead">Dit is het overzicht van alle actieve en recente storingen. Alle storingen die nog geen einddatum hebben, zullen worden voozien van updates en een einddatum als deze bekend is bij ons</p>
+    </div>
 </div>
 @for (int i = 0; i < Model.Count(); i += 3)
 {

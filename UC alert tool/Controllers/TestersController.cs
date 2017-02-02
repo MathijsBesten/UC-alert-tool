@@ -7,7 +7,8 @@ using System.Web.Mvc;
 namespace UC_alert_tool.Controllers
 {
     public class TestersController : Controller
-    {
+    { 
+        [Authorize]
         public ActionResult emailtester()
         {
             return View();
