@@ -6,10 +6,13 @@ using System.Web.Mvc;
 
 namespace UC_alert_tool.Controllers
 {
-    public class TestsController : Controller
+    public class TestersController : Controller
     {
-        // GET: Tests
-        public ActionResult Index()
+        public ActionResult emailtester()
+        {
+            return View();
+        }
+        public ActionResult smstester()
         {
             return View();
         }

@@ -205,7 +205,7 @@
     <Compile Include="Controllers\ProductenController.cs" />
     <Compile Include="Controllers\RapporterenController.cs" />
     <Compile Include="Controllers\StoringenController.cs" />
-    <Compile Include="Controllers\TestsController.cs" />
+    <Compile Include="Controllers\TestersController.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Functions\Time\GetTime.cs" />
     <Compile Include="Global.asax.cs">
@@ -368,8 +368,8 @@
     <Content Include="Views\Rapporteren\MeldingMetSMS.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetEmail.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetEmailEnSMS.cshtml" />
-    <Content Include="Views\Tests\SMSTester.cshtml" />
-    <Content Include="Views\Tests\EmailTester.cshtml" />
+    <Content Include="Views\Testers\SMSTester.cshtml" />
+    <Content Include="Views\Testers\EmailTester.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
