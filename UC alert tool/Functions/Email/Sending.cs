@@ -18,7 +18,7 @@ namespace UC_alert_tool.Functions.Email
                 mail.Bcc.Add(recipientEmailAddress);
             }
             SmtpClient smtpClient = new SmtpClient(Email.SMTPServerURL);
-            smtpClient.Credentials = new NetworkCredential(Email.SMTPUsername, Email.SMTPPassword);
+            smtpClient.Credentials = new NetworkCredential(Email.SMTPUsername, "");
             smtpClient.EnableSsl = true;
             try
             {

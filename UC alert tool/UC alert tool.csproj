@@ -205,7 +205,9 @@
     <Compile Include="Controllers\ProductenController.cs" />
     <Compile Include="Controllers\RapporterenController.cs" />
     <Compile Include="Controllers\StoringenController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
+    <Compile Include="Functions\Time\GetTime.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -321,7 +323,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -364,10 +368,13 @@
     <Content Include="Views\Rapporteren\MeldingMetSMS.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetEmail.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetEmailEnSMS.cshtml" />
+    <Content Include="Views\Tests\SMSTester.cshtml" />
+    <Content Include="Views\Tests\EmailTester.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Functions\SMS\" />
+    <Folder Include="Views\AdminTesting\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
