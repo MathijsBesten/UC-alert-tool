@@ -136,7 +136,7 @@ namespace UC_alert_tool.Controllers
 
         //
         // GET: /Account/Register
-        [Authorize]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -145,7 +145,7 @@ namespace UC_alert_tool.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
