@@ -1,7 +1,49 @@
-﻿
+﻿@model UC_alert_tool.Models.email
 @{
     ViewBag.Title = "email tester";
 }
 
 <h2>Email tester voor administrators</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Van emailadres</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.FromEmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FromEmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Naar</label>
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.Recipients, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Recipients, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Onderwerp</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.EmailSubject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmailSubject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Body</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.EmailBody, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmailBody, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="checkbox">
+        </div>
+        <button type="submit" class="btn btn-default">Test mail sturen</button>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

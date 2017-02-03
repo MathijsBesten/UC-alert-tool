@@ -29,3 +29,10 @@ textarea{
 #homepageTop{
     max-width:700px;
 }
+.panel-primary {
+    border-color: #e13a3d;
+}
+.panel-primary > .panel-heading{
+   background-color:#e13a3d;
+   border-color: #e13a3d;
+}

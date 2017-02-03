@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
@@ -10,6 +11,11 @@ namespace UC_alert_tool.Controllers
     { 
         [Authorize]
         public ActionResult emailtester()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult emailtester(email bla)
         {
             return View();
         }
