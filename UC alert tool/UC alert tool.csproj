@@ -207,6 +207,7 @@
     <Compile Include="Controllers\StoringenController.cs" />
     <Compile Include="Controllers\TestersController.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
+    <Compile Include="Functions\SMS\Sending.cs" />
     <Compile Include="Functions\Time\GetTime.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +242,7 @@
     <Compile Include="Models\Producten.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SMSViewModel.cs" />
     <Compile Include="Models\Storingen.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
@@ -373,7 +375,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Functions\SMS\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -387,6 +388,17 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxMmCtlLib">
+      <Guid>{1AECF5F6-A43F-41B4-9E75-24D11017AFA9}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

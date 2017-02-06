@@ -15,12 +15,18 @@ namespace UC_alert_tool.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult emailtester(email bla)
+        public ActionResult emailtester(email EmailToSend)
         {
             return View();
         }
         public ActionResult smstester()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult smstester(SMS sms)
+        {
+            Functions.SMS.Sending.sendSMSToOne(sms);
             return View();
         }
     }
