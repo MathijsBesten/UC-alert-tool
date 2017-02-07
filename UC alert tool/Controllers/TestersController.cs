@@ -17,6 +17,9 @@ namespace UC_alert_tool.Controllers
         [HttpPost]
         public ActionResult emailtester(email EmailToSend)
         {
+            List<string> recipients = EmailToSend.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
+            EmailToSend.Recipients = recipients;
+            Functions.Email.Sending.sendEmail(EmailToSend);
             return View();
         }
         public ActionResult smstester()
