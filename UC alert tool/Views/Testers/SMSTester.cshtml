@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <label class="control-label" >recipients</label>
-            @Html.TextAreaFor(model => model.Recipients, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.TextBoxFor(model => model.Recipients, new { @class = "form-control", placeholder = "061112233,06223344"} )
             @Html.ValidationMessageFor(model => model.Recipients, "", new { @class = "text-danger" })        
         </div>
         <div class="form-group">

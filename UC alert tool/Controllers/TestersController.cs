@@ -7,9 +7,9 @@ using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
+    [Authorize]
     public class TestersController : Controller
     { 
-        [Authorize]
         public ActionResult emailtester()
         {
             return View();
@@ -26,6 +26,8 @@ namespace UC_alert_tool.Controllers
         [HttpPost]
         public ActionResult smstester(SMS sms)
         {
+            List<string> recipients = sms.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
+            sms.Recipients = recipients;
             Functions.SMS.Sending.sendSMSToOne(sms);
             return View();
         }
