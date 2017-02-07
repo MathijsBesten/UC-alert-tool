@@ -20,14 +20,14 @@ namespace UC_alert_tool.Models
         public int EigenaarID { get; set; }
         [Display(Name = "begindatum")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public System.DateTime Begindatum { get; set; }
         [Display(Name = "begintijd")]
         [DataType(DataType.Time)]
         public System.DateTime Begintijd { get; set; }
         [Display(Name = "Einddatum")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Einddatum { get; set; }
         [Display(Name = "eindtijd")]
         [DataType(DataType.Time)]
