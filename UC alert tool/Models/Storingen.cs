@@ -20,7 +20,9 @@ namespace UC_alert_tool.Models
         public string Inhoud { get; set; }
         public int EigenaarID { get; set; }
         public System.DateTime Begindatum { get; set; }
+        public Nullable<System.TimeSpan> Begintijd { get; set; }
         public Nullable<System.DateTime> Einddatum { get; set; }
+        public Nullable<System.TimeSpan> Eindtijd { get; set; }
         public bool IsGesloten { get; set; }
     
         public virtual Producten Producten { get; set; }

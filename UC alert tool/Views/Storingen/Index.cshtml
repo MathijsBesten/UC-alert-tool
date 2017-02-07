@@ -30,6 +30,12 @@
             @Html.DisplayNameFor(model => model.IsGesloten)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Begintijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eindtijd)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Producten.Naam)
         </th>
         <th></th>
@@ -54,6 +60,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsGesloten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Begintijd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eindtijd)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Producten.Naam)

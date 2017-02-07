@@ -41,8 +41,10 @@
           <Property Name="Titel" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Inhoud" Type="nvarchar(max)" Nullable="false" />
           <Property Name="EigenaarID" Type="int" Nullable="false" />
-          <Property Name="Begindatum" Type="datetime" Nullable="false" />
-          <Property Name="Einddatum" Type="datetime" />
+          <Property Name="Begindatum" Type="date" Nullable="false" />
+          <Property Name="Begintijd" Type="time" Precision="7" />
+          <Property Name="Einddatum" Type="date" />
+          <Property Name="Eindtijd" Type="time" Precision="7" />
           <Property Name="IsGesloten" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -119,8 +121,10 @@
           <Property Name="Titel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Inhoud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EigenaarID" Type="Int32" Nullable="false" />
-          <Property Name="Begindatum" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Einddatum" Type="DateTime" Precision="3" />
+          <Property Name="Begindatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Begintijd" Type="Time" Precision="7" />
+          <Property Name="Einddatum" Type="DateTime" Precision="0" />
+          <Property Name="Eindtijd" Type="Time" Precision="7" />
           <Property Name="IsGesloten" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Producten" Relationship="Self.FK_Storingen_Producten" FromRole="Storingen" ToRole="Producten" />
         </EntityType>
@@ -196,6 +200,8 @@
           <EntitySetMapping Name="Storingen">
             <EntityTypeMapping TypeName="alertDatabaseModel.Storingen">
               <MappingFragment StoreEntitySet="Storingen">
+                <ScalarProperty Name="Eindtijd" ColumnName="Eindtijd" />
+                <ScalarProperty Name="Begintijd" ColumnName="Begintijd" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Titel" ColumnName="Titel" />

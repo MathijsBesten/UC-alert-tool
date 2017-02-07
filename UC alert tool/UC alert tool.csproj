@@ -361,17 +361,17 @@
     <Content Include="Views\Klanten\Details.cshtml" />
     <Content Include="Views\Klanten\Edit.cshtml" />
     <Content Include="Views\Klanten\Index.cshtml" />
-    <Content Include="Views\Storingen\Create.cshtml" />
-    <Content Include="Views\Storingen\Delete.cshtml" />
-    <Content Include="Views\Storingen\Details.cshtml" />
-    <Content Include="Views\Storingen\Edit.cshtml" />
-    <Content Include="Views\Storingen\Index.cshtml" />
     <Content Include="Views\Rapporteren\Melding.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetSMS.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetEmail.cshtml" />
     <Content Include="Views\Rapporteren\MeldingMetEmailEnSMS.cshtml" />
     <Content Include="Views\Testers\SMSTester.cshtml" />
     <Content Include="Views\Testers\EmailTester.cshtml" />
+    <Content Include="Views\Storingen\Create.cshtml" />
+    <Content Include="Views\Storingen\Delete.cshtml" />
+    <Content Include="Views\Storingen\Details.cshtml" />
+    <Content Include="Views\Storingen\Edit.cshtml" />
+    <Content Include="Views\Storingen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
