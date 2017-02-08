@@ -27,14 +27,14 @@
                     </div>
                     <div class="panel-body">@Html.DisplayFor(modelItem => item.Inhoud)</div>
                     <div class="panel-footer">
-                        van @Html.DisplayFor(modelItem => item.Begindatum) @Html.DisplayFor(modelItem => item.Begintijd)<br />
+                        van @item.Begindatum.ToString("d") @item.Begintijd<br />
                         @if (item.IsGesloten == false)
                         {
                             @:Tot heden - Geen einddatum bekend
                         }
                         else
                         {
-                            @:tot @Html.DisplayFor(modelItem => item.Einddatum) @Html.DisplayFor(modelItem => item.Eindtijd)
+                            @:tot @item.Begindatum.ToString("d") @item.Eindtijd
                         }
                     </div>
                 </div>
