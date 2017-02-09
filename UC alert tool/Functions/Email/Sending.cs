@@ -29,7 +29,7 @@ namespace UC_alert_tool.Functions.Email
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex); ;
+                throw ex;
             }
         }
     }

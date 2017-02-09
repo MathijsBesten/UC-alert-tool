@@ -1,4 +1,4 @@
-﻿@model IEnumerable<UC_alert_tool.Models.Storingen>
+﻿@model List<UC_alert_tool.Models.Storingen>
 @{
     ViewBag.Title = "Home";
 }
@@ -9,36 +9,37 @@
         <p class="lead">Dit is het overzicht van alle actieve en recente storingen. Alle storingen die nog geen einddatum hebben, zullen worden voozien van updates en een einddatum als deze bekend is bij ons</p>
     </div>
 </div>
+
 @for (int i = 0; i < Model.Count(); i += 3)
 {
     <div class="row">
         @foreach (var item in Model.Skip(i).Take(3)) // use 3 if the collumn width is 4 - use 4 if the collomn width is 3
         {
-            <div class="col-md-4">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            @Html.DisplayFor(modelItem => item.Titel)
-                            @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-                            {
-                                <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
-                            }
-                        </h3>
-                    </div>
-                    <div class="panel-body">@Html.DisplayFor(modelItem => item.Inhoud)</div>
-                    <div class="panel-footer">
-                        van @item.Begindatum.ToString("d") @item.Begintijd<br />
-                        @if (item.IsGesloten == false)
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        @Html.DisplayFor(modelItem => item.Titel)
+                        @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
                         {
-                            @:Tot heden - Geen einddatum bekend
+                            <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
                         }
-                        else
-                        {
-                            @:tot @item.Begindatum.ToString("d") @item.Eindtijd
-                        }
-                    </div>
+                    </h3>
+                </div>
+                <div class="panel-body">@Html.DisplayFor(modelItem => item.Inhoud)</div>
+                <div class="panel-footer">
+                    van @item.Begindatum.ToString("d") @item.Begintijd<br />
+                    @if (item.IsGesloten == false)
+                    {
+                        @:Tot heden - Geen einddatum bekend
+                    }
+                    else
+                    {
+                        @:tot @item.Begindatum.ToString("d") @item.Eindtijd
+                    }
                 </div>
             </div>
+        </div>
         }
     </div>
 }
