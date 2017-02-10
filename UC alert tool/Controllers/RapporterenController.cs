@@ -25,15 +25,18 @@ namespace UC_alert_tool.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Melding(Storingen model)
+        public ActionResult Melding(Storingen model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten,ProductID = model.ProductID };
+                db.Storingen.Add(storing);
+                db.SaveChanges();
+                return RedirectToAction("Index", "home");
             }
             else
             {
-                return RedirectToAction("Index", "rapporteren");
+                return View(model);
             }
         }
         public ActionResult MeldingMetSMS()

@@ -16,13 +16,6 @@ namespace UC_alert_tool.Controllers
             return View(db.Storingen.ToList());
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
         public ActionResult Contact()
         {     
             return View();

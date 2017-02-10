@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Titel" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Inhoud" Type="nvarchar(max)" Nullable="false" />
@@ -116,7 +116,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="Titel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Inhoud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />

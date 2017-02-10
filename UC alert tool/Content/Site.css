@@ -22,6 +22,9 @@ select,
 textarea{
     max-width: 280px;
 }
+.TextAreaFor100Percent{
+    width:100%;
+}
 #homepageTopWrapper{
     background-color:white;
     border-bottom: 1px solid black;
