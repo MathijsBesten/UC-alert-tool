@@ -23,6 +23,15 @@
           <Property Name="PrimaireEmail" Type="varchar(max)" />
           <Property Name="SecundaireEmail" Type="varchar(max)" />
           <Property Name="Telefoonnummer" Type="varchar(max)" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="Klanten2Producten">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="KlantID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Producten">
           <Key>
@@ -36,7 +45,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="Titel" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Inhoud" Type="nvarchar(max)" Nullable="false" />
@@ -57,6 +66,30 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_Klanten2Producten_Klanten">
+          <End Role="Klanten" Type="Self.Klanten" Multiplicity="1" />
+          <End Role="Klanten2Producten" Type="Self.Klanten2Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klanten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten2Producten">
+              <PropertyRef Name="KlantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klanten2Producten_Producten">
+          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
+          <End Role="Klanten2Producten" Type="Self.Klanten2Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten2Producten">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Storingen_Producten">
           <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
           <End Role="Storingen" Type="Self.Storingen" Multiplicity="*" />
@@ -72,9 +105,18 @@
         <EntityContainer Name="alertDatabaseModelStoreContainer">
           <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klanten2Producten" EntityType="Self.Klanten2Producten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producten" EntityType="Self.Producten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storingen" EntityType="Self.Storingen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Klanten2Producten_Klanten" Association="Self.FK_Klanten2Producten_Klanten">
+            <End Role="Klanten" EntitySet="Klanten" />
+            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klanten2Producten_Producten" Association="Self.FK_Klanten2Producten_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
+          </AssociationSet>
           <AssociationSet Name="FK_Storingen_Producten" Association="Self.FK_Storingen_Producten">
             <End Role="Producten" EntitySet="Producten" />
             <End Role="Storingen" EntitySet="Storingen" />
@@ -102,6 +144,9 @@
           <Property Name="PrimaireEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="SecundaireEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Telefoonnummer" Type="String" FixedLength="false" MaxLength="Max" Unicode="false" />
+          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Klanten_Producten" FromRole="Klanten" ToRole="Producten" />
+          <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Klanten" FromRole="Klanten" ToRole="Klanten2Producten" />
+          <Property Name="ProductID" Type="Int32" />
         </EntityType>
         <EntityType Name="Producten">
           <Key>
@@ -111,6 +156,8 @@
           <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="HelpdeskID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Storingen" Relationship="Self.FK_Storingen_Producten" FromRole="Producten" ToRole="Storingen" />
+          <NavigationProperty Name="Klanten" Relationship="alertDatabaseModel.FK_Klanten_Producten" FromRole="Producten" ToRole="Klanten" />
+          <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Producten" ToRole="Klanten2Producten" />
         </EntityType>
         <EntityType Name="Storingen">
           <Key>
@@ -150,6 +197,19 @@
             <End Role="Storingen" EntitySet="Storingen" />
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="alertDatabaseModel.sysdiagrams" />
+          <AssociationSet Name="FK_Klanten_Producten" Association="alertDatabaseModel.FK_Klanten_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Klanten" EntitySet="Klanten" />
+          </AssociationSet>
+          <EntitySet Name="Klanten2Producten" EntityType="alertDatabaseModel.Klanten2Producten" />
+          <AssociationSet Name="FK_Klanten2Producten_Klanten" Association="alertDatabaseModel.FK_Klanten2Producten_Klanten">
+            <End Role="Klanten" EntitySet="Klanten" />
+            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klanten2Producten_Producten" Association="alertDatabaseModel.FK_Klanten2Producten_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -161,6 +221,52 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_Klanten_Producten">
+          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="0..1" />
+          <End Type="alertDatabaseModel.Klanten" Role="Klanten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Klanten2Producten">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="KlantID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Klanten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Klanten" FromRole="Klanten2Producten" ToRole="Klanten" />
+          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Klanten2Producten" ToRole="Producten" />
+        </EntityType>
+        <Association Name="FK_Klanten2Producten_Klanten">
+          <End Type="alertDatabaseModel.Klanten" Role="Klanten" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Klanten2Producten" Role="Klanten2Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klanten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten2Producten">
+              <PropertyRef Name="KlantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klanten2Producten_Producten">
+          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Klanten2Producten" Role="Klanten2Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten2Producten">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -180,6 +286,7 @@
           <EntitySetMapping Name="Klanten">
             <EntityTypeMapping TypeName="alertDatabaseModel.Klanten">
               <MappingFragment StoreEntitySet="Klanten">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Naam" ColumnName="Naam" />
                 <ScalarProperty Name="PrimaireEmail" ColumnName="PrimaireEmail" />
@@ -224,6 +331,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Klanten2Producten">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Klanten2Producten">
+              <MappingFragment StoreEntitySet="Klanten2Producten">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="KlantID" ColumnName="KlantID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -239,7 +355,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -14,10 +14,21 @@ namespace UC_alert_tool.Models
     
     public partial class Klanten
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Klanten()
+        {
+            this.Klanten2Producten = new HashSet<Klanten2Producten>();
+        }
+    
         public int Id { get; set; }
         public string Naam { get; set; }
         public string PrimaireEmail { get; set; }
         public string SecundaireEmail { get; set; }
         public string Telefoonnummer { get; set; }
+        public Nullable<int> ProductID { get; set; }
+    
+        public virtual Producten Producten { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Klanten2Producten> Klanten2Producten { get; set; }
     }
 }

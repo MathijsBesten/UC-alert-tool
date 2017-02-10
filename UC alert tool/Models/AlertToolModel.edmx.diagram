@@ -5,11 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4c2085915a874df481f263b3c853d9a8" Name="Diagram1">
-        <EntityTypeShape EntityType="alertDatabaseModel.Administrators" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="alertDatabaseModel.Klanten" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="alertDatabaseModel.Administrators" Width="1.5" PointX="7.875" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="alertDatabaseModel.Klanten" Width="1.5" PointX="4.5" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="alertDatabaseModel.Producten" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="alertDatabaseModel.Storingen" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="alertDatabaseModel.FK_Storingen_Producten" ManuallyRouted="false" />
+        <AssociationConnector Association="alertDatabaseModel.FK_Klanten_Producten" />
+        <EntityTypeShape EntityType="alertDatabaseModel.Klanten2Producten" Width="1.5" PointX="2.375" PointY="4.5" />
+        <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Klanten" />
+        <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Producten" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
