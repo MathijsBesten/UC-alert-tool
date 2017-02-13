@@ -28,6 +28,14 @@
                         <li>@Html.ActionLink("Storingen", "Index", "Storingen")</li>
                         <li>@Html.ActionLink("Producten", "Index", "Producten")</li>
                         <li>@Html.ActionLink("Nieuwe storing melden", "Index", "Rapporteren")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">Admin test tools
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Email testen", "emailtester","Testers")</li>
+                                <li>@Html.ActionLink("sms testen", "smstester", "Testers")</li>
+                            </ul>
+                        </li>
                     </ul>
                 }
 

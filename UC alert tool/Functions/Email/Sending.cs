@@ -10,7 +10,7 @@ namespace UC_alert_tool.Functions.Email
 {
     public class Sending
     {
-        public static void sendEmail(email Email)
+        public static bool sendEmail(email Email)
         {
             MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress, Email.EmailSubject, Email.EmailBody);
             foreach (string recipientEmailAddress in Email.Recipients)
@@ -26,9 +26,11 @@ namespace UC_alert_tool.Functions.Email
             try
             {
                 smtpClient.Send(mail);
+                return true;
             }
             catch (Exception ex)
             {
+                return false;
                 throw ex;
             }
         }
