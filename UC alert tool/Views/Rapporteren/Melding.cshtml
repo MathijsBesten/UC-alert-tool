@@ -21,8 +21,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Inhoud, htmlAttributes: new { @class = "control-label col-md-2"})
             <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Inhoud,8,50,new { htmlAttributes = new {@class = "form-control"} })
-                @Html.ValidationMessageFor(model => model.Inhoud, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Inhoud,8,50,new { htmlAttributes = new {@class = "form-control"} })
+                <div>@Html.ValidationMessageFor(model => model.Inhoud, "", new { @class = "text-danger" })</div>
+
             </div>
         </div>
 
@@ -42,9 +43,9 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Begintijd, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Begintijd, htmlAttributes: new { @class = "control-label col-md-2", })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Begintijd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Begintijd, new { htmlAttributes = new { @class = "form-control", @placeholder = System.DateTime.Now } })
                 @Html.ValidationMessageFor(model => model.Begintijd, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -83,4 +84,5 @@
 }
 @section Scripts {
     @Scripts.Render("~/Scripts/projectScripts/generalscript.js")
+    @Scripts.Render("~/bundles/jqueryval")
 }

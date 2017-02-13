@@ -20,13 +20,22 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult Melding()
         {
+            Storingen model = new Storingen();
+            model.Begindatum = DateTime.Now;
+            model.Begintijd = DateTime.Now.TimeOfDay;
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
-            return View();
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Melding(Storingen model)
         {
+            ViewBag.dateNow = DateTime.Now;
+            if (model.Begindatum > model.Einddatum || (model.Begindatum == model.Einddatum && model.Begintijd > model.Eindtijd)) // if startdate is greater than startdate - including time
+            {
+                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten,ProductID = model.ProductID };
