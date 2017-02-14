@@ -13,7 +13,7 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Storingen.ToList());
+            return View(Functions.Storingen.Get.AllStoringenFromLastWeek());
         }
 
         public ActionResult Contact()

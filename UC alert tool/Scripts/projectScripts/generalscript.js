@@ -1,14 +1,12 @@
 ﻿$(document).ready(function () {
     $('#isGeslotenCheckbox').change(function () {
-        var attr = $('#einddatum').attr('disabled');
-        console.log(attr);
-        if (typeof attr !== typeof undefined && attr !== false) {
-            $('#einddatum').removeProp('disabled');
-            $('#eindtijd').removeProp('disabled');
-        }
-        else {
-            $('#einddatum').prop('disabled', true);
-            $('#eindtijd').prop('disabled', true);
+        var attr = $('#isGeslotenCheckbox').attr('disabled');
+        console.log($('#einddatum').val().length);
+        console.log($('#eindtijd').val().length);
+        if (($('#einddatum').val().length) == 0 && $('#eindtijd').val().length == 0)
+        {
+            $('einddatum').show("input-validation-error");
+            console.log("Nope");
         }
 
     });

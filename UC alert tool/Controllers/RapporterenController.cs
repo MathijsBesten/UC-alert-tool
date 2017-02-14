@@ -36,6 +36,11 @@ namespace UC_alert_tool.Controllers
                 ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
                 return View(model);
             }
+            if (model.IsGesloten == true && model.Einddatum == null) // user cannot close storing if there is no end date
+            {
+                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten,ProductID = model.ProductID };

@@ -208,6 +208,7 @@
     <Compile Include="Controllers\TestersController.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Functions\SMS\Sending.cs" />
+    <Compile Include="Functions\Storingen\Get.cs" />
     <Compile Include="Functions\Time\GetTime.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -317,6 +318,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\projectScripts\validationscript.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
