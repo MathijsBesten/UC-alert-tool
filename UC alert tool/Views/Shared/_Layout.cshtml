@@ -18,26 +18,38 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("UC Storingen", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
             </div>
             <div class="navbar-collapse collapse">
-                @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-                {
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                        <li>@Html.ActionLink("Storingen", "Index", "Storingen")</li>
-                        <li>@Html.ActionLink("Producten", "Index", "Producten")</li>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                    {
                         <li>@Html.ActionLink("Nieuwe storing melden", "Index", "Rapporteren")</li>
                         <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown">Admin test tools
-                            <span class="caret"></span></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                Admin test tools
+                                <span class="caret"></span>
+                            </a>
                             <ul class="dropdown-menu">
-                                <li>@Html.ActionLink("Email testen", "emailtester","Testers")</li>
+                                <li>@Html.ActionLink("email testen", "emailtester", "Testers")</li>
                                 <li>@Html.ActionLink("sms testen", "smstester", "Testers")</li>
                             </ul>
                         </li>
-                    </ul>
-                }
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                geavanceerde pagina's
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("producten", "Index", "Producten")</li>
+                                <li>@Html.ActionLink("storingen", "Index", "Storingen")</li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+
 
                 @Html.Partial("_LoginPartial")
             </div>
