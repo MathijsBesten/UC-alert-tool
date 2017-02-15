@@ -55,12 +55,12 @@ namespace UC_alert_tool.Controllers
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
-                : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Uw wachtwoord is veranderd."
+                : message == ManageMessageId.SetPasswordSuccess ? "Uw wachtwoord is ingesteld."
+                : message == ManageMessageId.SetTwoFactorSuccess ? "Uw Twee-factor-authenticatie is ingesteld."
+                : message == ManageMessageId.Error ? "Er is een fout onstaan."
+                : message == ManageMessageId.AddPhoneSuccess ? "Uw telefoonnummer is gekoppeld."
+                : message == ManageMessageId.RemovePhoneSuccess ? "Uw telefoonnummer is ontkoppeld."
                 : "";
 
             var userId = User.Identity.GetUserId();
