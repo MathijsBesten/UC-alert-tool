@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +10,12 @@ namespace UC_alert_tool.Controllers
 {
     public class HomeController : Controller
     {
+        private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private alertDatabaseEntities db = new alertDatabaseEntities();
 
         public ActionResult Index()
         {
+            log.Info("Loaded index page");
             return View(Functions.Storingen.Get.AllStoringenFromLastWeek());
         }
 

@@ -5,11 +5,13 @@ using System.Web;
 using System.Net.Mail;
 using System.Net;
 using UC_alert_tool.Models;
+using log4net;
 
 namespace UC_alert_tool.Functions.Email
 {
     public class Sending
     {
+        private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public static bool sendEmail(email Email)
         {
             MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress, Email.EmailSubject, Email.EmailBody);
@@ -26,10 +28,12 @@ namespace UC_alert_tool.Functions.Email
             try
             {
                 smtpClient.Send(mail);
+                log.Info("email is send succesfully");
                 return true;
             }
             catch (Exception ex)
             {
+                log.Info(ex);
                 return false;
                 throw ex;
             }
