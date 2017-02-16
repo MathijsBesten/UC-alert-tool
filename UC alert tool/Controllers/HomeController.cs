@@ -15,7 +15,11 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult Index()
         {
-            log.Info("Loaded index page");
+            ViewBag.showSuccess = TempData["showSuccess"];
+            ViewBag.showError = TempData["showError"];
+            ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            ViewBag.ErrorMessage = TempData["ErrorMessage"];
+
             return View(Functions.Storingen.Get.AllStoringenFromLastWeek());
         }
 

@@ -20,7 +20,15 @@ namespace UC_alert_tool.Functions.Email
                 mail.Bcc.Add(recipientEmailAddress);
             }
             string host = Email.SMTPServerURL.Split(':')[0];
-            int port = Int32.Parse(Email.SMTPServerURL.Split(':')[1]);
+            int port;
+            if (Email.SMTPServerURL.Split(':').Count() == 1 ) // if only a url without a port is entered
+            {
+                port = 587;
+            }
+            else
+            {
+                port = Int32.Parse(Email.SMTPServerURL.Split(':')[1]);
+            }
             SmtpClient smtpClient = new SmtpClient(host);
             smtpClient.Credentials = new NetworkCredential(Email.SMTPUsername, "");
             smtpClient.Port = port;
@@ -28,12 +36,12 @@ namespace UC_alert_tool.Functions.Email
             try
             {
                 smtpClient.Send(mail);
-                log.Info("email is send succesfully");
+                log.Info("email(s) are send succesfully to the mail gateway");
                 return true;
             }
             catch (Exception ex)
             {
-                log.Info(ex);
+                log.Info("Error while sending the email(s) to the mail gatewat - " + ex);
                 return false;
                 throw ex;
             }
