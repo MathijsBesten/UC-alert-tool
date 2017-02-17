@@ -204,6 +204,7 @@
     <Compile Include="Attributes\RedirectToHomepageIfNotAuthorizeAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstellingenController.cs" />
     <Compile Include="Controllers\KlantenController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductenController.cs" />
@@ -381,6 +382,7 @@
     <Content Include="Views\Storingen\Details.cshtml" />
     <Content Include="Views\Storingen\Edit.cshtml" />
     <Content Include="Views\Storingen\Index.cshtml" />
+    <Content Include="Views\Instellingen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

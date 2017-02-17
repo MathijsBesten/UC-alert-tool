@@ -24,13 +24,13 @@ namespace UC_alert_tool.Controllers
             {
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
-                TempData["SuccessMessage"] = "al de emails zijn correct verzonden naar de email server";
+                TempData["SuccessMessage"] = "al de emails zijn correct verzonden naar de e-mailserver";
             }
             else
             {
                 TempData["showSuccess"] = false;
                 TempData["showError"] = true;
-                TempData["ErrorMessage"] = "Kon de mail niet afleveren aan de mail gateway";
+                TempData["ErrorMessage"] = "Kon de mail niet afleveren aan de e-mailserver";
             }
             return RedirectToAction("index","Home");
         }

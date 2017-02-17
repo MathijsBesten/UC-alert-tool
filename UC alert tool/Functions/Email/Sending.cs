@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Net;
 using UC_alert_tool.Models;
 using log4net;
+using System.ComponentModel.DataAnnotations;
 
 namespace UC_alert_tool.Functions.Email
 {
@@ -17,7 +18,14 @@ namespace UC_alert_tool.Functions.Email
             MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress, Email.EmailSubject, Email.EmailBody);
             foreach (string recipientEmailAddress in Email.Recipients)
             {
-                mail.Bcc.Add(recipientEmailAddress);
+                if (new EmailAddressAttribute().IsValid(recipientEmailAddress))
+                {
+                    mail.Bcc.Add(recipientEmailAddress);
+                }
+                else
+                {
+                    log.Error("Not valid email address detected when sending email- " + recipientEmailAddress);
+                }
             }
             string host = Email.SMTPServerURL.Split(':')[0];
             int port;
@@ -41,7 +49,7 @@ namespace UC_alert_tool.Functions.Email
             }
             catch (Exception ex)
             {
-                log.Info("Error while sending the email(s) to the mail gatewat - " + ex);
+                log.Info("Error while sending the email(s) to the mail gateway - " + ex);
                 return false;
                 throw ex;
             }
