@@ -39,3 +39,10 @@ textarea{
    background-color:#e13a3d;
    border-color: #e13a3d;
 }
+.sidebar{
+    z-index:1;
+    position:absolute;
+    width:250px;
+    margin-top:5;
+}
+
