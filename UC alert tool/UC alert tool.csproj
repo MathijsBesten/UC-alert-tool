@@ -401,6 +401,8 @@
     <Content Include="Views\Storingen\Index.cshtml" />
     <Content Include="Views\Instellingen\Index.cshtml" />
     <Content Include="Views\Shared\_SettingsPartial.cshtml" />
+    <Content Include="Views\Instellingen\Logging.cshtml" />
+    <Content Include="Views\Instellingen\Server.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

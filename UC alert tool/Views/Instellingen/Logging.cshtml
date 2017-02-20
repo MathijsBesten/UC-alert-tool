@@ -1,0 +1,48 @@
+﻿@using UC_alert_tool.Models
+
+@{
+    ViewBag.Title = "Log instellingen";
+    @Html.Partial("_SettingsPartial")
+    var allLevels = new List<SelectListItem>() //this c# is here because viewbag does not work well with selectListItem lists 
+    {
+        new SelectListItem() {Text ="ALL",Value="ALL"},
+        new SelectListItem() {Text ="DEBUG",Value="DEBUG"},
+        new SelectListItem() {Text ="INFO",Value="INFO"},
+        new SelectListItem() {Text ="WARN",Value="WARN"},
+        new SelectListItem() {Text ="ERROR",Value="ERROR"},
+        new SelectListItem() {Text ="FATAL",Value="FATAL"},
+        new SelectListItem() {Text ="OFF",Value="OFF"}
+
+    };
+}
+
+<div class="settingsContentWrapper">
+    <h2>Logging</h2>
+    <p>Hieronder ziet u uw huidige log niveau, U kunt deze aanpassen of alleen bekijken</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Huidig niveau</label>
+                <div class="col-md-10">
+                    @ViewBag.currentLogLevel
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Nieuw log niveau</label>
+                <div class="col-md-10">
+                   @Html.DropDownList("newLogLevel", allLevels)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Toepassen" class="btn btn-default"/>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
