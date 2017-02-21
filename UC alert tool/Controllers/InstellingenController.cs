@@ -2,14 +2,17 @@
 using log4net.Core;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace UC_alert_tool.Controllers
 {
     public class InstellingenController : Controller
     {
+
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         // GET: Instellingen
@@ -17,14 +20,14 @@ namespace UC_alert_tool.Controllers
         {
             return View();
         }
-        public ActionResult Logging()
+        public ActionResult logging()
         {
             ViewBag.currentLogLevel = ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level.ToString();
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Logging(string newLogLevel)
+        public ActionResult logging(string newLogLevel)
         {
             string currentLogLevel = ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level.ToString();
             switch (newLogLevel)
@@ -59,9 +62,42 @@ namespace UC_alert_tool.Controllers
             return RedirectToAction("Index", "home");
         }
 
-        public ActionResult Server()
+        public ActionResult smsgateway()
         {
+            ViewBag.smsgatewayip = WebConfigurationManager.AppSettings["SMSGatewayIP"];
+            ViewBag.smsgatewayusername = WebConfigurationManager.AppSettings["SMSGatewayUsername"];
+            ViewBag.smsgatewaypassword = WebConfigurationManager.AppSettings["SMSGatewayPassword"];
+
             return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult smsgateway(string smsGatewayIP, string smsGatewayUsername, string smsGatewayPassword)
+        {
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            config.AppSettings.Settings["SMSGatewayIP"].Value = smsGatewayIP;
+            config.AppSettings.Settings["SMSGatewayUsername"].Value = smsGatewayUsername;
+            config.AppSettings.Settings["SMSGatewayPassword"].Value = smsGatewayPassword;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            return RedirectToAction("Index", "home");
+        }
+        public ActionResult emailserver()
+        {
+            ViewBag.emailserverip = WebConfigurationManager.AppSettings["EmailServerIP"];
+            ViewBag.emailserverport = WebConfigurationManager.AppSettings["EmailServerPort"];
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult emailserver(string emailServerIP, string emailServerPort)
+        {
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            config.AppSettings.Settings["EmailServerIP"].Value = emailServerIP;
+            config.AppSettings.Settings["EmailServerPort"].Value = emailServerPort;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            return RedirectToAction("Index", "home");
         }
     }
 }

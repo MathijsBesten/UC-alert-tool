@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "SMS gateway instellingen";
+    @Html.Partial("_SettingsPartial")
+}
+<div class="settingsContentWrapper">
+    <h2>Server instellingen</h2>
+    <p>Hieronder kunt u de gegevens aanpassen van de sms gateway</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                <label class="control-label col-md-3">SMS gateway IP adres</label>
+                <div class="col-md-9">
+                    <input type="text" name="smsGatewayIP" value=@ViewBag.smsgatewayip />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">SMS gateway gebruikersnaam</label>
+                <div class="col-md-9">
+                    <input type="text" name="smsGatewayUsername" value=@ViewBag.smsgatewayusername />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">SMS gateway IP wachtwoord</label>
+                <div class="col-md-9">
+                    <input type="text" name="smsGatewayPassword" value=@ViewBag.smsgatewaypassword />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9">
+                    <input type="submit" value="Opslaan" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

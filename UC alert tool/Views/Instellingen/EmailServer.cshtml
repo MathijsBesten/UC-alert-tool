@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Email server instellingen";
+    @Html.Partial("_SettingsPartial")
+}
+<div class="settingsContentWrapper">
+    <h2>Server instellingen</h2>
+    <p>Hieronder kunt u de gegevens aanpassen van de sms gateway</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <label class="control-label col-md-3">Email server URL</label>
+                <div class="col-md-9">
+                    <input type="text" name="emailServerIP" value=@ViewBag.emailserverip />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Email server poort</label>
+                <div class="col-md-9">
+                    <input type="text" name="emailServerPort" value=@ViewBag.emailserverport />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-9">
+                    <input type="submit" value="Opslaan" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
