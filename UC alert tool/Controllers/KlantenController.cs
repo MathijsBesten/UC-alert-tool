@@ -10,6 +10,7 @@ using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
+    [Authorize]
     public class KlantenController : Controller
     {
         private alertDatabaseEntities db = new alertDatabaseEntities();

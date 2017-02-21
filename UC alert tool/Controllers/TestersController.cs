@@ -9,7 +9,8 @@ namespace UC_alert_tool.Controllers
 {
     [Authorize]
     public class TestersController : Controller
-    { 
+    {
+        [Authorize]
         public ActionResult emailtester()
         {
             return View();

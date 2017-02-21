@@ -15,7 +15,9 @@ namespace UC_alert_tool.Controllers
 
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        [Authorize]
         // GET: Instellingen
+
         public ActionResult Index()
         {
             return View();
@@ -80,6 +82,7 @@ namespace UC_alert_tool.Controllers
             config.AppSettings.Settings["SMSGatewayPassword"].Value = smsGatewayPassword;
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+            log.Info("User changed the sms gateway settings");
             return RedirectToAction("Index", "home");
         }
         public ActionResult emailserver()
@@ -97,6 +100,7 @@ namespace UC_alert_tool.Controllers
             config.AppSettings.Settings["EmailServerPort"].Value = emailServerPort;
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+            log.Info("User changed the mailserver settings");
             return RedirectToAction("Index", "home");
         }
     }
