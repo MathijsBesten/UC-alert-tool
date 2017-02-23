@@ -30,14 +30,14 @@
 }
 @media (min-width: 768px) {
   .sidebar {
-    position: relative;
+    position: absolute;
     width: 200px;
     margin-top: 0px;
     float:left;
     margin-right:15px;
   }
 }
-/*End of sidebar*/
+/*End of sidebar*/  
 .settingsContentWrapper{
     margin-left:250px;
 }

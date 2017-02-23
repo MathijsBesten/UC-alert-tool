@@ -2,8 +2,8 @@
 
 @{
     ViewBag.Title = "Log instellingen";
-    //@Html.Partial("_SettingsPartial")
-    var allLevels = new List<SelectListItem>() //this c# is here because viewbag does not work well with selectListItem lists 
+    @Html.Partial("_SettingsPartial")
+    var allLevels = new List<SelectListItem>() //this c# code is here because viewbag does not work well with selectListItem lists 
     {
         new SelectListItem() {Text ="ALL",Value="ALL"},
         new SelectListItem() {Text ="DEBUG",Value="DEBUG"},
