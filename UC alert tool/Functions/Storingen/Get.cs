@@ -12,7 +12,7 @@ namespace UC_alert_tool.Functions.Storingen
         {
             alertDatabaseEntities db = new alertDatabaseEntities();
             List<Models.Storingen> AllStoringen = db.Storingen.ToList();
-            var ThisWeeksStoringen = AllStoringen.Where((s => s.IsGesloten == false || (s.Einddatum.Value.Year == DateTime.Now.Year && s.Einddatum.Value.DayOfYear + 7 >= DateTime.Now.DayOfYear))).ToList<Models.Storingen>();
+            var ThisWeeksStoringen = AllStoringen.Where((s => s.IsGesloten == false || (s.Einddatum.Value.DayOfYear + 7 >= DateTime.Now.DayOfYear && s.Einddatum.Value.Year == DateTime.Now.Year))).ToList<Models.Storingen>();
             return ThisWeeksStoringen;
         }
     }
