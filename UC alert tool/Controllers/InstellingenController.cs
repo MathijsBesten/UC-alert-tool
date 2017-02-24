@@ -103,5 +103,31 @@ namespace UC_alert_tool.Controllers
             log.Info("User changed the mailserver settings");
             return RedirectToAction("Index", "home");
         }
+
+        public ActionResult emailtemplate()
+        {
+            ViewBag.handtekeningtext = WebConfigurationManager.AppSettings["SignatureText"];
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult emailtemplate(string handtekeningText, HttpPostedFileBase file)
+        {
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            config.AppSettings.Settings["signaturetext"].Value = handtekeningText;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            if (Request.Files.Count > 0)
+            {
+                //file = Request.Files[0];
+                //if (file != null && file.ContentLength > 0)
+                //{
+                //    Functions.Email_template.Set.saveLogoPicture(file);
+                //}
+            }
+
+
+            return RedirectToAction("Index", "home");
+        }
     }
 }

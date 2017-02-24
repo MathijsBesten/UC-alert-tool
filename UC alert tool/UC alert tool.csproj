@@ -212,9 +212,11 @@
     <Compile Include="Controllers\StoringenController.cs" />
     <Compile Include="Controllers\TestersController.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
+    <Compile Include="Functions\Email template\Get.cs" />
+    <Compile Include="Functions\Email template\Set.cs" />
     <Compile Include="Functions\SMS\Sending.cs" />
     <Compile Include="Functions\Storingen\Get.cs" />
-    <Compile Include="Functions\Time\GetTime.cs" />
+    <Compile Include="Functions\Tijd\GetTime.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -404,6 +406,7 @@
     <Content Include="Views\Instellingen\logging.cshtml" />
     <Content Include="Views\Instellingen\smsgateway.cshtml" />
     <Content Include="Views\Instellingen\emailserver.cshtml" />
+    <Content Include="Views\Instellingen\emailtemplate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
