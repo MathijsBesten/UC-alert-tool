@@ -45,4 +45,7 @@ textarea{
     width:250px;
     margin-top:5;
 }
-
+.errortext{
+    color:orangered;
+    font-style:italic;
+}
