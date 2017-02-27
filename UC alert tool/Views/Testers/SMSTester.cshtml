@@ -10,17 +10,17 @@
     <form role="form">
         <div class="form-group">
             <label class="control-label" >sms gateway</label>
-            @Html.EditorFor(model => model.server, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.server, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", value = ViewBag.smsgatewayip } })
             @Html.ValidationMessageFor(model => model.server, "", new { @class = "text-danger" })        
         </div>
         <div class="form-group">
             <label class="control-label" >gebruikersnaam</label>
-            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", value = ViewBag.smsgatewayusername } })
             @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label class="control-label" >wachtwoord</label>
-            @Html.PasswordFor(model => model.password, new{ @class = "form-control" } )
+            @Html.PasswordFor(model => model.password, new{ @class = "form-control", autocomplete = "off", value = ViewBag.smsgatewaypassword } )
             @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
         </div>
         <div class="form-group">

@@ -12,7 +12,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">SMTP server</label>
             <div class="col-sm-10">
-                @Html.EditorFor(model => model.SMTPServerURL, new { htmlAttributes = new { @class = "form-control", placeholder = "smtp.example.com:587" } })
+                @Html.EditorFor(model => model.SMTPServerURL, new { htmlAttributes = new { @class = "form-control", placeholder = "smtp.example.com:587", @Value = ViewBag.smtpserverip +":" +  ViewBag.smtpserverport } })
                 @Html.ValidationMessageFor(model => model.FromEmailAddress, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,8 @@ namespace UC_alert_tool.Controllers
         [Authorize]
         public ActionResult emailtester()
         {
+            ViewBag.smtpserverip = ConfigurationManager.AppSettings["EmailServerIP"];
+            ViewBag.smtpserverport = ConfigurationManager.AppSettings["EmailServerPort"];
             return View();
         }
         [HttpPost]
@@ -26,6 +29,7 @@ namespace UC_alert_tool.Controllers
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
                 TempData["SuccessMessage"] = "al de emails zijn correct verzonden naar de e-mailserver";
+
             }
             else
             {
@@ -37,6 +41,9 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult smstester()
         {
+            ViewBag.smsgatewayip = ConfigurationManager.AppSettings["SMSGatewayIP"];
+            ViewBag.smsgatewayusername = ConfigurationManager.AppSettings["SMSGatewayUsername"];
+            ViewBag.smsgatewaypassword = ConfigurationManager.AppSettings["SMSGatewayPassword"];
             return View();
         }
         [HttpPost]
