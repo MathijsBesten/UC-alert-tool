@@ -1,16 +1,33 @@
 ﻿$(document).ready(function () {
-    $('#isGeslotenCheckbox').change(function () {
-        var attr = $('#isGeslotenCheckbox').attr('disabled');
-        console.log($('#einddatum').val().length);
-        console.log($('#eindtijd').val().length);
-        if (($('#einddatum').val().length) == 0 && $('#eindtijd').val().length == 0)
-        {
-            $('einddatum').show("input-validation-error");
-            console.log("Nope");
+    $('#submitbutton').click(checkIfstartIsBeforeEnddate);
+    $('#submitbutton').click(closeStoringIfAllDatesAreValid);
+
+    function runFunctionIfTrue() {
+        if (checkIfstartIsBeforeEnddate().val = 'true') {
+            console.log('true');
         }
 
-    });
-    $('#submitbutton').click(checkIfstartIsBeforeEnddate);
+    }
+
+    function closeStoringIfAllDatesAreValid() {
+        if ($('#isGeslotenCheckbox').is(":checked")) {
+            var begindate = new Date($('#begindatum').val());
+            var beginTime = $('#begintijd').val();
+            var enddate = new Date($('#einddatum').val());
+            var endTime = $('#eindtijd').val();
+            if (begindate != "Invalid Date" && beginTime != "" && enddate != "Invalid Date" && endTime != "") {
+                return true
+            }
+            else {
+                $('#isGeslotenCheckbox').after("<p class='errortext'>Vul alle waarden in om de storing te sluiten</p>");
+                return false;
+            }
+        }
+        else {
+            return true;
+        }
+    }
+
 
     function checkIfstartIsBeforeEnddate() {
         $('.errortext').remove();
