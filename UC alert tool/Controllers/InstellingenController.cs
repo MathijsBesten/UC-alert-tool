@@ -7,15 +7,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
+    [Authorize]
     public class InstellingenController : Controller
     {
 
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        [Authorize]
         // GET: Instellingen
 
         public ActionResult Index()
@@ -78,34 +79,19 @@ namespace UC_alert_tool.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult smsgateway(string smsGatewayIP, string smsGatewayUsername, string smsGatewayPassword)
         {
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            config.AppSettings.Settings["SMSGatewayIP"].Value = smsGatewayIP;
+            config.AppSettings.Settings["SMSGatewayUsername"].Value = smsGatewayUsername;
+            config.AppSettings.Settings["SMSGatewayPassword"].Value = smsGatewayPassword;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            log.Info("User changed the sms gateway settings - succesfully");
             TempData["showSuccess"] = true;
             TempData["showError"] = false;
             TempData["SuccessMessage"] = "SMTP server gegevens zijn succesvol aangepast";
-            try
-            {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                config.AppSettings.Settings["SMSGatewayIP"].Value = smsGatewayIP;
-                config.AppSettings.Settings["SMSGatewayUsername"].Value = smsGatewayUsername;
-                config.AppSettings.Settings["SMSGatewayPassword"].Value = smsGatewayPassword;
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("appSettings");
-                log.Info("User changed the sms gateway settings - succesfully");
-
-            }
-            catch (Exception e)
-            {
-                log.Info("User tried to changed the sms gateway settings - error - " + e);
-                TempData["showSuccess"] = false;
-                TempData["showError"] = true;
-                TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
-                throw;
-            }
-
-
-            return RedirectToAction("Index", "home");
+            return RedirectToAction("index", "Home");
         }
         public ActionResult emailserver()
         {
@@ -114,29 +100,18 @@ namespace UC_alert_tool.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult emailserver(string emailServerIP, string emailServerPort)
         {
-            try
-            {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                config.AppSettings.Settings["EmailServerIP"].Value = emailServerIP;
-                config.AppSettings.Settings["EmailServerPort"].Value = emailServerPort;
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("appSettings");
-                log.Info("User changed the mailserver settings");
-                TempData["showSuccess"] = true;
-                TempData["showError"] = false;
-                TempData["SuccessMessage"] = "SMTP server gegevens zijn succesvol aangepast";
-            }
-            catch (Exception e)
-            {
-                log.Error("User tried to change the mailserver settings- failed - "+ e);
-                TempData["showSuccess"] = false;
-                TempData["showError"] = true;
-                TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
-            }
-            return RedirectToAction("Index", "Instellingen");
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            config.AppSettings.Settings["EmailServerIP"].Value = emailServerIP;
+            config.AppSettings.Settings["EmailServerPort"].Value = emailServerPort;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            log.Info("User changed the mailserver settings");
+            TempData["showSuccess"] = true;
+            TempData["showError"] = false;
+            TempData["SuccessMessage"] = "SMTP server gegevens zijn succesvol aangepast";
+            return RedirectToAction("index", "Home");
         }
 
         public ActionResult emailtemplate()
