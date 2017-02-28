@@ -407,6 +407,7 @@
     <Content Include="Views\Instellingen\smsgateway.cshtml" />
     <Content Include="Views\Instellingen\emailserver.cshtml" />
     <Content Include="Views\Instellingen\emailtemplate.cshtml" />
+    <Content Include="Views\Shared\_MessagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

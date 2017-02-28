@@ -1,22 +1,8 @@
 ﻿@model List<UC_alert_tool.Models.Storingen>
 @{
     ViewBag.Title = "Home";
+    @Html.Partial("_MessagePartial");
 }
-@if (ViewBag.showSuccess == true)
-{
-    <div class="alert alert-success">
-        <strong>Success!</strong> @ViewBag.SuccessMessage
-    </div>
-}
-else if (ViewBag.showError == true)
-{
-    <div class="alert alert-warning">
-        <strong>Waarschuwing!</strong> @ViewBag.Message
-    </div>
-}
-
-
-
 
 <div id="homepageTopWrapper" class="jumbotron text-center" >
     <div id="homepageTop" class="container">

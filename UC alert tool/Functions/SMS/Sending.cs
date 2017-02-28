@@ -24,13 +24,22 @@ namespace UC_alert_tool.Functions.SMS
                 int count = 0; 
                 foreach (string recipient in sms.Recipients)
                 {
-                    string completeURL = string.Format(url, sms.server, sms.username, sms.password, sms.Recipients[count], sms.text);
-                    var respone = client.DownloadString(completeURL);
-                    if (!respone.Contains("OK"))// there are no other responses that contains the letters "OK" 
+                    try
                     {
-                        log.Error("SMS not send to " + sms.Recipients[count] + " - response from sms server " + respone);
+                        string completeURL = string.Format(url, sms.server, sms.username, sms.password, sms.Recipients[count], sms.text);
+                        var respone = client.DownloadString(completeURL);
+                        if (!respone.Contains("OK"))// there are no other responses that contains the letters "OK" 
+                        {
+                            log.Error("SMS not send to " + sms.Recipients[count] + " - response from sms server " + respone);
+                            notInformedRecipients.Add(sms.Recipients[count]);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        log.Error("SMS not send to " + sms.Recipients[count] + " - error " + e);
                         notInformedRecipients.Add(sms.Recipients[count]);
                     }
+
                     count++;
                 }
                 client.Dispose();
