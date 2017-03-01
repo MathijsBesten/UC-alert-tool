@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,7 +60,62 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult MeldingMetEmail()
         {
-            return View();
+            rapporterenMetEmail model = new rapporterenMetEmail();
+            model.Begindatum = DateTime.Now;
+            model.Begintijd = DateTime.Now;
+            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult MeldingMetEmail(rapporterenMetEmail model)
+        {
+            if (model.Begindatum > model.Einddatum || (model.Begindatum == model.Einddatum && model.Begintijd > model.Eindtijd)) // if startdate is greater than startdate - including time
+            {
+                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+                return View(model);
+            }
+            if (model.IsGesloten == true && model.Einddatum == null) // user cannot close storing if there is no end date
+            {
+                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+                return View(model);
+            }
+            if (ModelState.IsValid)
+            {
+                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.description, Begindatum = model.Begindatum, Begintijd = model.Begintijd.TimeOfDay, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd.TimeOfDay, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
+                db.Storingen.Add(storing);
+                db.SaveChanges();
+
+                //receive all recipients form db
+                var allProducts = db.Producten.ToList();
+                var selectedProduct = allProducts[model.ProductID]; // the selectlist is always in order as in the database
+                var selectedProductID = selectedProduct.Id;
+                var allRecipients = selectedProduct.Klanten2Producten;
+                var allRecipientsOnlyEmailAddress = new List<string>();
+                foreach (var item in allRecipients)
+                {
+                    string email = item.Klanten.PrimaireEmail;
+                    if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
+                    }
+                }
+                //here is space for saving the current recipients to a database
+
+               //make new email
+                email mail = new email();
+                mail.EmailSubject = model.emailtitle;
+                mail.EmailBody = model.emailbody;
+                mail.FromEmailAddress = ConfigurationManager.AppSettings["EmailSendingMailAddress"];
+                mail.Recipients = allRecipientsOnlyEmailAddress;
+                mail.SMTPServerURL = ConfigurationManager.AppSettings["EmailServerIP"] + ":" + ConfigurationManager.AppSettings["EmailServerPort"];
+                Functions.Email.Sending.sendEmail(mail);
+
+                return RedirectToAction("Index", "home");
+            }
+            else
+            {
+                return View(model);
+            }
         }
         public ActionResult MeldingMetEmailEnSMS()
         {
