@@ -87,7 +87,7 @@ namespace UC_alert_tool.Controllers
 
                 //receive all recipients form db
                 var allProducts = db.Producten.ToList();
-                var selectedProduct = allProducts[model.ProductID]; // the selectlist is always in order as in the database
+                var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
                 var selectedProductID = selectedProduct.Id;
                 var allRecipients = selectedProduct.Klanten2Producten;
                 var allRecipientsOnlyEmailAddress = new List<string>();
