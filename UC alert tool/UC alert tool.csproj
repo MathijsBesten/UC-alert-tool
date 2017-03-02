@@ -211,6 +211,7 @@
     <Compile Include="Controllers\RapporterenController.cs" />
     <Compile Include="Controllers\StoringenController.cs" />
     <Compile Include="Controllers\TestersController.cs" />
+    <Compile Include="Functions\Appsettings\Edit.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Functions\Email template\Get.cs" />
     <Compile Include="Functions\Email template\Set.cs" />

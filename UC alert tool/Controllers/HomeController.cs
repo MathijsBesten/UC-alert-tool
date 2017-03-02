@@ -12,13 +12,17 @@ namespace UC_alert_tool.Controllers
     {
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private alertDatabaseEntities db = new alertDatabaseEntities();
+        public bool showSuccess = false;
+        public bool showError = false;
+        public string SuccessMessage = null;
+        public string ErrorMessage = null;
 
         public ActionResult Index()
         {
-            ViewBag.showSuccess = TempData["showSuccess"];
-            ViewBag.showError = TempData["showError"];
-            ViewBag.SuccessMessage = TempData["SuccessMessage"];
-            ViewBag.ErrorMessage = TempData["ErrorMessage"];
+            ViewBag.showSuccess = showSuccess;
+            ViewBag.showError = showError;
+            ViewBag.SuccessMessage = SuccessMessage;
+            ViewBag.ErrorMessage = ErrorMessage;
 
             return View(Functions.Storingen.Get.AllStoringenFromLastWeek());
         }
