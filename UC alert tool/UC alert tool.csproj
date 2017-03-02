@@ -215,6 +215,7 @@
     <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Functions\Email template\Get.cs" />
     <Compile Include="Functions\Email template\Set.cs" />
+    <Compile Include="Functions\Files\GeneralFiles.cs" />
     <Compile Include="Functions\SMS\Sending.cs" />
     <Compile Include="Functions\Storingen\Get.cs" />
     <Compile Include="Functions\Tijd\GetTime.cs" />

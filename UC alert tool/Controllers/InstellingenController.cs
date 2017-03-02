@@ -2,6 +2,7 @@
 using log4net.Core;
 using System;
 using System.Configuration;
+using System.IO;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -153,20 +154,21 @@ namespace UC_alert_tool.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult emailtemplate(string handtekeningText, HttpPostedFileBase file)
+        public ActionResult emailtemplate(HttpPostedFileBase file, string handtekeningText)
         {
+            if (file != null)
+            {
+                Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ConfigurationManager.AppSettings["FileDirectory"], ConfigurationManager.AppSettings["SignatureDirectory"],  ConfigurationManager.AppSettings["SignatureImage"]);
+                file.SaveAs(path);
+                log.Info("Signature has been changed by the user");
+            }
+
             Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
             config.AppSettings.Settings["signaturetext"].Value = handtekeningText;
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
-            if (Request.Files.Count > 0)
-            {
-                //file = Request.Files[0];
-                //if (file != null && file.ContentLength > 0)
-                //{
-                //    Functions.Email_template.Set.saveLogoPicture(file);
-                //}
-            }
+
 
             return RedirectToAction("Index", "home");
         }

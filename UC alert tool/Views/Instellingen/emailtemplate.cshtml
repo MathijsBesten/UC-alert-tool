@@ -7,7 +7,7 @@
 
     <h2>email template aanpassen</h2>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("emailtemplate","Instellingen",FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
