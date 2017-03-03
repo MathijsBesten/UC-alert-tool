@@ -149,6 +149,7 @@ namespace UC_alert_tool.Controllers
         public ActionResult emailtemplate()
         {
             ViewBag.handtekeningtext = WebConfigurationManager.AppSettings["SignatureText"];
+
             return View();
         }
 
@@ -156,16 +157,17 @@ namespace UC_alert_tool.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult emailtemplate(HttpPostedFileBase file, string handtekeningText)
         {
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
             if (file != null)
             {
                 Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
                 string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ConfigurationManager.AppSettings["FileDirectory"], ConfigurationManager.AppSettings["SignatureDirectory"],  ConfigurationManager.AppSettings["SignatureImage"]);
-                file.SaveAs(path);
+                    file.SaveAs(path);
+                config.AppSettings.Settings["signaturePath"].Value = path;
                 log.Info("Signature has been changed by the user");
             }
-
-            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-            config.AppSettings.Settings["signaturetext"].Value = handtekeningText;
+            string htmlSignature = handtekeningText.Replace(@"\r\n", @"<br />");
+            config.AppSettings.Settings["signaturetext"].Value = htmlSignature;
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
 

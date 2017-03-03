@@ -64,6 +64,8 @@ namespace UC_alert_tool.Controllers
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now;
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.previewSignaturetext = ConfigurationManager.AppSettings["SignatureText"];
+            ViewBag.previewImage = ConfigurationManager.AppSettings["signaturePath"];
             return View(model);
         }
         [HttpPost]
