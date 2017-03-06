@@ -7,15 +7,28 @@ using System.Net;
 using UC_alert_tool.Models;
 using log4net;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
+using System.Net.Mime;
 
 namespace UC_alert_tool.Functions.Email
 {
     public class Sending
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public static bool sendEmail(email Email)
+        public static bool sendEmail(email Email, bool useSignature )
         {
-            MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress, Email.EmailSubject, Email.EmailBody);
+            MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress);
+            Email.EmailBody = Email.EmailBody.Replace(Environment.NewLine, @"<br>");
+            mail.Subject = Email.EmailSubject;
+            mail.IsBodyHtml = true;
+            if (useSignature)
+            {
+                mail.AlternateViews.Add(getEmbeddedImage(Email.EmailBody));
+            }
+            else
+            {
+                mail.Body = Email.EmailBody;
+            }
             foreach (string recipientEmailAddress in Email.Recipients)
             {
                 if (new EmailAddressAttribute().IsValid(recipientEmailAddress))
@@ -53,6 +66,23 @@ namespace UC_alert_tool.Functions.Email
                 return false;
                 throw ex;
             }
+        }
+        private static AlternateView getEmbeddedImage(string stringToSend)
+        {
+            LinkedResource inline = new LinkedResource(HttpContext.Current.Server.MapPath((ConfigurationManager.AppSettings["signaturePath"])));
+            inline.ContentId = Guid.NewGuid().ToString();
+            //combine body with image and signature
+            string emailBody = "";
+            emailBody += "<html><body>";
+            emailBody += stringToSend;
+            emailBody += "<br> <br>"; // addes a whiteline for the signature
+            emailBody += ConfigurationManager.AppSettings["SignatureText"];
+            emailBody += "<br>";
+            emailBody += @"<img src='cid:" + inline.ContentId + @"'/>";
+            emailBody += "</body></html>";
+            AlternateView alternateView = AlternateView.CreateAlternateViewFromString(emailBody, null, MediaTypeNames.Text.Html);
+            alternateView.LinkedResources.Add(inline);
+            return alternateView;
         }
     }
 }

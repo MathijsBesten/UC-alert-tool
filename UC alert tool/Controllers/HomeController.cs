@@ -19,10 +19,10 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.showSuccess = showSuccess;
-            ViewBag.showError = showError;
-            ViewBag.SuccessMessage = SuccessMessage;
-            ViewBag.ErrorMessage = ErrorMessage;
+            ViewBag.showSuccess = TempData["showSuccess"];
+            ViewBag.showError = TempData["showError"];
+            ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
             return View(Functions.Storingen.Get.AllStoringenFromLastWeek());
         }

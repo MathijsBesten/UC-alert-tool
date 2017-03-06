@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
@@ -105,14 +106,14 @@ namespace UC_alert_tool.Controllers
                 }
                 //here is space for saving the current recipients to a database
 
-               //make new email
+                //make new email
                 email mail = new email();
                 mail.EmailSubject = model.emailtitle;
                 mail.EmailBody = model.emailbody;
                 mail.FromEmailAddress = ConfigurationManager.AppSettings["EmailSendingMailAddress"];
                 mail.Recipients = allRecipientsOnlyEmailAddress;
                 mail.SMTPServerURL = ConfigurationManager.AppSettings["EmailServerIP"] + ":" + ConfigurationManager.AppSettings["EmailServerPort"];
-                Functions.Email.Sending.sendEmail(mail);
+                Functions.Email.Sending.sendEmail(mail,true);
 
                 return RedirectToAction("Index", "home");
             }

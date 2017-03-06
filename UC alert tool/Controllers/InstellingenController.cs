@@ -15,19 +15,15 @@ namespace UC_alert_tool.Controllers
     public class InstellingenController : Controller
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public bool showSuccess = false;
-        public bool showError = false;
-        public string SuccessMessage = null;
-        public string ErrorMessage = null;
 
         // GET: Instellingen
 
         public ActionResult Index()
         {
-            ViewBag.showSuccess = showSuccess;
-            ViewBag.showError = showError;
-            ViewBag.SuccessMessage = SuccessMessage;
-            ViewBag.ErrorMessage = ErrorMessage;
+            ViewBag.showSuccess = TempData["showSuccess"];
+            ViewBag.showError = TempData["showError"];
+            ViewBag.SuccessMessage = TempData["SuccessMessage"];
+            ViewBag.ErrorMessage = TempData["ErrorMessage"];
 
             return View();
         }
@@ -99,17 +95,16 @@ namespace UC_alert_tool.Controllers
                 Functions.Appsettings.Edit.ChangeExistingValue("SMSGatewayIP", smsGatewayIP);
                 Functions.Appsettings.Edit.ChangeExistingValue("SMSGatewayUsername",smsGatewayUsername);
                 Functions.Appsettings.Edit.ChangeExistingValue("SMSGatewayPassword",smsGatewayPassword);
-                showSuccess = true;
-                showError = false;
-                SuccessMessage = "SMS server gegevens zijn succesvol aangepast";
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "SMS server gegevens zijn succesvol aangepast";
 
             }
             catch (Exception e)
             {
                 log.Info("User tried to changed the sms gateway settings - error - " + e);
-                showSuccess = false;
-                showError = true;
-                ErrorMessage = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
+
+                TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
             }
 
             return RedirectToAction("index", "Home");
@@ -133,16 +128,16 @@ namespace UC_alert_tool.Controllers
                 config.Save(ConfigurationSaveMode.Modified);
                 ConfigurationManager.RefreshSection("appSettings");
                 log.Info("User changed the mailserver settings");
-                showSuccess = true;
-                showError = false;
-                SuccessMessage = "SMTP server gegevens zijn succesvol aangepast";
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "SMTP server gegevens zijn succesvol aangepast";
             }
             catch (Exception e)
             {
                 log.Error("User tried to change the mailserver settings- failed - " + e);
-                showSuccess = false;
-                showError = true;
-                ErrorMessage = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
+                TempData["showSuccess"] = false;
+                TempData["showError"] = true;
+                TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
             }
             return RedirectToAction("index", "Home");
 
