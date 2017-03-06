@@ -5,7 +5,9 @@ using System.Configuration;
 using System.IO;
 using System.Web;
 using System.Web.Configuration;
+using System.Web.Hosting;
 using System.Web.Mvc;
+using System.Web.WebPages;
 
 namespace UC_alert_tool.Controllers
 {
@@ -161,8 +163,9 @@ namespace UC_alert_tool.Controllers
             if (file != null)
             {
                 Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
-                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ConfigurationManager.AppSettings["FileDirectory"], ConfigurationManager.AppSettings["SignatureDirectory"],  ConfigurationManager.AppSettings["SignatureImage"]);
-                    file.SaveAs(path);
+                string path = ConfigurationManager.AppSettings["signaturePath"];
+                string absolutePath = HostingEnvironment.MapPath(path);
+                file.SaveAs(absolutePath);
                 config.AppSettings.Settings["signaturePath"].Value = path;
                 log.Info("Signature has been changed by the user");
             }
