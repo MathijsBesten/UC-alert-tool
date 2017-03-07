@@ -79,7 +79,10 @@ namespace UC_alert_tool.Controllers
             }
             ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
             log.Fatal("Changed log level from " + currentLogLevel + " to " + newLogLevel + ".");
-            return RedirectToAction("Index", "home");
+            TempData["showSuccess"] = true;
+            TempData["showError"] = false;
+            TempData["SuccessMessage"] = "Log niveau is succesvol aangepast naar " + newLogLevel;
+            return RedirectToAction("Index", "Instellingen");
         }
 
         public ActionResult smsgateway()
@@ -109,7 +112,7 @@ namespace UC_alert_tool.Controllers
                 log.Info("User tried to changed the sms gateway settings - error - " + e);
                 TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
             }
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("index", "Instellingen");
         }
 
         public ActionResult emailserver()
@@ -138,7 +141,7 @@ namespace UC_alert_tool.Controllers
                 TempData["showError"] = true;
                 TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
             }
-            return RedirectToAction("index", "Home");
+            return RedirectToAction("index", "Instellingen");
 
         }
 
@@ -163,7 +166,10 @@ namespace UC_alert_tool.Controllers
             }
             string htmlSignature = handtekeningText.Replace(@"\r\n", @"<br />");
             Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
-            return RedirectToAction("Index", "home");
+            TempData["showSuccess"] = true;
+            TempData["showError"] = false;
+            TempData["SuccessMessage"] = "De e-mailhandtekening is aangepast";
+            return RedirectToAction("Index", "Instellingen");
         }
     }
 }
