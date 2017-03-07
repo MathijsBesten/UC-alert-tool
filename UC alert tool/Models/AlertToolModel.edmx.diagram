@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="alertDatabaseModel.Klanten2Producten" Width="1.5" PointX="2.375" PointY="4.5" />
         <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Klanten" />
         <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Producten" />
+        <EntityTypeShape EntityType="alertDatabaseModel.Settings" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

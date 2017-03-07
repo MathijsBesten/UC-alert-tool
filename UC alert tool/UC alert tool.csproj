@@ -256,6 +256,9 @@
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RapporterenViewModel.cs" />
+    <Compile Include="Models\Settings.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SMSViewModel.cs" />
     <Compile Include="Models\Storingen.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>

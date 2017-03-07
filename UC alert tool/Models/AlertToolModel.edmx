@@ -29,7 +29,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KlantID" Type="int" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
         </EntityType>
@@ -40,6 +40,14 @@
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="Naam" Type="varchar(max)" Nullable="false" />
           <Property Name="HelpdeskID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Setting" Type="varchar(max)" Nullable="false" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Storingen">
           <Key>
@@ -107,6 +115,7 @@
           <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klanten2Producten" EntityType="Self.Klanten2Producten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producten" EntityType="Self.Producten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Storingen" EntityType="Self.Storingen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Klanten2Producten_Klanten" Association="Self.FK_Klanten2Producten_Klanten">
@@ -210,6 +219,7 @@
             <End Role="Producten" EntitySet="Producten" />
             <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
           </AssociationSet>
+          <EntitySet Name="Settings" EntityType="alertDatabaseModel.Settings" />
         </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -267,6 +277,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Setting" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -340,6 +358,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Settings">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Setting" ColumnName="Setting" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -355,7 +382,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -11,12 +11,6 @@ namespace UC_alert_tool.Controllers
     public class HomeController : Controller
     {
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private alertDatabaseEntities db = new alertDatabaseEntities();
-        public bool showSuccess = false;
-        public bool showError = false;
-        public string SuccessMessage = null;
-        public string ErrorMessage = null;
-
         public ActionResult Index()
         {
             ViewBag.showSuccess = TempData["showSuccess"];

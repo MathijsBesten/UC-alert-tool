@@ -5,20 +5,22 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Functions.Appsettings
 {
     public class Edit
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static alertDatabaseEntities db = new alertDatabaseEntities();
+
         public static bool ChangeExistingValue(string name, string value)
         {
             try
             {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                config.AppSettings.Settings[name].Value = value;
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("appSettings");
+                var ChangeItem = db.Settings.Single(s => s.Setting == name);
+                ChangeItem.Value = value;
+                db.SaveChanges();
                 log.Info("User changed the " + name +"  settings - succesfully");
                 return true;
             }

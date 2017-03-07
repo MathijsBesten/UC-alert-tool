@@ -67,8 +67,8 @@ namespace UC_alert_tool.Controllers
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now;
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
-            ViewBag.previewSignaturetext = ConfigurationManager.AppSettings["SignatureText"];
-            ViewBag.previewImage = ConfigurationManager.AppSettings["signaturePath"];
+            ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
+            ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
             return View(model);
         }
         [HttpPost]
@@ -110,9 +110,9 @@ namespace UC_alert_tool.Controllers
                 email mail = new email();
                 mail.EmailSubject = model.emailtitle;
                 mail.EmailBody = model.emailbody;
-                mail.FromEmailAddress = ConfigurationManager.AppSettings["EmailSendingMailAddress"];
+                mail.FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value;
                 mail.Recipients = allRecipientsOnlyEmailAddress;
-                mail.SMTPServerURL = ConfigurationManager.AppSettings["EmailServerIP"] + ":" + ConfigurationManager.AppSettings["EmailServerPort"];
+                mail.SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
                 Functions.Email.Sending.sendEmail(mail,true);
 
                 return RedirectToAction("Index", "home");

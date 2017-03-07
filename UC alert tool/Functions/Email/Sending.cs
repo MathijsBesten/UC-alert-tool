@@ -15,6 +15,8 @@ namespace UC_alert_tool.Functions.Email
     public class Sending
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static alertDatabaseEntities db = new alertDatabaseEntities();
+
         public static bool sendEmail(email Email, bool useSignature )
         {
             MailMessage mail = new MailMessage(Email.FromEmailAddress, Email.FromEmailAddress);
@@ -69,14 +71,14 @@ namespace UC_alert_tool.Functions.Email
         }
         private static AlternateView getEmbeddedImage(string stringToSend)
         {
-            LinkedResource inline = new LinkedResource(HttpContext.Current.Server.MapPath((ConfigurationManager.AppSettings["signaturePath"])));
+            LinkedResource inline = new LinkedResource(HttpContext.Current.Server.MapPath((db.Settings.Single(s => s.Setting == "SignaturePath").Value)));
             inline.ContentId = Guid.NewGuid().ToString();
             //combine body with image and signature
             string emailBody = "";
             emailBody += "<html><body>";
             emailBody += stringToSend;
             emailBody += "<br> <br>"; // addes a whiteline for the signature
-            emailBody += ConfigurationManager.AppSettings["SignatureText"];
+            emailBody += db.Settings.Single(s => s.Setting == "SignatureText").Value;
             emailBody += "<br>";
             emailBody += @"<img src='cid:" + inline.ContentId + @"'/>";
             emailBody += "</body></html>";

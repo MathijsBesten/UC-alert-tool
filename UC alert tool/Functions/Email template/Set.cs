@@ -4,14 +4,17 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Functions.Email_template
 {
     public class Set
     {
+        private static alertDatabaseEntities db = new alertDatabaseEntities();
+
         public static bool MakeEmailTemplateDirIfNotExistsAndReturnResult()
         {
-            string path = ConfigurationManager.AppSettings["SignatureDirectory"];
+            string path = db.Settings.Single(s => s.Setting == "SignatureDirectory").Value;
             bool pathExist = Directory.Exists(path);
             if (!pathExist)
             {
@@ -35,8 +38,8 @@ namespace UC_alert_tool.Functions.Email_template
         {
             if (MakeEmailTemplateDirIfNotExistsAndReturnResult()) //will return true, if the folder does exists
             {
-                string path = ConfigurationManager.AppSettings["SignatureDirectory"];
-                string filename = ConfigurationManager.AppSettings["SignatureImage"];
+                string path = db.Settings.Single(s => s.Setting == "SignaturDirectory").Value;
+                string filename = db.Settings.Single(s => s.Setting == "SignatureImage").Value; 
                 string fullPath = Path.Combine(path, filename);
                 picture.SaveAs(path);
                 return true;

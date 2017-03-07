@@ -11,11 +11,12 @@ namespace UC_alert_tool.Controllers
     [Authorize]
     public class TestersController : Controller
     {
-        [Authorize]
+        private alertDatabaseEntities db = new alertDatabaseEntities();
+
         public ActionResult emailtester()
         {
-            ViewBag.smtpserverip = ConfigurationManager.AppSettings["EmailServerIP"];
-            ViewBag.smtpserverport = ConfigurationManager.AppSettings["EmailServerPort"];
+            ViewBag.smtpserverip = db.Settings.Single(s => s.Setting == "EmailServerIP").Value;
+            ViewBag.smtpserverport = db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
             return View();
         }
         [HttpPost]
@@ -41,9 +42,9 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult smstester()
         {
-            ViewBag.smsgatewayip = ConfigurationManager.AppSettings["SMSGatewayIP"];
-            ViewBag.smsgatewayusername = ConfigurationManager.AppSettings["SMSGatewayUsername"];
-            ViewBag.smsgatewaypassword = ConfigurationManager.AppSettings["SMSGatewayPassword"];
+            ViewBag.smsgatewayip = db.Settings.Single(s => s.Setting == "SMSGatewayIP").Value; 
+            ViewBag.smsgatewayusername = db.Settings.Single(s => s.Setting == "SMSGatewayUsername").Value;
+            ViewBag.smsgatewaypassword = db.Settings.Single(s => s.Setting == "SMSGatewayPassword").Value;
             return View();
         }
         [HttpPost]

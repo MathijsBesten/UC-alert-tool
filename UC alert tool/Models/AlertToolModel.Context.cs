@@ -31,5 +31,6 @@ namespace UC_alert_tool.Models
         public virtual DbSet<Storingen> Storingen { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Klanten2Producten> Klanten2Producten { get; set; }
+        public virtual DbSet<Settings> Settings { get; set; }
     }
 }

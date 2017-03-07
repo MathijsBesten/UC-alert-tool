@@ -3,11 +3,13 @@ using log4net.Core;
 using System;
 using System.Configuration;
 using System.IO;
+using System.Linq;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.WebPages;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
@@ -15,6 +17,8 @@ namespace UC_alert_tool.Controllers
     public class InstellingenController : Controller
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private alertDatabaseEntities db = new alertDatabaseEntities();
+
 
         // GET: Instellingen
 
@@ -80,9 +84,9 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult smsgateway()
         {
-            ViewBag.smsgatewayip = WebConfigurationManager.AppSettings["SMSGatewayIP"];
-            ViewBag.smsgatewayusername = WebConfigurationManager.AppSettings["SMSGatewayUsername"];
-            ViewBag.smsgatewaypassword = WebConfigurationManager.AppSettings["SMSGatewayPassword"];
+            ViewBag.smsgatewayip = db.Settings.Single(s => s.Setting == "SMSGatewayIP").Value;
+            ViewBag.smsgatewayusername = db.Settings.Single(s => s.Setting == "SMSGatewayUsername").Value;
+            ViewBag.smsgatewaypassword = db.Settings.Single(s => s.Setting == "SMSGatewayPassword").Value;
 
             return View();
         }
@@ -103,17 +107,15 @@ namespace UC_alert_tool.Controllers
             catch (Exception e)
             {
                 log.Info("User tried to changed the sms gateway settings - error - " + e);
-
                 TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
             }
-
             return RedirectToAction("index", "Home");
         }
 
         public ActionResult emailserver()
         {
-            ViewBag.emailserverip = WebConfigurationManager.AppSettings["EmailServerIP"];
-            ViewBag.emailserverport = WebConfigurationManager.AppSettings["EmailServerPort"];
+            ViewBag.emailserverip = db.Settings.Single(s => s.Setting == "EmailServerIP").Value;
+            ViewBag.emailserverport = db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
             return View();
         }
 
@@ -122,11 +124,8 @@ namespace UC_alert_tool.Controllers
         {
             try
             {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                config.AppSettings.Settings["EmailServerIP"].Value = emailServerIP;
-                config.AppSettings.Settings["EmailServerPort"].Value = emailServerPort;
-                config.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection("appSettings");
+                Functions.Appsettings.Edit.ChangeExistingValue( "EmailServerIP", emailServerIP);
+                Functions.Appsettings.Edit.ChangeExistingValue("EmailServerPort",emailServerPort);
                 log.Info("User changed the mailserver settings");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
@@ -145,8 +144,7 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult emailtemplate()
         {
-            ViewBag.handtekeningtext = WebConfigurationManager.AppSettings["SignatureText"];
-
+            ViewBag.handtekeningtext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             return View();
         }
 
@@ -154,22 +152,17 @@ namespace UC_alert_tool.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult emailtemplate(HttpPostedFileBase file, string handtekeningText)
         {
-            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
             if (file != null)
             {
                 Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
-                string path = ConfigurationManager.AppSettings["signaturePath"];
+                string path = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
                 string absolutePath = HostingEnvironment.MapPath(path);
                 file.SaveAs(absolutePath);
-                config.AppSettings.Settings["signaturePath"].Value = path;
+                Functions.Appsettings.Edit.ChangeExistingValue("signaturePath", path);
                 log.Info("Signature has been changed by the user");
             }
             string htmlSignature = handtekeningText.Replace(@"\r\n", @"<br />");
-            config.AppSettings.Settings["signaturetext"].Value = htmlSignature;
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-
-
+            Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
             return RedirectToAction("Index", "home");
         }
     }
