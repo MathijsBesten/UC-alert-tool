@@ -59,7 +59,11 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult MeldingMetSMS()
         {
-            return View();
+            rapporterenMetSMS model = new rapporterenMetSMS();
+            model.Begindatum = DateTime.Now;
+            model.Begintijd = DateTime.Now;
+            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            return View(model);
         }
         public ActionResult MeldingMetEmail()
         {

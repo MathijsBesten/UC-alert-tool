@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
+    $('#smsbericht').keyup(setRemainingCount);
     $('#emailTitle').keyup(function () {
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
         $("#previewTitle").val(sourceText);
@@ -107,5 +108,11 @@
             return false
         }
 
+    };
+
+    function setRemainingCount() {
+        var count = $('#smsbericht').val().length;
+        var remaining = 160 - count;
+        $('#totalCharacters').text(remaining.toString() + "/160 karakters");
     };
 });
