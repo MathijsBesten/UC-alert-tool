@@ -11,13 +11,6 @@
         $("#previewUserInput").text(sourceText);
     });
 
-    function copyDataToPreviewField(event) // element is the targeted element example, .previewUserInput
-    {
-        var sourceText = $(event.data.sourceElement).val();
-        var currentTargetText = $(event.data.targetElement).text();
-        $(event.data.targetElement).text = (sourceText);
-    }
-
     function closeStoringIfAllDatesAreValid() {
         if ($('#isGeslotenCheckbox').is(":checked"))
         {
@@ -48,7 +41,21 @@
         var enddate = new Date($('#einddatum').val());
         var endTime = $('#eindtijd').val();
         var endTimeSplit = endTime.split(':');
-        if (enddate !== "Invalid Date") {
+        if (Date.parse(enddate) && enddate != "")
+        {
+            $('#eindtijd').after("<p class='errortext'>Vul een eindtijd in</p>");
+            return false
+        }
+        else if (!Data.parse(enddate) && endTime != "")
+        {
+            $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
+            return false
+        }
+        else if (Date.parse(enddate) && endTime != "") {
+            return true;
+        }
+        if (Date.parse(begindate))
+        {
             if (begindate < enddate)
             {
                 console.log("date correct")
@@ -97,6 +104,10 @@
                     return true;
                 }
             }    
+        }
+        else {
+            $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
+            return false
         }
 
     };
