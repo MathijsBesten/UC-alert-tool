@@ -120,7 +120,8 @@
                 <div class="col-md-10">
                     <div contenteditable="true">
                         <p id="previewUserInput">inhoud</p>
-                        <p class="previewSignaturetext">@ViewBag.previewSignaturetext</p>
+                        <p class="previewSignaturetext">@Html.Raw(ViewBag.previewSignaturetext)</p>
+                        <br />
                         <img src="@ViewBag.previewImage" class="previewImage" l/>
                     </div>
                 </div>

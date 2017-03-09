@@ -2,13 +2,13 @@
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
     $('#emailTitle').keyup(function () {
-        var sourceText = $("#emailTitle").val();
+        var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
         $("#previewTitle").val(sourceText);
 
     });
     $('#emailbody').keyup(function () {
-        var sourceText = $("#emailbody").val();
-        $("#previewUserInput").text(sourceText);
+        var sourceText = $("#emailbody").val().replace(/\r?\n/g, '<br/>');
+        $("#previewUserInput").html(sourceText);
     });
 
     function closeStoringIfAllDatesAreValid() {
@@ -41,20 +41,17 @@
         var enddate = new Date($('#einddatum').val());
         var endTime = $('#eindtijd').val();
         var endTimeSplit = endTime.split(':');
-        if (Date.parse(enddate) && enddate != "")
+        if (Date.parse(enddate) && enddate == "") // if only date is entered
         {
             $('#eindtijd').after("<p class='errortext'>Vul een eindtijd in</p>");
             return false
         }
-        else if (!Data.parse(enddate) && endTime != "")
+        else if (!Data.parse(enddate) && endTime != "")// if only time is entered
         {
             $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
             return false
         }
-        else if (Date.parse(enddate) && endTime != "") {
-            return true;
-        }
-        if (Date.parse(begindate))
+        if (Date.parse(begindate)) // check if begintime is earlier than the enddate
         {
             if (begindate < enddate)
             {

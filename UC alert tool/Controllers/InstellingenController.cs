@@ -164,7 +164,7 @@ namespace UC_alert_tool.Controllers
                 Functions.Appsettings.Edit.ChangeExistingValue("signaturePath", path);
                 log.Info("Signature has been changed by the user");
             }
-            string htmlSignature = handtekeningText.Replace(@"\r\n", @"<br />");
+            string htmlSignature = Functions.html_formatting.Replace.ReplaceEnters(handtekeningText);
             Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
             TempData["showSuccess"] = true;
             TempData["showError"] = false;
