@@ -1,34 +1,48 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Text;
 using System.Net;
-using System.Net.Http;
-using log4net;
+using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Functions.SMS
 {
     public class Sending
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public static string sendSMSToOne(Models.SMS sms) // returns a string of Recipients that had a problem while sending - return null if all Recipients where send correcly
+        private static alertDatabaseEntities db = new alertDatabaseEntities();
+
+        public static string sendSMSMessages(Models.SMS sms) // returns a string of Recipients that had a problem while sending - return null if all Recipients where send correcly
         {
+            if (string.IsNullOrWhiteSpace(sms.server))
+            {
+                sms.server = db.Settings.Single(s => s.Setting == "SMSGatewayIP").Value;
+            }
+
+            if (string.IsNullOrWhiteSpace(sms.username))
+            {
+                sms.username = db.Settings.Single(s => s.Setting == "SMSGatewayUsername").Value;
+            }
+
+            if (string.IsNullOrWhiteSpace(sms.password))
+            {
+                sms.password = db.Settings.Single(s => s.Setting == "SMSGatewayPassword").Value;
+            }
             string allRecipientsInString = "";
-            foreach (string number in sms.Recipients){allRecipientsInString += (" " + number);}
+            foreach (string number in sms.Recipients) { allRecipientsInString += (" " + number); }
             log.Info("Sending sms messages to the following numbers, " + allRecipientsInString);
             List<string> notInformedRecipients = new List<string>();
             string url = "http://{0}/cgi-bin/sms_send?username={1}&password={2}&number={3}&text={4}";
             using (WebClient client = new WebClient())
             {
-                int count = 0; 
+                int count = 0;
                 foreach (string recipient in sms.Recipients)
                 {
                     try
                     {
                         string completeURL = string.Format(url, sms.server, sms.username, sms.password, sms.Recipients[count], sms.text);
                         var respone = client.DownloadString(completeURL);
-                        if (!respone.Contains("OK"))// there are no other responses that contains the letters "OK" 
+                        if (!respone.Contains("OK"))// there are no other responses that contains the letters "OK"
                         {
                             log.Error("SMS not send to " + sms.Recipients[count] + " - response from sms server " + respone);
                             notInformedRecipients.Add(sms.Recipients[count]);

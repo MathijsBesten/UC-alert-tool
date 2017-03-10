@@ -52,7 +52,7 @@ namespace UC_alert_tool.Controllers
         {
             List<string> recipients = sms.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
             sms.Recipients = recipients;
-            string probemRecipients = Functions.SMS.Sending.sendSMSToOne(sms);
+            string probemRecipients = Functions.SMS.Sending.sendSMSMessages(sms);
             if (probemRecipients == null) // all the sms messages are delivered correcly
             {
                 TempData["showSuccess"] = true;

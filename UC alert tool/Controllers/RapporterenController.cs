@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.IO;
 using System.Linq;
@@ -65,6 +66,60 @@ namespace UC_alert_tool.Controllers
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
             return View(model);
         }
+        [HttpPost]
+        public async Task<ActionResult> MeldingMetSMS(rapporterenMetSMS model)
+        {
+            if (ModelState.IsValid)
+            {
+                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.description, Begindatum = model.Begindatum, Begintijd = model.Begintijd.TimeOfDay, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd.TimeOfDay, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
+                db.Storingen.Add(storing);
+                db.SaveChanges();
+
+                //receive all recipients form db
+               
+                BackgroundWorker sendSMSAsync = new BackgroundWorker();
+                sendSMSAsync.DoWork += SendSMSAsync_DoWork;
+                sendSMSAsync.RunWorkerCompleted += SendSMSAsync_RunWorkerCompleted;
+                sendSMSAsync.RunWorkerAsync(model);
+
+                return RedirectToAction("Index", "home");
+            }
+            else
+            {
+                return View(model);
+            }
+
+        }
+
+        private void SendSMSAsync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            Console.WriteLine("Done with sending sms");
+        }
+
+        private void SendSMSAsync_DoWork(object sender, DoWorkEventArgs e)
+        {
+            rapporterenMetSMS model = (rapporterenMetSMS)e.Argument;
+            var allProducts = db.Producten.ToList();
+            var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
+            var selectedProductID = selectedProduct.Id;
+            var allRecipients = selectedProduct.Klanten2Producten;
+            var allRecipientsOnlySMSNumber = new List<string>();
+            foreach (var item in allRecipients)
+            {
+                string email = item.Klanten.Telefoonnummer;
+                if (!string.IsNullOrWhiteSpace(email))
+                {
+                    allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
+                }
+            }
+            SMS totalToSendMessages = new SMS
+            {
+                Recipients = allRecipientsOnlySMSNumber,
+                text = model.smsbericht
+            };
+            Functions.SMS.Sending.sendSMSMessages(totalToSendMessages);
+        }
+
         public ActionResult MeldingMetEmail()
         {
             rapporterenMetEmail model = new rapporterenMetEmail();
@@ -78,16 +133,6 @@ namespace UC_alert_tool.Controllers
         [HttpPost]
         public ActionResult MeldingMetEmail(rapporterenMetEmail model)
         {
-            if (model.Begindatum > model.Einddatum || (model.Begindatum == model.Einddatum && model.Begintijd > model.Eindtijd)) // if startdate is greater than startdate - including time
-            {
-                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
-                return View(model);
-            }
-            if (model.IsGesloten == true && model.Einddatum == null) // user cannot close storing if there is no end date
-            {
-                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
-                return View(model);
-            }
             if (ModelState.IsValid)
             {
                 Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.description, Begindatum = model.Begindatum, Begintijd = model.Begintijd.TimeOfDay, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd.TimeOfDay, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
