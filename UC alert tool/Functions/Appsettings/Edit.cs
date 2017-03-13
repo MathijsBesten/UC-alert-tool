@@ -14,7 +14,7 @@ namespace UC_alert_tool.Functions.Appsettings
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static alertDatabaseEntities db = new alertDatabaseEntities();
 
-        public static bool ChangeExistingValue(string name, string value)
+        public static bool ChangeExistingValue(string name, string value) // this function will edit a value in the "dbo.settings" table
         {
             try
             {

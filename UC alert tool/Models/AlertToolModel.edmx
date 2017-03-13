@@ -5,15 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="alertDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Administrators">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Naam" Type="varchar(max)" Nullable="false" />
-          <Property Name="Email" Type="varchar(max)" Nullable="false" />
-          <Property Name="Wachtwoord" Type="varchar(max)" />
-        </EntityType>
         <EntityType Name="Klanten">
           <Key>
             <PropertyRef Name="Id" />
@@ -111,7 +102,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="alertDatabaseModelStoreContainer">
-          <EntitySet Name="Administrators" EntityType="Self.Administrators" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klanten2Producten" EntityType="Self.Klanten2Producten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producten" EntityType="Self.Producten" Schema="dbo" store:Type="Tables" />
@@ -135,15 +125,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="alertDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Administrators">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Wachtwoord" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Klanten">
           <Key>
             <PropertyRef Name="Id" />
@@ -197,7 +178,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="alertDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Administrators" EntityType="Self.Administrators" />
           <EntitySet Name="Klanten" EntityType="Self.Klanten" />
           <EntitySet Name="Producten" EntityType="Self.Producten" />
           <EntitySet Name="Storingen" EntityType="Self.Storingen" />
@@ -291,16 +271,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="alertDatabaseModelStoreContainer" CdmEntityContainer="alertDatabaseEntities">
-          <EntitySetMapping Name="Administrators">
-            <EntityTypeMapping TypeName="alertDatabaseModel.Administrators">
-              <MappingFragment StoreEntitySet="Administrators">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Naam" ColumnName="Naam" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Wachtwoord" ColumnName="Wachtwoord" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Klanten">
             <EntityTypeMapping TypeName="alertDatabaseModel.Klanten">
               <MappingFragment StoreEntitySet="Klanten">

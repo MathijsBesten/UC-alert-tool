@@ -23,7 +23,7 @@ namespace UC_alert_tool.Functions.Email_template
                     Directory.CreateDirectory(path);
                     return true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                     return false;// the path did not exists and could not be created

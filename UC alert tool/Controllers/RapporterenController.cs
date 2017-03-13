@@ -67,7 +67,7 @@ namespace UC_alert_tool.Controllers
             return View(model);
         }
         [HttpPost]
-        public async Task<ActionResult> MeldingMetSMS(rapporterenMetSMS model)
+        public ActionResult MeldingMetSMS(rapporterenMetSMS model)
         {
             if (ModelState.IsValid)
             {
@@ -76,11 +76,26 @@ namespace UC_alert_tool.Controllers
                 db.SaveChanges();
 
                 //receive all recipients form db
-               
-                BackgroundWorker sendSMSAsync = new BackgroundWorker();
-                sendSMSAsync.DoWork += SendSMSAsync_DoWork;
-                sendSMSAsync.RunWorkerCompleted += SendSMSAsync_RunWorkerCompleted;
-                sendSMSAsync.RunWorkerAsync(model);
+                var allProducts = db.Producten.ToList();
+                var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
+                var selectedProductID = selectedProduct.Id;
+                var allRecipients = selectedProduct.Klanten2Producten;
+                var allRecipientsOnlySMSNumber = new List<string>();
+                foreach (var item in allRecipients)
+                {
+                    string email = item.Klanten.Telefoonnummer;
+                    if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
+                    }
+                }
+                SMS totalToSendMessages = new SMS
+                {
+                    Recipients = allRecipientsOnlySMSNumber,
+                    text = model.smsbericht
+                };
+                Functions.SMS.Sending.sendSMSMessages(totalToSendMessages);
+
 
                 return RedirectToAction("Index", "home");
             }
@@ -89,35 +104,6 @@ namespace UC_alert_tool.Controllers
                 return View(model);
             }
 
-        }
-
-        private void SendSMSAsync_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Console.WriteLine("Done with sending sms");
-        }
-
-        private void SendSMSAsync_DoWork(object sender, DoWorkEventArgs e)
-        {
-            rapporterenMetSMS model = (rapporterenMetSMS)e.Argument;
-            var allProducts = db.Producten.ToList();
-            var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
-            var selectedProductID = selectedProduct.Id;
-            var allRecipients = selectedProduct.Klanten2Producten;
-            var allRecipientsOnlySMSNumber = new List<string>();
-            foreach (var item in allRecipients)
-            {
-                string email = item.Klanten.Telefoonnummer;
-                if (!string.IsNullOrWhiteSpace(email))
-                {
-                    allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
-                }
-            }
-            SMS totalToSendMessages = new SMS
-            {
-                Recipients = allRecipientsOnlySMSNumber,
-                text = model.smsbericht
-            };
-            Functions.SMS.Sending.sendSMSMessages(totalToSendMessages);
         }
 
         public ActionResult MeldingMetEmail()

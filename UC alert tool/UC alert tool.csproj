@@ -224,9 +224,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Administrators.cs">
-      <DependentUpon>AlertToolModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AlertToolModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
