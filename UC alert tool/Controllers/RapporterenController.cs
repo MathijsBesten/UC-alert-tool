@@ -29,6 +29,7 @@ namespace UC_alert_tool.Controllers
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.ProductCustomerCount = Functions.Email.Information.GetCountOfEmailRecipients(); // this list has the same order as the 'default' product list
             return View(model);
         }
         [HttpPost]
@@ -112,6 +113,7 @@ namespace UC_alert_tool.Controllers
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
+            ViewBag.ProductCustomerCount = Functions.Email.Information.GetCountOfEmailRecipients(); // this list has the same order as the 'default' product list
             return View(model);
         }
         [HttpPost]

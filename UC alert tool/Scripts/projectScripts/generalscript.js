@@ -2,7 +2,7 @@
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
     $('#smsbericht').keyup(setRemainingCount);
-    $('#emailTitle').keyup(function () {
+    $('#emailTitle').keyup(function () { 
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
         $("#previewTitle").val(sourceText);
 
@@ -10,6 +10,9 @@
     $('#emailbody').keyup(function () {
         var sourceText = $("#emailbody").val().replace(/\r?\n/g, '<br/>');
         $("#previewUserInput").html(sourceText);
+    });
+    $('#productListbox').change(function () {
+        $('#totalToSendRecipients').html('totaal aantal klanten die mail zullen ontvangen : @ViewBag.ProductCustomerCount[' + $('option:selected', this).index() + ']');
     });
 
     function closeStoringIfAllDatesAreValid() {

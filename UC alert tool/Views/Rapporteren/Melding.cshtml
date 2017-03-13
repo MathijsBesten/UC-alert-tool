@@ -30,8 +30,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" , @id = "productListbox"})
                 @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                <p id="totalToSendRecipients" class="smallInformation">totaal aantal klanten die mail zullen ontvangen : @ViewBag.ProductCustomerCount[0]</p>
             </div>
         </div>
 
