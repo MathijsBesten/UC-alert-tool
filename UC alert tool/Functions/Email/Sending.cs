@@ -9,6 +9,7 @@ using log4net;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Net.Mime;
+using System.Web.Hosting;
 
 namespace UC_alert_tool.Functions.Email
 {
@@ -71,7 +72,7 @@ namespace UC_alert_tool.Functions.Email
         }
         private static AlternateView getEmbeddedImage(string stringToSend)
         {
-            LinkedResource inline = new LinkedResource(HttpContext.Current.Server.MapPath((db.Settings.Single(s => s.Setting == "SignaturePath").Value)));
+            LinkedResource inline = new LinkedResource(HostingEnvironment.ApplicationPhysicalPath + ((db.Settings.Single(s => s.Setting == "SignaturePath").Value)));
             inline.ContentId = Guid.NewGuid().ToString();
             //combine body with image and signature
             string emailBody = "";

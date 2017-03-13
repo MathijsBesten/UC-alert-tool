@@ -95,11 +95,6 @@ namespace UC_alert_tool.Controllers
                     text = model.smsbericht
                 };
                 Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
-                //Functions.SMS.Sending.sendSMSMessages(totalToSendMessages)
-
-
-
-
                 return RedirectToAction("Index", "home");
             }
             else
@@ -151,7 +146,7 @@ namespace UC_alert_tool.Controllers
                 mail.FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value;
                 mail.Recipients = allRecipientsOnlyEmailAddress;
                 mail.SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
-                Functions.Email.Sending.sendEmail(mail,true);
+                Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
 
                 return RedirectToAction("Index", "home");
             }
