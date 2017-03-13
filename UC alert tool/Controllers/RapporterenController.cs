@@ -94,7 +94,10 @@ namespace UC_alert_tool.Controllers
                     Recipients = allRecipientsOnlySMSNumber,
                     text = model.smsbericht
                 };
-                Functions.SMS.Sending.sendSMSMessages(totalToSendMessages);
+                Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
+                //Functions.SMS.Sending.sendSMSMessages(totalToSendMessages)
+
+
 
 
                 return RedirectToAction("Index", "home");

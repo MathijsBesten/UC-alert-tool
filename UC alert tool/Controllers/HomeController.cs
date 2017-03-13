@@ -13,6 +13,7 @@ namespace UC_alert_tool.Controllers
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ActionResult Index()
         {
+            //these viewbags are for showing a success message or error message after a result
             ViewBag.showSuccess = TempData["showSuccess"];
             ViewBag.showError = TempData["showError"];
             ViewBag.SuccessMessage = TempData["SuccessMessage"];
