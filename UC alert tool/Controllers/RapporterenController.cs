@@ -63,7 +63,7 @@ namespace UC_alert_tool.Controllers
         {
             rapporterenMetSMS model = new rapporterenMetSMS();
             model.Begindatum = DateTime.Now;
-            model.Begintijd = DateTime.Now;
+            model.Begintijd = DateTime.Now.TimeOfDay;
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
             return View(model);
         }
@@ -72,7 +72,7 @@ namespace UC_alert_tool.Controllers
         {
             if (ModelState.IsValid)
             {
-                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.description, Begindatum = model.Begindatum, Begintijd = model.Begintijd.TimeOfDay, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd.TimeOfDay, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
+                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
                 db.Storingen.Add(storing);
                 db.SaveChanges();
 
@@ -109,7 +109,7 @@ namespace UC_alert_tool.Controllers
         {
             rapporterenMetEmail model = new rapporterenMetEmail();
             model.Begindatum = DateTime.Now;
-            model.Begintijd = DateTime.Now;
+            model.Begintijd = DateTime.Now.TimeOfDay;
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
@@ -121,7 +121,7 @@ namespace UC_alert_tool.Controllers
         {
             if (ModelState.IsValid)
             {
-                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.description, Begindatum = model.Begindatum, Begintijd = model.Begintijd.TimeOfDay, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd.TimeOfDay, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
+                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud , Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
                 db.Storingen.Add(storing);
                 db.SaveChanges();
 
