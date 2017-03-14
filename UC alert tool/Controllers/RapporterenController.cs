@@ -158,7 +158,13 @@ namespace UC_alert_tool.Controllers
         }
         public ActionResult MeldingMetEmailEnSMS()
         {
-            return View();
+            rapporterenMetEmailenSMS model = new rapporterenMetEmailenSMS();
+            model.Begindatum = DateTime.Now;
+            model.Begintijd = DateTime.Now.TimeOfDay;
+            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
+            ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
+            return View(model);
         }
     }
 }

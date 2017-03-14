@@ -1,7 +1,94 @@
-﻿
+﻿@using UC_alert_tool.Models
+@model rapporterenMetEmailenSMS
 @{
     ViewBag.Title = "Melding met email en SMS";
 }
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h2>Nieuwe melding maken met email en SMS alert</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Partial("_MeldingPartial")
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>sms bericht</h4>
+            </div>
+            <div class="panel-body">
+                <!--Start of email part-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">sms bericht</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.smsbericht, 8, 50, new { htmlAttributes = new { @class = "form-control", } })
+                        <div>@Html.ValidationMessageFor(model => model.smsbericht, "", new { @class = "text-danger" })</div>
 
-<h2>Nieuwe melding maken met email en SMS</h2>
+                    </div>
+                    <div class="col-md-offset-2 col-md-10 maxWidth">
+                        <p id="totalCharacters">160/160 karakters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Email</h4>
+            </div>
+            <div class="panel-body">
+                <!--Start of email part-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">email onderwerp</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.emailtitle, new { htmlAttributes = new { @class = "form-control", id = "emailTitle" } })
+                        <div>@Html.ValidationMessageFor(model => model.emailtitle, "", new { @class = "text-danger" })</div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">email body</label>
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.emailbody, 8, 50, new { htmlAttributes = new { @class = "form-control", id = "emailBody" } })
+                        <div>@Html.ValidationMessageFor(model => model.emailbody, "", new { @class = "text-danger" })</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Preview</h4>
+            </div>
+            <div class="panel-body">
+                <!--Email preview-->
+                <div class="form-group">
+                    <label class="control-label col-md-2">Onderwerp:</label>
+                    <div class="col-md-10">
+                        <input class="form-control" id="previewTitle" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Preview email</label>
+                    <div class="col-md-10">
+                        <div contenteditable="true">
+                            <p id="previewUserInput">inhoud</p>
+                            <p class="previewSignaturetext">@Html.Raw(ViewBag.previewSignaturetext)</p>
+                            <br />
+                            <img src="@ViewBag.previewImage" class="previewImage" l />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Storing maken en mail verzenden" class="btn btn-success" id="submitbutton" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts {
+    @Scripts.Render("~/Scripts/projectScripts/generalscript.js")
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
