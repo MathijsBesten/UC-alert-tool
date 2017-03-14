@@ -10,75 +10,8 @@
         <h2>Storing melden en een email alert sturen</h2>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4>Storing gegevens</h4>
-            </div>
-            <div class="panel-body">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Titel, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Titel, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Titel, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-2">Storing beschrijving</label>
-                    <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.Inhoud, 8, 50, new { htmlAttributes = new { @class = "form-control" } })
-                        <div>@Html.ValidationMessageFor(model => model.Inhoud, "", new { @class = "text-danger" })</div>
+        @Html.Partial("_MeldingPartial")
 
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Begindatum, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Begindatum, new { htmlAttributes = new { @class = "form-control", @id = "begindatum" } })
-                        @Html.ValidationMessageFor(model => model.Begindatum, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Begintijd, htmlAttributes: new { @class = "control-label col-md-2", })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Begintijd, new { htmlAttributes = new { @class = "form-control", @placeholder = System.DateTime.Now, @id = "begintijd" } })
-                        @Html.ValidationMessageFor(model => model.Begintijd, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Einddatum, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Einddatum, new { htmlAttributes = new { @class = "form-control", @id = "einddatum" } })
-                        @Html.ValidationMessageFor(model => model.Einddatum, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Eindtijd, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Eindtijd, new { htmlAttributes = new { @class = "form-control", @id = "eindtijd" } })
-                        @Html.ValidationMessageFor(model => model.Eindtijd, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IsGesloten, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.IsGesloten, new { htmlAttributes = new { @Id = "isGeslotenCheckbox" } })
-                            @Html.ValidationMessageFor(model => model.IsGesloten, "", new { @class = "text-danger", })
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4>Email</h4>
@@ -126,8 +59,6 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Storing maken en mail verzenden" class="btn btn-success" id="submitbutton" />

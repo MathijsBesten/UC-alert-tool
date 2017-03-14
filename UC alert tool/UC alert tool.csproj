@@ -413,6 +413,7 @@
     <Content Include="Views\Instellingen\emailserver.cshtml" />
     <Content Include="Views\Instellingen\emailtemplate.cshtml" />
     <Content Include="Views\Shared\_MessagePartial.cshtml" />
+    <Content Include="Views\Shared\_MeldingPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
