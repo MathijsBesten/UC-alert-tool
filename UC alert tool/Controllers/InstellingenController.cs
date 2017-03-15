@@ -160,7 +160,17 @@ namespace UC_alert_tool.Controllers
                 Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
                 string path = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
                 string absolutePath = HostingEnvironment.MapPath(path);
-                file.SaveAs(absolutePath);
+                try
+                {
+                    file.SaveAs(absolutePath);
+                    log.Info("User changed the signature picture withoud any problems");
+                }
+                catch (Exception e)
+                {
+                    log.Error("There was a error while trying to save the new signature picture");
+                    log.Error(e);
+                    throw;
+                }
                 Functions.Appsettings.Edit.ChangeExistingValue("signaturePath", path);
                 log.Info("Signature has been changed by the user");
             }
