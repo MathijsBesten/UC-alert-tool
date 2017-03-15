@@ -141,12 +141,14 @@ namespace UC_alert_tool.Controllers
                 //here is space for saving the current recipients to a database
 
                 //make new email
-                email mail = new email();
-                mail.EmailSubject = model.emailtitle;
-                mail.EmailBody = model.emailbody;
-                mail.FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value;
-                mail.Recipients = allRecipientsOnlyEmailAddress;
-                mail.SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
+                email mail = new email
+                {
+                    EmailSubject = model.emailtitle,
+                    EmailBody = model.emailbody,
+                    FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
+                    Recipients = allRecipientsOnlyEmailAddress,
+                    SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value
+                };
                 Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
 
                 return RedirectToAction("Index", "home");
@@ -165,6 +167,70 @@ namespace UC_alert_tool.Controllers
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
             return View(model);
+        }
+        [HttpPost]
+        public ActionResult MeldingMetEmailEnSMS(rapporterenMetEmailenSMS model)
+        {
+            if (ModelState.IsValid)
+            {
+                //save storing to database
+                Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
+                db.Storingen.Add(storing);
+                db.SaveChanges();
+
+                //receive all recipients form db
+                var allProducts = db.Producten.ToList();
+                var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
+                var selectedProductID = selectedProduct.Id;
+                var allRecipients = selectedProduct.Klanten2Producten;
+                var allRecipientsOnlySMSNumber = new List<string>();
+                var allRecipientsOnlyEmailAddress = new List<string>();
+
+                //fill list with people who wants to receive sms message
+                foreach (var item in allRecipients)
+                {
+                    string email = item.Klanten.Telefoonnummer;
+                    if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
+                    }
+                }
+                // fill the list with people who wants to receive a email
+                foreach (var item in allRecipients)
+                {
+                    string email = item.Klanten.PrimaireEmail;
+                    if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
+                    }
+                }
+
+                SMS totalToSendMessages = new SMS  // make new sms
+                {
+                    Recipients = allRecipientsOnlySMSNumber,
+                    text = model.smsbericht
+                };
+
+                //make new email
+                email mail = new email
+                {
+                    EmailSubject = model.emailtitle,
+                    EmailBody = model.emailbody,
+                    FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
+                    Recipients = allRecipientsOnlyEmailAddress,
+                    SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value
+                };
+
+                //send email and sms messages async
+                Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
+                Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
+                return RedirectToAction("Index", "home");
+
+            }
+            else
+            {
+                return View(model);
+            }
         }
     }
 }
