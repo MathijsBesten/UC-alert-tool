@@ -38,9 +38,10 @@ namespace UC_alert_tool.Functions.SMS
                 int count = 0;
                 foreach (string recipient in sms.Recipients)
                 {
+                    string recipientInternational = recipient.Replace("+", "00"); // this will make all interational phonenumers usable for the sms gateway
                     try
                     {
-                        string completeURL = string.Format(url, sms.server, sms.username, sms.password, sms.Recipients[count], sms.text);
+                        string completeURL = string.Format(url, sms.server, sms.username, sms.password, recipientInternational, sms.text);
                         var respone = client.DownloadString(completeURL);
                         if (!respone.Contains("OK"))// there are no other responses that contains the letters "OK"
                         {
