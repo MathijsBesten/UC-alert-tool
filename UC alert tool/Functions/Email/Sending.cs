@@ -40,7 +40,7 @@ namespace UC_alert_tool.Functions.Email
                 }
                 else
                 {
-                    log.Error("Not valid email address detected when sending email- " + recipientEmailAddress);
+                    log.Info("Not valid email address detected when sending email- " + recipientEmailAddress);
                 }
             }
             string host = Email.SMTPServerURL.Split(':')[0];

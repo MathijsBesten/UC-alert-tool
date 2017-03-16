@@ -78,7 +78,7 @@ namespace UC_alert_tool.Controllers
                     break;
             }
             ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).RaiseConfigurationChanged(EventArgs.Empty);
-            log.Fatal("Changed log level from " + currentLogLevel + " to " + newLogLevel + ".");
+            log.Fatal("Changed log level from " + currentLogLevel + " to " + newLogLevel + "."); // It is set  to fatal - because otherwise you cannot see the message
             TempData["showSuccess"] = true;
             TempData["showError"] = false;
             TempData["SuccessMessage"] = "Log niveau is succesvol aangepast naar " + newLogLevel;
@@ -105,6 +105,7 @@ namespace UC_alert_tool.Controllers
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
                 TempData["SuccessMessage"] = "SMS server gegevens zijn succesvol aangepast";
+                log.Info("User edited the sms gateway settings");
 
             }
             catch (Exception e)
@@ -136,7 +137,7 @@ namespace UC_alert_tool.Controllers
             }
             catch (Exception e)
             {
-                log.Error("User tried to change the mailserver settings- failed - " + e);
+                log.Error("User tried to change the mailserver settings - failed - " + e);
                 TempData["showSuccess"] = false;
                 TempData["showError"] = true;
                 TempData["ErrorMessage"] = "Kon de e-mailserver instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
@@ -176,6 +177,7 @@ namespace UC_alert_tool.Controllers
             }
             string htmlSignature = Functions.html_formatting.Replace.ReplaceEnters(handtekeningText);
             Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
+            log.Info("user changed the email signature text");
             TempData["showSuccess"] = true;
             TempData["showError"] = false;
             TempData["SuccessMessage"] = "De e-mailhandtekening is aangepast";

@@ -8,9 +8,14 @@ using UC_alert_tool.Models;
 
 namespace UC_alert_tool.Controllers
 {
+
+    /*
+     NEVER EVER PUT LOG4NET LOGGING IN THIS CONTROLLER
+     THIS WILL LOG ALL ACTIVITY FROM ALL USERS AND WILL RESULT IN A VERY BIG LOG FILE IN PRODUCTION
+     */
+
     public class HomeController : Controller
     {
-        private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public ActionResult Index()
         {
             //these viewbags are for showing a success message or error message after a result

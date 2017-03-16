@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
@@ -16,6 +17,7 @@ namespace UC_alert_tool.Controllers
     [Authorize]
     public class RapporterenController : Controller
     {
+        private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private alertDatabaseEntities db = new alertDatabaseEntities();
 
         // GET: Rapporteren
@@ -52,6 +54,7 @@ namespace UC_alert_tool.Controllers
                 Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten,ProductID = model.ProductID };
                 db.Storingen.Add(storing);
                 db.SaveChanges();
+                log.Info("user created a report");
                 return RedirectToAction("Index", "home");
             }
             else
@@ -75,6 +78,7 @@ namespace UC_alert_tool.Controllers
                 Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud, Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
                 db.Storingen.Add(storing);
                 db.SaveChanges();
+                log.Info("user created a report");
 
                 //receive all recipients form db
                 var allProducts = db.Producten.ToList();
@@ -123,6 +127,7 @@ namespace UC_alert_tool.Controllers
                 Storingen storing = new Storingen { Titel = model.Titel, Inhoud = model.Inhoud , Begindatum = model.Begindatum, Begintijd = model.Begintijd, Einddatum = model.Einddatum, Eindtijd = model.Eindtijd, IsGesloten = model.IsGesloten, ProductID = model.ProductID };
                 db.Storingen.Add(storing);
                 db.SaveChanges();
+                log.Info("user created a report");
 
                 //receive all recipients form db
                 var allProducts = db.Producten.ToList();
