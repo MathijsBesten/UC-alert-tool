@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $(window).bind("load resize", function () {
+    $(window).bind("load resize", function () {// this will remove the settings sidebar if the user is using a mobile device
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
         if (width < 768) {
@@ -9,7 +9,6 @@
         } else {
             $('div.sidebar-settings').removeClass('collapse');
             $('div.settingsContentWrapper').css('margin-left', '250px');
-
         }
     });
 });

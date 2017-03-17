@@ -222,7 +222,6 @@
     <Compile Include="Functions\Appsettings\Edit.cs" />
     <Compile Include="Functions\Email\Information.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
-    <Compile Include="Functions\Email template\Get.cs" />
     <Compile Include="Functions\Email template\Set.cs" />
     <Compile Include="Functions\Files\GeneralFiles.cs" />
     <Compile Include="Functions\html formatting\Replace.cs" />
@@ -347,7 +346,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\projectScripts\settingsscript.js" />
-    <Content Include="Scripts\projectScripts\validationscript.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />

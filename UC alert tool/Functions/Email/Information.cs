@@ -9,7 +9,7 @@ namespace UC_alert_tool.Functions.Email
     public class Information
     {
         private static alertDatabaseEntities db = new alertDatabaseEntities();
-        public static List<int> GetCountOfEmailRecipients() // 
+        public static List<int> GetCountOfEmailRecipients() // will loop over all products and gets the total Recipients count for each product
         {
             var allProducts = db.Producten.ToList();
             var productCountList = new List<int>();// this list has the same order as the 'default' product list

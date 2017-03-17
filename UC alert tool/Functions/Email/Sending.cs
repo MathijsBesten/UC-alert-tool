@@ -70,7 +70,7 @@ namespace UC_alert_tool.Functions.Email
                 throw ex;
             }
         }
-        private static AlternateView getEmbeddedImage(string stringToSend)
+        private static AlternateView getEmbeddedImage(string stringToSend) // a email template
         {
             LinkedResource inline = new LinkedResource(HostingEnvironment.ApplicationPhysicalPath + ((db.Settings.Single(s => s.Setting == "SignaturePath").Value)));
             inline.ContentId = Guid.NewGuid().ToString();
