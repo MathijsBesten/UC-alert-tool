@@ -156,7 +156,7 @@ namespace UC_alert_tool.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult emailtemplate(HttpPostedFileBase file, string handtekeningText)
         {
-            if (file != null)
+            if (file != null && file.ContentType.Contains("png"))
             {
                 Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
                 string path = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
@@ -173,15 +173,34 @@ namespace UC_alert_tool.Controllers
                     throw;
                 }
                 Functions.Appsettings.Edit.ChangeExistingValue("signaturePath", path);
-                log.Info("Signature has been changed by the user");
+                log.Info("Signature image has been changed by the user");
+                string htmlSignature = Functions.html_formatting.Replace.ReplaceEnters(handtekeningText);
+                Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
+                log.Info("Signature text has been changed by the user");
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "De e-mailhandtekening is aangepast";
+                return RedirectToAction("Index", "Instellingen");
             }
-            string htmlSignature = Functions.html_formatting.Replace.ReplaceEnters(handtekeningText);
-            Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
-            log.Info("user changed the email signature text");
-            TempData["showSuccess"] = true;
-            TempData["showError"] = false;
-            TempData["SuccessMessage"] = "De e-mailhandtekening is aangepast";
-            return RedirectToAction("Index", "Instellingen");
+            else if (file == null) //this will catch if there is no picture uploaded
+            {
+                string htmlSignature = Functions.html_formatting.Replace.ReplaceEnters(handtekeningText);
+                Functions.Appsettings.Edit.ChangeExistingValue("signaturetext", htmlSignature);
+                log.Info("Signature text has been changed by the user");
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "De e-mailhandtekening is aangepast";
+                return RedirectToAction("Index", "Instellingen");
+            }
+            else // this is posible on Internet explorer - user can pick other file extension than suggested in the view
+            {
+                log.Info("User tried to uploaded a file that was not a .PNG file - signature image not saved" );
+                TempData["showSuccess"] = false;
+                TempData["showError"] = true;
+                TempData["ErrorMessage"] = "Je kan enkel een .png bestand uploaden voor de handtekening - raadpleeg de ontwikkelaar als dit probleem blijft ontstaan";
+                return RedirectToAction("Index", "Instellingen");
+
+            }
         }
     }
 }
