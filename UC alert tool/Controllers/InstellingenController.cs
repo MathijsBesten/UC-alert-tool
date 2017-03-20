@@ -192,7 +192,7 @@ namespace UC_alert_tool.Controllers
                 TempData["SuccessMessage"] = "De e-mailhandtekening is aangepast";
                 return RedirectToAction("Index", "Instellingen");
             }
-            else // this is posible on Internet explorer - user can pick other file extension than suggested in the view
+            else // this will trigger if the user manually select a file extention
             {
                 log.Info("User tried to uploaded a file that was not a .PNG file - signature image not saved" );
                 TempData["showSuccess"] = false;
