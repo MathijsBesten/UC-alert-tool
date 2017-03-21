@@ -330,8 +330,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\test machine examen.pubxml" />
-    <None Include="Properties\PublishProfiles\To test server.pubxml" />
-    <None Include="Properties\PublishProfiles\ToFile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
