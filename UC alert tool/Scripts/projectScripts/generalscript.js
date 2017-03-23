@@ -50,7 +50,7 @@
             $('#eindtijd').after("<p class='errortext'>Vul een eindtijd in</p>");
             return false
         }
-        else if (!Data.parse(enddate) && endTime !== "")// if only time is entered
+        else if (!Date.parse(enddate) && endTime !== "")// if only time is entered
         {
             $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
             return false
