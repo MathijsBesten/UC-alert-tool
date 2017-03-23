@@ -86,7 +86,7 @@ namespace UC_alert_tool.Controllers
             {
                 db.Entry(storingen).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "home");
             }
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam", storingen.ProductID);
             return View(storingen);
