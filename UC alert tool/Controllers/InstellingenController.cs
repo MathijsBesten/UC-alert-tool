@@ -148,7 +148,7 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult emailtemplate()
         {
-            ViewBag.handtekeningtext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
+            ViewBag.handtekeningtext = db.Settings.Single(s => s.Setting == "SignatureText").Value.Replace("<br />",Environment.NewLine);
             return View();
         }
 
