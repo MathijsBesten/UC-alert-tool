@@ -18,6 +18,7 @@ namespace UC_alert_tool.Models
         [Required]
         public string Titel { get; set; }
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Inhoud { get; set; }
         [Display(Name ="eigenaar")]
         public int EigenaarID { get; set; }

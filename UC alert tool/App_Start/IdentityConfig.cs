@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using UC_alert_tool.Models;
+using System.Net.Mail;
 
 namespace UC_alert_tool
 {
@@ -18,8 +19,20 @@ namespace UC_alert_tool
     {
         public Task SendAsync(IdentityMessage message)
         {
+        alertDatabaseEntities db = new alertDatabaseEntities();
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            SmtpClient client = new SmtpClient()
+            {
+                Port = int.Parse(Functions.Appsettings.Get.setting("EmailServerPort")),
+                Host = Functions.Appsettings.Get.setting("EmailServerIP")
+            };
+
+            return client.SendMailAsync(
+                db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
+                message.Destination,
+                message.Subject,
+                message.Body
+                );
         }
     }
 
