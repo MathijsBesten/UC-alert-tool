@@ -78,8 +78,10 @@ namespace UC_alert_tool.Controllers
             {
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
-                    ViewBag.AddModelError("", "Activeer eerst uw account via de ontvangen email.");
-                    return View(model);
+                    TempData["showSuccess"] = false;
+                    TempData["showError"] = true;
+                    TempData["ErrorMessage"] = "Activeer eerst uw account via de ontvangen email.";
+                    return RedirectToAction("Index", "home");
                 }
             }
             // This doesn't count login failures towards account lockout
