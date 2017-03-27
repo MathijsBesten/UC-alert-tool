@@ -14,6 +14,8 @@ namespace UC_alert_tool
             ConfigureAuth(app);
             GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnection",new Hangfire.SqlServer.SqlServerStorageOptions { QueuePollInterval = TimeSpan.FromMinutes(1) }) ;
             app.UseHangfireServer();
+            app.UseHangfireDashboard();
+            RecurringJob.AddOrUpdate(() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);
         }
     }
 }

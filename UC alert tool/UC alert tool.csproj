@@ -229,6 +229,7 @@
     <Compile Include="Functions\SMS\Sending.cs" />
     <Compile Include="Functions\Storingen\Get.cs" />
     <Compile Include="Functions\Tijd\GetTime.cs" />
+    <Compile Include="Functions\Webserver\FeedbackMessage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

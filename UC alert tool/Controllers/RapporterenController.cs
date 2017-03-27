@@ -152,7 +152,6 @@ namespace UC_alert_tool.Controllers
                     EmailBody = model.emailbody,
                     FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
                     Recipients = allRecipientsOnlyEmailAddress,
-                    SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value
                 };
                 Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
 
@@ -223,7 +222,6 @@ namespace UC_alert_tool.Controllers
                     EmailBody = model.emailbody,
                     FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
                     Recipients = allRecipientsOnlyEmailAddress,
-                    SMTPServerURL = db.Settings.Single(s => s.Setting == "EmailServerIP").Value + ":" + db.Settings.Single(s => s.Setting == "EmailServerPort").Value
                 };
 
                 //send email and sms messages async

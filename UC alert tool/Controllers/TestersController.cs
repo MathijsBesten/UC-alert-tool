@@ -24,20 +24,8 @@ namespace UC_alert_tool.Controllers
         {
             List<string> recipients = EmailToSend.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
             EmailToSend.Recipients = recipients;
-            bool mailSuccesfullySend = Functions.Email.Sending.sendEmail(EmailToSend, true);
-            if (mailSuccesfullySend)
-            {
-                TempData["showSuccess"] = true;
-                TempData["showError"] = false;
-                TempData["SuccessMessage"] = "al de emails zijn correct verzonden naar de e-mailserver";
+            Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(EmailToSend, true));
 
-            }
-            else
-            {
-                TempData["showSuccess"] = false;
-                TempData["showError"] = true;
-                TempData["ErrorMessage"] = "Kon de mail niet afleveren aan de e-mailserver";
-            }
             return RedirectToAction("index","Home");
         }
         public ActionResult smstester()
@@ -52,21 +40,8 @@ namespace UC_alert_tool.Controllers
         {
             List<string> recipients = sms.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
             sms.Recipients = recipients;
-            string probemRecipients = Functions.SMS.Sending.sendSMSMessages(sms);
-            if (probemRecipients == null) // all the sms messages are delivered correcly
-            {
-                TempData["showSuccess"] = true;
-                TempData["showError"] = false;
-                TempData["SuccessMessage"] = "Alle sms'jes zijn correct aangeboden aan de sms gateway";
-                return RedirectToAction("index", "Home");
-            }
-            else
-            {
-                TempData["showSuccess"] = false;
-                TempData["showError"] = true;
-                TempData["ErrorMessage"] = "De volgende telefoonnummers konden niet worden aangeboden aan de sms gateway, " + probemRecipients;
-                return RedirectToAction("index", "Home");
-            }
+            Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(sms));
+            return RedirectToAction("index", "Home");
         }
     }
 }
