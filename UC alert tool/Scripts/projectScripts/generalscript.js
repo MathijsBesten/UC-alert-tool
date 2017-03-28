@@ -11,8 +11,11 @@
         var sourceText = $("#emailbody").val().replace(/\r?\n/g, '<br/>');
         $("#previewUserInput").html(sourceText);
     });
-    $('#productListbox').change(function () {
-        $('#totalToSendRecipients').html('totaal aantal klanten die mail zullen ontvangen : @ViewBag.ProductCustomerCount[' + $('option:selected', this).index() + ']');
+    $('#ProductID').change(function () {
+        var recipientCountsString = $('#productRecipients').val();
+        var recipientCounts = recipientCountsString.split(",");
+        var selectedIndex = $('#ProductID').prop('selectedIndex');
+        alert(recipientCounts[selectedIndex]);
     });
 
     function closeStoringIfAllDatesAreValid() {
