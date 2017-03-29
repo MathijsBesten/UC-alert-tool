@@ -1,6 +1,10 @@
 ﻿$(document).ready(function () {
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
+    $('.readMoreButton').click(showFullArticle);
+    $('.readLessButton').click(showOnlyFirstPartOfArticle);
+
+
     $('#smsbericht').keyup(setRemainingCount);
     $('#emailTitle').keyup(function () { 
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
@@ -17,6 +21,33 @@
         var selectedIndex = $('#ProductID').prop('selectedIndex');
         alert(recipientCounts[selectedIndex]);
     });
+
+
+
+
+
+
+
+
+
+    // functions
+
+    function showFullArticle() {
+        $(this).parent().css(
+            'display','none'
+        );
+        $(this).parent().parent().find(".fullText").css(
+            "display", "inline"
+        );
+    }
+    function showOnlyFirstPartOfArticle() {
+        $(this).parent().css(
+            "display", "none"
+        );
+        $(this).parent().parent().find(".previewText").css(
+            "display", "inline"
+        );
+    }
 
     function closeStoringIfAllDatesAreValid() {
         if ($('#isGeslotenCheckbox').is(":checked"))

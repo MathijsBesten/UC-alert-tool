@@ -63,3 +63,12 @@ textarea{
 #isGeslotenCheckbox{
     margin-left:0px;
 }
+.fullText{
+    display:none;
+}
+.readmorelink{
+    color:blue;
+    text-decoration:underline;
+    cursor:pointer;
+
+}

@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Home";
     @Html.Partial("_MessagePartial");
+    @Scripts.Render("~/Scripts/projectScripts/generalscript.js")
 }
 
 <div id="homepageTopWrapper" class="jumbotron text-center" >
@@ -16,7 +17,7 @@
     <div class="row">
         @foreach (var item in Model.Skip(i).Take(3)) // use 3 if the collumn width is 4 - use 4 if the collomn width is 3
         {
-        <div class="col-md-4">
+        <div class="col-md-4 article">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <h3 class="panel-title">
@@ -28,8 +29,24 @@
                     </h3>
                 </div>
                 <div class="panel-body">
-                    @Html.Raw(item.Inhoud.Replace(Environment.NewLine,"<br>"))
-                    
+                    @if (!item.Inhoud.Contains(Environment.NewLine))
+                    {
+                        @Html.Raw(item.Inhoud)
+                    }
+                    else
+                    {
+                        <span class="previewText">
+                            @Html.Raw((item.Inhoud.Replace(Environment.NewLine, "<br>").Substring(0, item.Inhoud.IndexOf(Environment.NewLine))))
+                            <br />
+                            <a class="readMoreButton readmorelink">Lees meer</a>
+
+                        </span>
+                        <span class="fullText">
+                            @Html.Raw(item.Inhoud.Replace(Environment.NewLine, "<br>"))
+                            <br />
+                            <a class="readLessButton readmorelink">Minder weergeven</a>
+                        </span>
+                    }              
                 </div>
                 <div class="panel-footer">
                     van @item.Begindatum.ToString("dd-MM-yyyy") @item.Begintijd.Value.ToString(@"hh\:mm")<br />
