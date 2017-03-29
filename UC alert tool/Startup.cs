@@ -1,7 +1,9 @@
 ﻿using Hangfire;
+using Hangfire.Dashboard;
 using Microsoft.Owin;
 using Owin;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 
 [assembly: OwinStartupAttribute(typeof(UC_alert_tool.Startup))]
@@ -14,8 +16,19 @@ namespace UC_alert_tool
             ConfigureAuth(app);
             GlobalConfiguration.Configuration.UseSqlServerStorage("HangfireConnection",new Hangfire.SqlServer.SqlServerStorageOptions { QueuePollInterval = TimeSpan.FromMinutes(1) }) ;
             app.UseHangfireServer();
-            app.UseHangfireDashboard();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                AuthorizationFilters = new[] { new HangfireAuthorizationFilter() }
+            });
             RecurringJob.AddOrUpdate(() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);
+        }
+    }
+    public class HangfireAuthorizationFilter : IAuthorizationFilter
+    {
+        public bool Authorize(IDictionary<string, object> owinEnvironment)
+        {
+            var context = new OwinContext(owinEnvironment);
+            return context.Authentication.User.Identity.IsAuthenticated;
         }
     }
 }
