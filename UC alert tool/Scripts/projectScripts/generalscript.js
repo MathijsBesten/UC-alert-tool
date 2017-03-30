@@ -3,9 +3,8 @@
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
     $('.readMoreButton').click(showFullArticle);
     $('.readLessButton').click(showOnlyFirstPartOfArticle);
-
-
     $('#smsbericht').keyup(setRemainingCount);
+
     $('#emailTitle').keyup(function () { 
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
         $("#previewTitle").val(sourceText);
@@ -16,20 +15,15 @@
         $("#previewUserInput").html(sourceText);
     });
     $('#ProductID').change(function () {
-        var recipientCountsString = $('#productRecipients').val();
-        var recipientCounts = recipientCountsString.split(",");
-        var selectedIndex = $('#ProductID').prop('selectedIndex');
-        alert(recipientCounts[selectedIndex]);
+        var selectedProduct = $('#ProductID').find(":selected").text();
+         var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: onRecipientReceive,
+            Error: failedRecipientReceive
+        });
     });
-
-
-
-
-
-
-
-
-
     // functions
 
     function showFullArticle() {
@@ -79,12 +73,16 @@
         var enddate = new Date($('#einddatum').val());
         var endTime = $('#eindtijd').val();
         var endTimeSplit = endTime.split(':');
-        if (Date.parse(enddate) && enddate === "") // if only date is entered
+        if (!Date.parse($('#einddatum').val()) && endTime == "")// no enddate and endtime
+        {
+            return true;
+        }
+        if (Date.parse($('#einddatum').val()) && endTime == "") // if only date is entered
         {
             $('#eindtijd').after("<p class='errortext'>Vul een eindtijd in</p>");
             return false
         }
-        else if (!Date.parse(enddate) && endTime !== "")// if only time is entered
+        else if (!Date.parse($('#einddatum').val()) && endTime != "")// if only time is entered
         {
             $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
             return false
@@ -93,10 +91,9 @@
         {
             if (begindate < enddate)
             {
-                console.log("date correct")
                 if (endTime === "")
                 {
-                    $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
+                    $('#eindtijd').after("<p class='errortext'>Vul een eindtijd in</p>");
                     return false
                 }
                 else
@@ -141,7 +138,7 @@
             }    
         }
         else {
-            $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
+            $('#eindtijd').after("<p class='errortext'>Vul een einddatum in plz</p>");
             return false
         }
 
@@ -152,4 +149,10 @@
         var remaining = 160 - count;
         $('#totalCharacters').text(remaining.toString() + "/160 karakters");
     };
+    function onRecipientReceive(response) {
+        alert(response);
+    }
+    function failedRecipientReceive(response) {
+        alert(response);
+    }
 });

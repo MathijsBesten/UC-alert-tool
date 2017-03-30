@@ -226,6 +226,8 @@
     <Compile Include="Functions\Email template\Set.cs" />
     <Compile Include="Functions\Files\GeneralFiles.cs" />
     <Compile Include="Functions\html formatting\Replace.cs" />
+    <Compile Include="Functions\Recipients\Email\Get.cs" />
+    <Compile Include="Functions\Recipients\SMS\Get.cs" />
     <Compile Include="Functions\SMS\Sending.cs" />
     <Compile Include="Functions\Storingen\Get.cs" />
     <Compile Include="Functions\Tijd\GetTime.cs" />

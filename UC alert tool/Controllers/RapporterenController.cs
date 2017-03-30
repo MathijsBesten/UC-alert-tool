@@ -238,5 +238,14 @@ namespace UC_alert_tool.Controllers
                 return View(model);
             }
         }
+
+        public string recipientSMSCount(string productname)
+        {
+            return Functions.Recipients.SMS.Get.getTotalCountRecipients(productname).ToString();
+        }
+        public string recipientEmailCount(string productname)
+        {
+            return Functions.Recipients.Email.Get.getTotalCountRecipients(productname).ToString();
+        }
     }
 }
