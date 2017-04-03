@@ -1,4 +1,8 @@
 ﻿$(document).ready(function () {
+    var url = location.pathname.split('/').slice(-1)[0];
+    if (url == "meldingmetsms" || url == "meldingmetemail" || url == "meldingmetemailensms") {
+        getInformationForProduct();
+    };
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
     $('.readMoreButton').click(showFullArticle);
@@ -14,11 +18,32 @@
         var sourceText = $("#emailbody").val().replace(/\r?\n/g, '<br/>');
         $("#previewUserInput").html(sourceText);
     });
-    $('#ProductID').change(function () {
-        var urlName = location.pathname.split('/').slice(-1)[0];
+    $('#ProductID').change(getInformationForProduct);
+    // functions
+    function getInformationForProduct() {
+        $('#Summeryfield').text("");// empty textbox - text will be added to the textbox after this
+        if (url == "meldingmetsms") {
+            getSMSCount(false);
+        }
+        else if (url == "meldingmetemail") {
+            getEmailCount();
+        }
+        else if (url == "meldingmetemailensms") {
+            getSMSCount(true); //this will also run getEmailCount
+        }
+    }
+    function getSMSCount(getEmailCount) {
         var selectedProduct = $('#ProductID').find(":selected").text();
-        if (urlName == "meldingmetsms") {
-            var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
+        var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
+        if (getEmailCount == true) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: onRecipientReceiveSMScontinueEmail,
+                Error: failedRecipientReceive
+            });
+        }
+        else {
             $.ajax({
                 type: 'POST',
                 url: url,
@@ -26,7 +51,9 @@
                 Error: failedRecipientReceive
             });
         }
-        else if (urlName == "meldingmetemail") {
+        }
+        function getEmailCount() {
+            var selectedProduct = $('#ProductID').find(":selected").text();
             var url = '/rapporteren/recipientEmailCount?productname=' + selectedProduct.toString();
             $.ajax({
                 type: 'POST',
@@ -35,13 +62,17 @@
                 Error: failedRecipientReceive
             });
         }
-    });
-    // functions
+
+
     function onRecipientReceiveSMS(response) {
-        $('#Summeryfield').text("Het aantal ontvangers dat een sms krijgen: " + response);
+        $('#Summeryfield').append("Het aantal ontvangers dat een sms krijgen: " + response + "\n");
+        }
+    function onRecipientReceiveSMScontinueEmail(response) {
+        $('#Summeryfield').append("Het aantal ontvangers dat een sms krijgen: " + response + "\n");
+        getEmailCount();
     }
     function onRecipientReceiveEmail(response) {
-        $('#Summeryfield').text("Het aantal ontvangers die een email krijgen: " + response);
+        $('#Summeryfield').append("Het aantal ontvangers die een email krijgen: " + response + "\n");
     }
     function failedRecipientReceive(response) {
         alert('Error tijdens het ophalen van aantal ontvangers - ' + response);
