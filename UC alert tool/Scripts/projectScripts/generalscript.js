@@ -71,6 +71,9 @@
 
         var ModuloMoreMessages = count % 153; // total used characters in the last message
         var remainingMoreMessages = 153 - ModuloMoreMessages;
+        if (remainingMoreMessages == 153 ) { // modulo 153%153 = 0 and 153-0 = 153 characters remaining - this is wrong infomation for the user so it will be set to 0 (chacters remaining)
+            remainingMoreMessages = 0;
+        }
         if (count > 160) {
             $('#totalCharacters').text(remainingMoreMessages.toString() + "/153 karakters"); 
             $('#totalSMSForOneMessage').text(Math.ceil((count / 153)) + " berichten"); 
