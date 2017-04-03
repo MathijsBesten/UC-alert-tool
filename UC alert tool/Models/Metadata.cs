@@ -38,6 +38,7 @@ namespace UC_alert_tool.Models
         public Nullable<System.DateTime> Einddatum { get; set; }
         [Display(Name = "eindtijd")]
         [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         public System.DateTime Eindtijd { get; set; }
         [Display(Name = "Is gesloten")]
         public bool IsGesloten { get; set; }

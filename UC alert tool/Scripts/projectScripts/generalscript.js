@@ -68,10 +68,12 @@
     function setRemainingCount() {
         var count = $('#smsbericht').val().length;
         var remaining = 160 - count;
-        var remainingMoreMessages = 153 - count;
+
+        var ModuloMoreMessages = count % 153; // total used characters in the last message
+        var remainingMoreMessages = 153 - ModuloMoreMessages;
         if (count > 160) {
             $('#totalCharacters').text(remainingMoreMessages.toString() + "/153 karakters"); 
-            $('#totalSMSForOneMessage').text(Math.round((count / 153)) + " berichten"); 
+            $('#totalSMSForOneMessage').text(Math.ceil((count / 153)) + " berichten"); 
         }
         else {
             $('#totalSMSForOneMessage').text("1 bericht");

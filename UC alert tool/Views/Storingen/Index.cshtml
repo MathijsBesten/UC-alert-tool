@@ -1,14 +1,10 @@
 ﻿@model IEnumerable<UC_alert_tool.Models.Storingen>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Alle storingen";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>@ViewBag.Title</h2>
 <table class="table">
     <tr>
         <th>
@@ -18,22 +14,19 @@
             @Html.DisplayNameFor(model => model.Inhoud)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EigenaarID)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Begindatum)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Einddatum)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsGesloten)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Begintijd)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Eindtijd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsGesloten)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Producten.Naam)
@@ -50,16 +43,10 @@
             @Html.DisplayFor(modelItem => item.Inhoud)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EigenaarID)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Begindatum)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Einddatum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsGesloten)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Begintijd)
@@ -68,12 +55,15 @@
             @Html.DisplayFor(modelItem => item.Eindtijd)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.IsGesloten)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Producten.Naam)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Aanpassen", "Edit", new { id=item.Id }) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+            @Html.ActionLink("Verwijderen", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
