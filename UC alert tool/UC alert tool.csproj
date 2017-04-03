@@ -415,6 +415,7 @@
     <Content Include="Views\Instellingen\emailtemplate.cshtml" />
     <Content Include="Views\Shared\_MessagePartial.cshtml" />
     <Content Include="Views\Shared\_MeldingPartial.cshtml" />
+    <Content Include="Views\Shared\_RapporterenSummeryPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

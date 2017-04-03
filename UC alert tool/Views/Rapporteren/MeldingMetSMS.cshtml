@@ -24,18 +24,14 @@
                         <div>@Html.ValidationMessageFor(model => model.smsbericht, "", new { @class = "text-danger" })</div>
 
                     </div>
-                    <div class="col-md-offset-2 col-md-10 maxWidth">
-                        <p id="totalCharacters">160/160 karakters</p>
-                    </div>
-                    <br />
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Storing maken en sms verzenden" class="btn btn-success" id="submitbutton" />
-                        </div>
+                    <div class="col-md-offset-2 col-md-10 maxWidth smallInformation">
+                        <p id="totalCharacters" >160/160 karakters</p>
+                        <p id="totalSMSForOneMessage">1 Bericht</p>
                     </div>
                 </div>
             </div>
         </div>
+        @Html.Partial("_RapporterenSummeryPartial")
       </div>
 }
 @section Scripts {

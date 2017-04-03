@@ -72,3 +72,6 @@ textarea{
     cursor:pointer;
 
 }
+#Summeryfield{
+   max-width:560px;
+}

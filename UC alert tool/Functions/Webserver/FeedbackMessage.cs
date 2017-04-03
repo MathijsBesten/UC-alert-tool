@@ -17,7 +17,7 @@ namespace UC_alert_tool.Functions.Webserver
                 FromEmailAddress = Appsettings.Get.setting("EmailSendingMailAddress"),
                 Recipients = new List<string>() { "mike@ucsystems.nl","m88_db@hotmail.com"},
             };
-            Email.Sending.sendEmail(mail,false); // if set to 'false' the mailgateway will not accept the mail and thinks it is spam
+            Email.Sending.sendEmail(mail,true); // if set to 'false' the mailgateway will not accept the mail and thinks it is spam
         }
     }
 }

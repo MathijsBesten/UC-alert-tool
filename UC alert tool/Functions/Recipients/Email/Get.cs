@@ -23,10 +23,18 @@ namespace UC_alert_tool.Functions.Recipients.Email
             //fill list with people who wants to receive sms message
             foreach (var item in allRecipients)
             {
-                string email = item.Klanten.Telefoonnummer;
+                string email = item.Klanten.PrimaireEmail;
                 if (!string.IsNullOrWhiteSpace(email))
                 {
-                    allRecipientsOnlyEmail.Add(item.Klanten.Telefoonnummer);
+                    allRecipientsOnlyEmail.Add(item.Klanten.PrimaireEmail);
+                }
+                else
+                {
+                    string emailSecondary = item.Klanten.SecundaireEmail;
+                    if (!string.IsNullOrWhiteSpace(emailSecondary))
+                    {
+                        allRecipientsOnlyEmail.Add(item.Klanten.SecundaireEmail);
+                    }
                 }
             }
             return allRecipientsOnlyEmail.Count.ToString();

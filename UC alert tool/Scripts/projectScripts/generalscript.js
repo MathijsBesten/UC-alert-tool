@@ -15,16 +15,37 @@
         $("#previewUserInput").html(sourceText);
     });
     $('#ProductID').change(function () {
+        var urlName = location.pathname.split('/').slice(-1)[0];
         var selectedProduct = $('#ProductID').find(":selected").text();
-         var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
-        $.ajax({
-            type: 'POST',
-            url: url,
-            success: onRecipientReceive,
-            Error: failedRecipientReceive
-        });
+        if (urlName == "meldingmetsms") {
+            var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: onRecipientReceiveSMS,
+                Error: failedRecipientReceive
+            });
+        }
+        else if (urlName == "meldingmetemail") {
+            var url = '/rapporteren/recipientEmailCount?productname=' + selectedProduct.toString();
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: onRecipientReceiveEmail,
+                Error: failedRecipientReceive
+            });
+        }
     });
     // functions
+    function onRecipientReceiveSMS(response) {
+        $('#Summeryfield').text("Het aantal ontvangers dat een sms krijgen: " + response);
+    }
+    function onRecipientReceiveEmail(response) {
+        $('#Summeryfield').text("Het aantal ontvangers die een email krijgen: " + response);
+    }
+    function failedRecipientReceive(response) {
+        alert('Error tijdens het ophalen van aantal ontvangers - ' + response);
+    }
 
     function showFullArticle() {
         $(this).parent().css(
@@ -43,28 +64,25 @@
         );
     }
 
-    function closeStoringIfAllDatesAreValid() {
-        if ($('#isGeslotenCheckbox').is(":checked"))
-        {
-            var begindate = new Date($('#begindatum').val());
-            var beginTime = $('#begintijd').val();
-            var enddate = new Date($('#einddatum').val());
-            var endTime = $('#eindtijd').val();
-            if (begindate !== "Invalid Date" && beginTime !== "" && enddate !== "Invalid Date" && endTime !== "")
-            {
-                return true
-            }
-            else
-            {
-                $('#isGeslotenCheckbox').after("<p class='errortext'>Vul alle waarden in om de storing te sluiten</p>");
-                return false;
-            }
+
+    function setRemainingCount() {
+        var count = $('#smsbericht').val().length;
+        var remaining = 160 - count;
+        var remainingMoreMessages = 153 - count;
+        if (count > 160) {
+            $('#totalCharacters').text(remainingMoreMessages.toString() + "/153 karakters"); 
+            $('#totalSMSForOneMessage').text(Math.round((count / 153)) + " berichten"); 
         }
-        else
-        {
-            return true;
+        else {
+            $('#totalSMSForOneMessage').text("1 bericht");
+            $('#totalCharacters').text(remaining.toString() + "/160 karakters"); 
         }
-    }
+    };
+
+
+
+
+
     function checkIfstartIsBeforeEnddate() {
         $('.errortext').remove();
         var begindate = new Date($('#begindatum').val());
@@ -89,70 +107,65 @@
         }
         if (Date.parse(begindate)) // check if begintime is earlier than the enddate
         {
-            if (begindate < enddate)
-            {
-                if (endTime === "")
-                {
+            if (begindate < enddate) {
+                if (endTime === "") {
                     $('#eindtijd').after("<p class='errortext'>Vul een eindtijd in</p>");
                     return false
                 }
-                else
-                {
+                else {
                     return true;
                 }
             }
-            else if (begindate > enddate)
-            {
+            else if (begindate > enddate) {
                 $('#einddatum').after("<p class='errortext'>Einddatum mag niet eerder zijn dan de begindatum</p>");
                 return false;
             }
             else // dates are the same
             {
-                if (beginTime === "" || endTime === "")
-                {
+                if (beginTime === "" || endTime === "") {
                     $('#eindtijd').after("<p class='errortext'>Vul een einddatum in</p>");
                     return false;
 
                 }
-                else if (beginTimeSplit[0] > endTimeSplit[0]) 
-                {
+                else if (beginTimeSplit[0] > endTimeSplit[0]) {
                     $('#eindtijd').after("<p class='errortext'>Vul een correcte einddatum in</p>");
                     return false;
                 }
-                else if (beginTimeSplit[0] === endTimeSplit[0])
-                {
-                    if (beginTimeSplit[1] >= endTimeSplit[1])
-                    {
+                else if (beginTimeSplit[0] === endTimeSplit[0]) {
+                    if (beginTimeSplit[1] >= endTimeSplit[1]) {
                         $('#eindtijd').after("<p class='errortext'>De eindtijd kan niet minder of hetelfde zijn als de begintijd</p>");
                         return false;
                     }
-                    else
-                    {
+                    else {
                         return true;
                     }
                 }
-                else
-                {
+                else {
                     return true;
                 }
-            }    
+            }
         }
         else {
             $('#eindtijd').after("<p class='errortext'>Vul een einddatum in plz</p>");
             return false
         }
-
     };
-
-    function setRemainingCount() {
-        var count = $('#smsbericht').val().length;
-        var remaining = 160 - count;
-        $('#totalCharacters').text(remaining.toString() + "/160 karakters");
-    };
-    function onRecipientReceive(response) {
-        alert(response);
-    }
-    function failedRecipientReceive(response) {
-        alert(response);
+    function closeStoringIfAllDatesAreValid() {
+        if ($('#isGeslotenCheckbox').is(":checked")) {
+            var begindate = new Date($('#begindatum').val());
+            var beginTime = $('#begintijd').val();
+            var enddate = new Date($('#einddatum').val());
+            var endTime = $('#eindtijd').val();
+            if (begindate !== "Invalid Date" && beginTime !== "" && enddate !== "Invalid Date" && endTime !== "") {
+                return true
+            }
+            else {
+                $('#isGeslotenCheckbox').after("<p class='errortext'>Vul alle waarden in om de storing te sluiten</p>");
+                return false;
+            }
+        }
+        else {
+            return true;
+        }
     }
 });
