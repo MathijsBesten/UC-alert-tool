@@ -23,56 +23,58 @@
     function getInformationForProduct() {
         $('#Summeryfield').text("");// empty textbox - text will be added to the textbox after this
         if (url == "meldingmetsms") {
-            getSMSCount(false);
+            getSMSCount();
         }
         else if (url == "meldingmetemail") {
-            getEmailCount();
+            getEmailCount(false);
         }
         else if (url == "meldingmetemailensms") {
-            getSMSCount(true); //this will also run getEmailCount
+            getEmailCount(true); //this will also run getEmailCount
         }
     }
-    function getSMSCount(getEmailCount) {
+    function getSMSCount() {
         var selectedProduct = $('#ProductID').find(":selected").text();
         var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
-        if (getEmailCount == true) {
-            $.ajax({
-                type: 'POST',
-                url: url,
-                success: onRecipientReceiveSMScontinueEmail,
-                Error: failedRecipientReceive
-            });
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: onRecipientReceiveSMS,
+            Error: failedRecipientReceive
+        });
         }
-        else {
-            $.ajax({
-                type: 'POST',
-                url: url,
-                success: onRecipientReceiveSMS,
-                Error: failedRecipientReceive
-            });
-        }
-        }
-        function getEmailCount() {
+    function getEmailCount(getSMS) {
             var selectedProduct = $('#ProductID').find(":selected").text();
             var url = '/rapporteren/recipientEmailCount?productname=' + selectedProduct.toString();
-            $.ajax({
-                type: 'POST',
-                url: url,
-                success: onRecipientReceiveEmail,
-                Error: failedRecipientReceive
-            });
+            if (getSMS == true) {
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: onRecipientReceiveEmailcontinueSMS,
+                    Error: failedRecipientReceive
+                });
+            }
+            else {
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    success: onRecipientReceiveEmail,
+                    Error: failedRecipientReceive
+                });
+            }
         }
 
 
     function onRecipientReceiveSMS(response) {
         $('#Summeryfield').append("Het aantal ontvangers dat een sms krijgen: " + response + "\n");
-        }
-    function onRecipientReceiveSMScontinueEmail(response) {
-        $('#Summeryfield').append("Het aantal ontvangers dat een sms krijgen: " + response + "\n");
-        getEmailCount();
+        $('#Summeryfield').append("Geschatte procestijd: " + response*4 + " seconden" + "\n");
     }
     function onRecipientReceiveEmail(response) {
         $('#Summeryfield').append("Het aantal ontvangers die een email krijgen: " + response + "\n");
+        $('#Summeryfield').append("Geschatte procestijd: " + 3 + " seconden"+"\n");
+    }
+    function onRecipientReceiveEmailcontinueSMS(response) {
+        $('#Summeryfield').append("Het aantal ontvangers die een email krijgen: " + response + "\n");
+        getSMSCount();
     }
     function failedRecipientReceive(response) {
         alert('Error tijdens het ophalen van aantal ontvangers - ' + response);
