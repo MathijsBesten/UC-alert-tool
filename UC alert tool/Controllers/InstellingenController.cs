@@ -148,7 +148,10 @@ namespace UC_alert_tool.Controllers
 
         public ActionResult emailtemplate()
         {
-            ViewBag.handtekeningtext = db.Settings.Single(s => s.Setting == "SignatureText").Value.Replace("<br />",Environment.NewLine);
+            Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();
+            string path = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
+            ViewBag.imagePath = path;
+            ViewBag.handtekeningtext = db.Settings.Single(s => s.Setting == "SignatureText").Value.Replace("<br />", Environment.NewLine);
             return View();
         }
 
