@@ -119,8 +119,6 @@
 
 
 
-
-
     function checkIfstartIsBeforeEnddate() {
         $('.errortext').remove();
         var begindate = new Date($('#begindatum').val());
