@@ -23,8 +23,21 @@ namespace UC_alert_tool.Controllers
             ViewBag.showError = TempData["showError"];
             ViewBag.SuccessMessage = TempData["SuccessMessage"];
             ViewBag.ErrorMessage = TempData["ErrorMessage"];
+            string ActiveStoringenName = Functions.Appsettings.Get.setting("activeIssuesTitle");
+            string PlannedStoringenName = Functions.Appsettings.Get.setting("plannedIssuesTitle");
+            string OldStoringenName = Functions.Appsettings.Get.setting("solvedIssuesTitle");
+            List<Storingen> allStoringenFromLastWeek = Functions.Storingen.Get.AllStoringenFromLastWeek();
+            List<Storingen> RunningStoringen = allStoringenFromLastWeek.Where(e => e.Eindtijd == null || e.Begindatum == DateTime.Now).ToList();
+            List<Storingen> PlannedStoringen = allStoringenFromLastWeek.Where(e => e.Begindatum.DayOfYear > DateTime.Now.DayOfYear).ToList();
+            List<Storingen> OldStoringen = allStoringenFromLastWeek.Where(e => e.Einddatum < DateTime.Now).ToList();
+            ViewBag.RunningStoringen = RunningStoringen;
+            ViewBag.PlannedStoringen = PlannedStoringen;
+            ViewBag.OldStoringen = OldStoringen;
+            ViewBag.RunningStoringenTitle = ActiveStoringenName;
+            ViewBag.PlannedStoringenTitle = PlannedStoringenName;
+            ViewBag.OldStoringenTitle = OldStoringenName;
 
-            return View(Functions.Storingen.Get.AllStoringenFromLastWeek());
+            return View();
         }
 
         public ActionResult Contact()

@@ -75,3 +75,10 @@ textarea{
 #Summeryfield{
    max-width:560px;
 }
+.article{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.category-header{
+    text-align: center;
+}

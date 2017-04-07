@@ -12,55 +12,181 @@
     </div>
 </div>
 
-@for (int i = 0; i < Model.Count(); i += 3)
-{
-    <div class="row">
-        @foreach (var item in Model.Skip(i).Take(3)) // use 3 if the collumn width is 4 - use 4 if the collomn width is 3
-        {
-        <div class="col-md-4 article">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        @Html.DisplayFor(modelItem => item.Titel)
-                        @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
-                        {
-                            <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
-                        }
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    @if (!item.Inhoud.Contains(Environment.NewLine))
-                    {
-                        @Html.Raw(item.Inhoud)
-                    }
-                    else
-                    {
-                        <span class="previewText">
-                            @Html.Raw((item.Inhoud.Replace(Environment.NewLine, "<br>").Substring(0, item.Inhoud.IndexOf(Environment.NewLine))))
-                            <br />
-                            <a class="readMoreButton readmorelink">Lees meer</a>
+@{ 
+    List<UC_alert_tool.Models.Storingen> running = (List<UC_alert_tool.Models.Storingen>)ViewBag.RunningStoringen;
+    List<UC_alert_tool.Models.Storingen> planned = (List<UC_alert_tool.Models.Storingen>)ViewBag.PlannedStoringen;
+    List<UC_alert_tool.Models.Storingen> old = (List<UC_alert_tool.Models.Storingen>)ViewBag.OldStoringen;
+}
 
-                        </span>
-                        <span class="fullText">
-                            @Html.Raw(item.Inhoud.Replace(Environment.NewLine, "<br>"))
-                            <br />
-                            <a class="readLessButton readmorelink">Minder weergeven</a>
-                        </span>
-                    }              
-                </div>
-                <div class="panel-footer">
-                    van @item.Begindatum.ToString("dd-MM-yyyy") @item.Begintijd.Value.ToString(@"hh\:mm")<br />
-                    @if (item.Einddatum != null)
-                    {
-                        @:tot @item.Einddatum.Value.ToString("dd-MM-yyyy") @item.Eindtijd.Value.ToString(@"hh\:mm")
-                    }
-                    else
-                    {
-                        @:Actief - Geen einddatum bekend
-                    }
-                </div>
+
+
+<div class="allStoringen">
+    <div class="col-md-4 ActiveStoringen">
+        <div class="panel panel-default">
+            <div class="panel-heading category-header">
+                <h5>@ViewBag.RunningStoringenTitle</h5>
+            </div>
+            <div class="panel-body">
+                @foreach (var item in running)
+            {
+                    <div class="col-md-12 article">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    @Html.DisplayFor(modelItem => item.Titel)
+                                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
+                                    }
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                @if (!item.Inhoud.Contains(Environment.NewLine))
+                                {
+                                    @Html.Raw(item.Inhoud)
+                                }
+                                else
+                                {
+                                    <span class="previewText">
+                                        @Html.Raw((item.Inhoud.Replace(Environment.NewLine, "<br>").Substring(0, item.Inhoud.IndexOf(Environment.NewLine))))
+                                        <br />
+                                        <a class="readMoreButton readmorelink">Lees meer</a>
+
+                                    </span>
+                                    <span class="fullText">
+                                        @Html.Raw(item.Inhoud.Replace(Environment.NewLine, "<br>"))
+                                        <br />
+                                        <a class="readLessButton readmorelink">Minder weergeven</a>
+                                    </span>
+                                }
+                            </div>
+                            <div class="panel-footer">
+                                van @item.Begindatum.ToString("dd-MM-yyyy") @item.Begintijd.Value.ToString(@"hh\:mm")<br />
+                                @if (item.Einddatum != null)
+                                {
+                                    @:tot @item.Einddatum.Value.ToString("dd-MM-yyyy") @item.Eindtijd.Value.ToString(@"hh\:mm")
+                            }
+                                else
+                                {
+                                    @:Actief - Geen einddatum bekend
+                            }
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
-        }
     </div>
-}
+    <div class="col-md-4 ScheduledStoringen ">
+        <div class="panel panel-default">
+            <div class="panel-heading category-header">
+                <h5>@ViewBag.PlannedStoringenTitle</h5>
+            </div>
+            <div class="panel-body">
+                @foreach (var item in planned)
+            {
+                    <div class="col-md-12 article">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    @Html.DisplayFor(modelItem => item.Titel)
+                                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
+                                    }
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                @if (!item.Inhoud.Contains(Environment.NewLine))
+                                {
+                                    @Html.Raw(item.Inhoud)
+                                }
+                                else
+                                {
+                                    <span class="previewText">
+                                        @Html.Raw((item.Inhoud.Replace(Environment.NewLine, "<br>").Substring(0, item.Inhoud.IndexOf(Environment.NewLine))))
+                                        <br />
+                                        <a class="readMoreButton readmorelink">Lees meer</a>
+
+                                    </span>
+                                    <span class="fullText">
+                                        @Html.Raw(item.Inhoud.Replace(Environment.NewLine, "<br>"))
+                                        <br />
+                                        <a class="readLessButton readmorelink">Minder weergeven</a>
+                                    </span>
+                                }
+                            </div>
+                            <div class="panel-footer">
+                                van @item.Begindatum.ToString("dd-MM-yyyy") @item.Begintijd.Value.ToString(@"hh\:mm")<br />
+                                @if (item.Einddatum != null)
+                                {
+                                    @:tot @item.Einddatum.Value.ToString("dd-MM-yyyy") @item.Eindtijd.Value.ToString(@"hh\:mm")
+                        }
+                                else
+                                {
+                                    @:Actief - Geen einddatum bekend
+                        }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 OldStoringen">
+        <div class="panel panel-default">
+            <div class="panel-heading category-header">
+                <h5>@ViewBag.OldStoringenTitle</h5>
+            </div>
+            <div class="panel-body">
+                @foreach (var item in old)
+            {
+                    <div class="col-md-12 article">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    @Html.DisplayFor(modelItem => item.Titel)
+                                    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated)
+                                    {
+                                        <a href="~/storingen/edit/@(item.Id)" class="glyphicon glyphicon-cog pull-right"></a>
+                                    }
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                                @if (!item.Inhoud.Contains(Environment.NewLine))
+                                {
+                                    @Html.Raw(item.Inhoud)
+                                }
+                                else
+                                {
+                                    <span class="previewText">
+                                        @Html.Raw((item.Inhoud.Replace(Environment.NewLine, "<br>").Substring(0, item.Inhoud.IndexOf(Environment.NewLine))))
+                                        <br />
+                                        <a class="readMoreButton readmorelink">Lees meer</a>
+
+                                    </span>
+                                    <span class="fullText">
+                                        @Html.Raw(item.Inhoud.Replace(Environment.NewLine, "<br>"))
+                                        <br />
+                                        <a class="readLessButton readmorelink">Minder weergeven</a>
+                                    </span>
+                                }
+                            </div>
+                            <div class="panel-footer">
+                                van @item.Begindatum.ToString("dd-MM-yyyy") @item.Begintijd.Value.ToString(@"hh\:mm")<br />
+                                @if (item.Einddatum != null)
+                                {
+                                    @:tot @item.Einddatum.Value.ToString("dd-MM-yyyy") @item.Eindtijd.Value.ToString(@"hh\:mm")
+                        }
+                                else
+                                {
+                                    @:Actief - Geen einddatum bekend
+                        }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
