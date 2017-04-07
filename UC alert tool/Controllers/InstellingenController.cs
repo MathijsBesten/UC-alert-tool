@@ -205,5 +205,37 @@ namespace UC_alert_tool.Controllers
 
             }
         }
+        public ActionResult homepage()
+        {
+            ViewBag.ActiveTitle = Functions.Appsettings.Get.setting("activeIssuesTitle");
+            ViewBag.PlannedTitle = Functions.Appsettings.Get.setting("plannedIssuesTitle");
+            ViewBag.OldTitle = Functions.Appsettings.Get.setting("solvedIssuesTitle");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult homepage(string ActiveTitle, string PlannedTitle, string OldTitle)
+        {
+            try
+            {
+                Functions.Appsettings.Edit.ChangeExistingValue("activeIssuesTitle", ActiveTitle);
+                Functions.Appsettings.Edit.ChangeExistingValue("plannedIssuesTitle", PlannedTitle);
+                Functions.Appsettings.Edit.ChangeExistingValue("solvedIssuesTitle", OldTitle);
+                log.Info("Homepage column text has been changed by the user");
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "De waardes op de homepagina zijn aangepast";
+                return RedirectToAction("Index", "Instellingen");
+
+
+            }
+            catch (Exception e)
+            {
+                log.Info("User tried to change homepage text - error: " + e.Message);
+                TempData["showSuccess"] = false;
+                TempData["showError"] = true;
+                TempData["ErrorMessage"] = "Er was een probleem bij het opslaan van de nieuwe homepagina teskten - raadpleeg het logbestand voor meer informatie";
+                return RedirectToAction("Index", "Instellingen");
+            }
+        }
     }
 }

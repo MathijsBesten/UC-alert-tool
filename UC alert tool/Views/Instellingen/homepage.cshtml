@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "homepage";
+    @Html.Partial("_SettingsPartial")
+}
+<div class="settingsContentWrapper">
+    <h2>Instellingen homepagina</h2>
+    <p>Hier kunt u de instellingen van de homepagina aanpassen</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h4><b>Titels op de hoofdpagina</b></h4>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-3">Lopende storingen</label>
+                <div class="col-md-9">
+                    <input type="text" name="ActiveTitle" value="@ViewBag.ActiveTitle" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Gepland onderhoud</label>
+                <div class="col-md-9">
+                    <input type="text" name="PlannedTitle" value="@ViewBag.PlannedTitle" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Oude storingen</label>
+                <div class="col-md-9">
+                    <input type="text" name="OldTitle" value="@ViewBag.OldTitle" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Opslaan" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
