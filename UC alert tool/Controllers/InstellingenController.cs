@@ -210,16 +210,18 @@ namespace UC_alert_tool.Controllers
             ViewBag.ActiveTitle = Functions.Appsettings.Get.setting("activeIssuesTitle");
             ViewBag.PlannedTitle = Functions.Appsettings.Get.setting("plannedIssuesTitle");
             ViewBag.OldTitle = Functions.Appsettings.Get.setting("solvedIssuesTitle");
+            ViewBag.OldMessageTime = Functions.Appsettings.Get.setting("OldMessageTime");
             return View();
         }
         [HttpPost]
-        public ActionResult homepage(string ActiveTitle, string PlannedTitle, string OldTitle)
+        public ActionResult homepage(string ActiveTitle, string PlannedTitle, string OldTitle , string OldMessageTime)
         {
             try
             {
                 Functions.Appsettings.Edit.ChangeExistingValue("activeIssuesTitle", ActiveTitle);
                 Functions.Appsettings.Edit.ChangeExistingValue("plannedIssuesTitle", PlannedTitle);
                 Functions.Appsettings.Edit.ChangeExistingValue("solvedIssuesTitle", OldTitle);
+                Functions.Appsettings.Edit.ChangeExistingValue("OldMessageTime", OldMessageTime);
                 log.Info("Homepage column text has been changed by the user");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;

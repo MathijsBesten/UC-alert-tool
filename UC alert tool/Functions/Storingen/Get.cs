@@ -10,10 +10,13 @@ namespace UC_alert_tool.Functions.Storingen
     {
         public static List<Models.Storingen> AllStoringenFromLastWeek()
         {
-            alertDatabaseEntities db = new alertDatabaseEntities();
-            List<Models.Storingen> AllStoringen = db.Storingen.ToList();
-            var ThisWeeksStoringen = AllStoringen.Where((s => s.IsGesloten == false || (s.Einddatum.Value.DayOfYear + 7 >= DateTime.Now.DayOfYear && s.Einddatum.Value.Year == DateTime.Now.Year))).ToList<Models.Storingen>();
-            return ThisWeeksStoringen;
+            using (var db = new alertDatabaseEntities())
+            {
+                List<Models.Storingen> AllStoringen = db.Storingen.ToList();
+                int daysInHistory = int.Parse(Functions.Appsettings.Get.setting("OldMessageTime"));
+                var ThisWeeksStoringen = AllStoringen.Where((s => s.IsGesloten == false || (s.Einddatum.Value.DayOfYear + daysInHistory >= DateTime.Now.DayOfYear && s.Einddatum.Value.Year == DateTime.Now.Year))).ToList<Models.Storingen>();
+                return ThisWeeksStoringen;
+            }
         }
     }
 }

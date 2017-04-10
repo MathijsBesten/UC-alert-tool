@@ -12,17 +12,19 @@ namespace UC_alert_tool.Functions.Appsettings
     public class Edit
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private static alertDatabaseEntities db = new alertDatabaseEntities();
 
         public static bool ChangeExistingValue(string name, string value) // this function will edit a value in the "dbo.settings" table
         {
             try
             {
-                var ChangeItem = db.Settings.Single(s => s.Setting == name);
-                ChangeItem.Value = value;
-                db.SaveChanges();
-                log.Info("User changed the " + name +"  settings - succesfully");
-                return true;
+                using (var db = new alertDatabaseEntities())
+                {
+                    var ChangeItem = db.Settings.Single(s => s.Setting == name);
+                    ChangeItem.Value = value;
+                    db.SaveChanges();
+                    log.Info("User changed the " + name + "  settings - succesfully");
+                    return true;
+                }
             }
             catch (Exception e)
             {

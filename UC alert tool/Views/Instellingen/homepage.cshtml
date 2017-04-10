@@ -28,6 +28,17 @@
                     <input type="text" name="OldTitle" value="@ViewBag.OldTitle" />
                 </div>
             </div>
+            <h4><b>Instellingen Oude meldingen</b></h4>
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-11">
+                    De onderstaande waarde geeft aan hoeveel dagen een gesloten melding moet blijven staan op de homepagina<br />
+                    voordat deze verwijderd wordt van de homepagina - In dagen (standaard is dit 7)<br /><br />
+                </div>
+                <label class="control-label col-md-3">Tijdspanne van oude meldingen</label>
+                <div class="col-md-9">
+                    <input type="text" name="OldMessageTime" value="@ViewBag.OldMessageTime" />
+                </div>
+            </div>
             <div class="form-group">
                 <div class="col-md-10">
                     <input type="submit" value="Opslaan" class="btn btn-default" />

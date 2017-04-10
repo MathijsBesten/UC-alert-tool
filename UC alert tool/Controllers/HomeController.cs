@@ -36,7 +36,6 @@ namespace UC_alert_tool.Controllers
             ViewBag.RunningStoringenTitle = ActiveStoringenName;
             ViewBag.PlannedStoringenTitle = PlannedStoringenName;
             ViewBag.OldStoringenTitle = OldStoringenName;
-
             return View();
         }
 

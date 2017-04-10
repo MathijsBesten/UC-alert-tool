@@ -9,10 +9,12 @@ namespace UC_alert_tool.Functions.Appsettings
 
     public class Get
     {
-        private static alertDatabaseEntities db = new alertDatabaseEntities();
         public static string setting(string nameOfSetting)
         {
-            return db.Settings.Single(s => s.Setting == nameOfSetting).Value;
+            using (var db = new alertDatabaseEntities())
+            {
+                return db.Settings.Single(s => s.Setting == nameOfSetting).Value;
+            }
         }
     }
 }
