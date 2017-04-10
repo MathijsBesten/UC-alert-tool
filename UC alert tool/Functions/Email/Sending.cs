@@ -32,7 +32,7 @@ namespace UC_alert_tool.Functions.Email
             else
             {
                 mail.Body = Email.EmailBody;
-                mail.IsBodyHtml = false;
+                mail.IsBodyHtml = true;
             }
             foreach (string recipientEmailAddress in Email.Recipients)
             {

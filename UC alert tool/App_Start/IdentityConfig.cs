@@ -20,19 +20,17 @@ namespace UC_alert_tool
         public Task SendAsync(IdentityMessage message)
         {
         alertDatabaseEntities db = new alertDatabaseEntities();
-            // Plug in your email service here to send an email.
             SmtpClient client = new SmtpClient()
             {
                 Port = int.Parse(Functions.Appsettings.Get.setting("EmailServerPort")),
-                Host = Functions.Appsettings.Get.setting("EmailServerIP")
+                Host = Functions.Appsettings.Get.setting("EmailServerIP")                
             };
+            var mail = new MailMessage(db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value, message.Destination);
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
 
-            return client.SendMailAsync(
-                db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
-                message.Destination,
-                message.Subject,
-                message.Body
-                );
+            return client.SendMailAsync(mail);
         }
     }
 

@@ -28,6 +28,11 @@
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                        @Html.ActionLink("Wachtwoord vergeten", "ForgotPassword", "Account")
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">
