@@ -82,3 +82,6 @@ textarea{
 .category-header{
     text-align: center;
 }
+.allStoringen {
+    overflow: auto;
+}
