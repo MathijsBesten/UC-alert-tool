@@ -8,6 +8,7 @@
     $('.readMoreButton').click(showFullArticle);
     $('.readLessButton').click(showOnlyFirstPartOfArticle);
     $('#smsbericht').keyup(setRemainingCount);
+    $('#generalLogDownload').click(downloadGeneralLog);
 
     $('#emailTitle').keyup(function () { 
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
@@ -32,6 +33,7 @@
             getEmailCount(true); //this will also run getEmailCount
         }
     }
+
     function getSMSCount() {
         var selectedProduct = $('#ProductID').find(":selected").text();
         var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
