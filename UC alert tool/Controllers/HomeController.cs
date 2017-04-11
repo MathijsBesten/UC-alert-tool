@@ -27,7 +27,7 @@ namespace UC_alert_tool.Controllers
             string PlannedStoringenName = Functions.Appsettings.Get.setting("plannedIssuesTitle");
             string OldStoringenName = Functions.Appsettings.Get.setting("solvedIssuesTitle");
             List<Storingen> allStoringenFromLastWeek = Functions.Storingen.Get.AllStoringenFromLastWeek();
-            List<Storingen> RunningStoringen = allStoringenFromLastWeek.Where(e => e.IsGesloten == false && e.Einddatum <= DateTime.Now).ToList();
+            List<Storingen> RunningStoringen = allStoringenFromLastWeek.Where(e => e.IsGesloten == false && (e.Einddatum <= DateTime.Now || e.Einddatum == null)).ToList();
             List<Storingen> PlannedStoringen = allStoringenFromLastWeek.Where(e => e.Begindatum.DayOfYear > DateTime.Now.DayOfYear && e.IsGesloten == false).ToList();
             List<Storingen> OldStoringen = allStoringenFromLastWeek.Where(e => e.IsGesloten == true).ToList();
             ViewBag.RunningStoringen = RunningStoringen;

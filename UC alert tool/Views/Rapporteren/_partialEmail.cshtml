@@ -1,0 +1,53 @@
+﻿@using UC_alert_tool.Models
+@model rapporterenMetEmail
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Email</h4>
+    </div>
+    <div class="panel-body">
+        <!--Start of email part-->
+        <div class="form-group">
+            <label class="control-label col-md-2">email onderwerp</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.emailtitle, new { htmlAttributes = new { @class = "form-control", id = "emailTitle" } })
+                <div>@Html.ValidationMessageFor(model => model.emailtitle, "", new { @class = "text-danger" })</div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">email body</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.emailbody, 8, 50, new { htmlAttributes = new { @class = "form-control", id = "emailBody" } })
+                <div>@Html.ValidationMessageFor(model => model.emailbody, "", new { @class = "text-danger" })</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Preview</h4>
+    </div>
+    <div class="panel-body">
+        <!--Email preview-->
+        <div class="form-group">
+            <label class="control-label col-md-2">Onderwerp:</label>
+            <div class="col-md-10">
+                <input class="form-control" id="previewTitle" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Preview email</label>
+            <div class="col-md-10">
+                <div contenteditable="true">
+                    <p id="previewUserInput">inhoud</p>
+                    <p class="previewSignaturetext">@Html.Raw(ViewBag.previewSignaturetext)</p>
+                    <br />
+                    <img src="@ViewBag.previewImage" class="previewImage" l />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
