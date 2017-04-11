@@ -1,9 +1,11 @@
 ﻿using log4net;
 using log4net.Core;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Hosting;
@@ -35,7 +37,15 @@ namespace UC_alert_tool.Controllers
         public ActionResult logging()
         {
             ViewBag.currentLogLevel = ((log4net.Repository.Hierarchy.Hierarchy)LogManager.GetRepository()).Root.Level.ToString();
-            return View();
+            string logPath = Server.MapPath("~/logs/");
+            DirectoryInfo dirInfo = new DirectoryInfo(logPath);
+            FileInfo[] files = dirInfo.GetFiles("*.log");
+            List<string> list = new List<string>(files.Length);
+            foreach (var item in files)
+            {
+                list.Add(item.Name);
+            }
+            return View(list);
         }
 
         [HttpPost]
@@ -83,6 +93,18 @@ namespace UC_alert_tool.Controllers
             TempData["showError"] = false;
             TempData["SuccessMessage"] = "Log niveau is succesvol aangepast naar " + newLogLevel;
             return RedirectToAction("Index", "Instellingen");
+        }
+        public ActionResult DownloadLog (string filename)
+        {
+            if (Path.GetExtension(filename) == ".log")
+            {
+                string fullPath = Path.Combine(Server.MapPath("~/logs/"), filename);
+                return File(fullPath, "text/log");
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Forbidden);
+            }
         }
 
         public ActionResult smsgateway()

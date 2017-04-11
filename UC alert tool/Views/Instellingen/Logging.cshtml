@@ -19,6 +19,15 @@
 <div class="settingsContentWrapper">
     <h2>Logging</h2>
     <p>Hieronder ziet u uw huidige log niveau, U kunt deze aanpassen of alleen bekijken</p>
+    <h4><b>Download logbestand</b></h4>
+    @foreach (var item in ViewData.Model)
+    {
+        @Html.ActionLink((string)item, "DownloadLog", new { filename = item });
+        <br />
+    }
+
+
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
