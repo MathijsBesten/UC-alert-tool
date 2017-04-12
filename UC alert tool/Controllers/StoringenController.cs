@@ -74,18 +74,67 @@ namespace UC_alert_tool.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
+            ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
+            ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam", storingen.ProductID);
             return View(storingen);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductID,Titel,Inhoud,EigenaarID,Begindatum,Einddatum,IsGesloten,Begintijd,Eindtijd")] Storingen storingen)
+        public ActionResult Edit([Bind(Include = "Id,ProductID,Titel,Inhoud,EigenaarID,Begindatum,Einddatum,IsGesloten,Begintijd,Eindtijd")] Storingen storingen, string emailtitle, string emailbody, string smsbericht)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(storingen).State = EntityState.Modified;
                 db.SaveChanges();
+                //receive all recipients form db
+                var allProducts = db.Producten.ToList();
+                var selectedProduct = allProducts[(storingen.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
+                var selectedProductID = selectedProduct.Id;
+                var allRecipients = selectedProduct.Klanten2Producten;
+
+                if (smsbericht != "") // email
+                {
+                    var allRecipientsOnlyEmailAddress = new List<string>();
+                    foreach (var item in allRecipients)
+                    {
+                        string email = item.Klanten.PrimaireEmail;
+                        if (!string.IsNullOrWhiteSpace(email))
+                        {
+                            allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
+                        }
+                    }
+                    //make new email
+                    email mail = new email
+                    {
+                        EmailSubject = emailtitle,
+                        EmailBody = emailbody,
+                        FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
+                        Recipients = allRecipientsOnlyEmailAddress,
+                    };
+                    Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
+                }
+                if (emailbody != "")
+                {
+                    var allRecipientsOnlySMSNumber = new List<string>();
+                    foreach (var item in allRecipients)
+                    {
+                        string email = item.Klanten.Telefoonnummer;
+                        if (!string.IsNullOrWhiteSpace(email))
+                        {
+                            allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
+                        }
+                    }
+                    SMS totalToSendMessages = new SMS
+                    {
+                        Recipients = allRecipientsOnlySMSNumber,
+                        text = smsbericht
+                    };
+                    Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
+                }
+
                 return RedirectToAction("Index", "home");
             }
             ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam", storingen.ProductID);

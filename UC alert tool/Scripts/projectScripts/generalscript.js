@@ -8,8 +8,6 @@
     $('.readMoreButton').click(showFullArticle);
     $('.readLessButton').click(showOnlyFirstPartOfArticle);
     $('#smsbericht').keyup(setRemainingCount);
-    $('#generalLogDownload').click(downloadGeneralLog);
-
     $('#emailTitle').keyup(function () { 
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
         $("#previewTitle").val(sourceText);
@@ -21,6 +19,10 @@
     });
     $('#ProductID').change(getInformationForProduct);
     // functions
+    function dropdownSMS() {
+        $('#smsPanelBody').removeClass('hidden');
+    }
+
     function getInformationForProduct() {
         $('#Summeryfield').text("");// empty textbox - text will be added to the textbox after this
         if (url == "meldingmetsms") {

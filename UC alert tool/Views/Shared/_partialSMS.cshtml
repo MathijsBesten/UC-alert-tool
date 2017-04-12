@@ -1,16 +1,13 @@
-﻿@using UC_alert_tool.Models
-@model rapporterenMetSMS
-<div class="panel panel-default">
+﻿<div class="panel panel-default">
     <div class="panel-heading">
-        <h4>sms bericht</h4>
+        <h4>sms bericht *optioneel*</h4>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" id="smsPanelBody">
         <!--Start of email part-->
         <div class="form-group">
             <label class="control-label col-md-2">sms bericht</label>
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.smsbericht, 8, 50, new { htmlAttributes = new { @class = "form-control", } })
-                <div>@Html.ValidationMessageFor(model => model.smsbericht, "", new { @class = "text-danger" })</div>
+                <textarea rows="8" cols="50"class = "form-control" id="smsbericht" name="smsbericht"  placeholder="Laat leeg als u geen sms wilt verzenden"></textarea>
             </div>
             <div class="col-md-offset-2 col-md-10 maxWidth smallInformation">
                 <p id="totalCharacters">160/160 karakters</p>
@@ -19,3 +16,7 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/Scripts/projectScripts/generalscript.js")
+    @Scripts.Render("~/bundles/jqueryval")
+}

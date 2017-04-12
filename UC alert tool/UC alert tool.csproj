@@ -417,8 +417,8 @@
     <Content Include="Views\Shared\_MeldingPartial.cshtml" />
     <Content Include="Views\Shared\_RapporterenSummeryPartial.cshtml" />
     <Content Include="Views\Instellingen\homepage.cshtml" />
-    <Content Include="Views\Rapporteren\_partialSMS.cshtml" />
-    <Content Include="Views\Rapporteren\_partialEmail.cshtml" />
+    <Content Include="Views\Shared\_partialSMS.cshtml" />
+    <Content Include="Views\Shared\_partialEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
