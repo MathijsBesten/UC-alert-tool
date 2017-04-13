@@ -29,17 +29,18 @@
   padding-left: 52px;
 }
 @media (min-width: 768px) {
-  .sidebar {
-    position: absolute;
-    width: 200px;
-    margin-top: 0px;
-    float:left;
-    margin-right:15px;
-  }
+    .sidebar {
+        position: absolute;
+        width: 200px;
+        margin-top: 0px;
+        float: left;
+        margin-right: 15px;
+    }
 }
 /*End of sidebar*/  
 .settingsContentWrapper{
     margin-left:250px;
+    min-height:315px;
 }
 
 
