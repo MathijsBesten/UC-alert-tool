@@ -85,7 +85,7 @@ namespace UC_alert_tool.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,ProductID,Titel,Inhoud,EigenaarID,Begindatum,Einddatum,IsGesloten,Begintijd,Eindtijd")] Storingen storingen, string emailtitle, string emailbody, string smsbericht)
         {
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
                 db.Entry(storingen).State = EntityState.Modified;
                 db.SaveChanges();
@@ -97,24 +97,21 @@ namespace UC_alert_tool.Controllers
 
                 if (smsbericht != "") // email
                 {
-                    var allRecipientsOnlyEmailAddress = new List<string>();
+                    var allRecipientsOnlySMSNumber = new List<string>();
                     foreach (var item in allRecipients)
                     {
-                        string email = item.Klanten.PrimaireEmail;
+                        string email = item.Klanten.Telefoonnummer;
                         if (!string.IsNullOrWhiteSpace(email))
                         {
-                            allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
+                            allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
                         }
                     }
-                    //make new email
-                    email mail = new email
+                    SMS totalToSendMessages = new SMS
                     {
-                        EmailSubject = emailtitle,
-                        EmailBody = emailbody,
-                        FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
-                        Recipients = allRecipientsOnlyEmailAddress,
+                        Recipients = allRecipientsOnlySMSNumber,
+                        text = smsbericht
                     };
-                    Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
+                    Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
                 }
                 if (emailbody != "")
                 {
