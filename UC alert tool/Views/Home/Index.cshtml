@@ -7,9 +7,8 @@
 
 <div id="homepageTopWrapper" class="jumbotron text-center" >
     <div id="homepageTop" class="container">
-        <h1 class="jumbotron-heading">@ViewBag.homepagetitle</h1>
-          
-        <span class="lead">@ViewBag.homepagetext</span>
+        <h1 class="jumbotron-heading">@ViewBag.homepagetitle</h1>          
+        <span class="lead">@Html.Raw(ViewBag.homepagetext)</span>
     </div>
 </div>
 

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "contact";
+    @Html.Partial("_SettingsPartial")
+
+}
+<div class="settingsContentWrapper">
+    <h2>contact pagina instellingen</h2>
+    <p>Hier kunt u de instellingen van de contact pagina aanpassen</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h4><b>Titels op de hoofdpagina</b></h4>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-3">Contactgegevens</label>
+                <div class="col-md-9">
+                    <textarea type="text" name="contactdetails" rows="8" cols="50">@ViewBag.contactDetails</textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Opslaan" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

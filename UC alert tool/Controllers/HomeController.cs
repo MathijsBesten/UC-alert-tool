@@ -36,13 +36,14 @@ namespace UC_alert_tool.Controllers
             ViewBag.RunningStoringenTitle = ActiveStoringenName;
             ViewBag.PlannedStoringenTitle = PlannedStoringenName;
             ViewBag.OldStoringenTitle = OldStoringenName;
-            ViewBag.homepagetext = Functions.Appsettings.Get.setting("homepageText");
-            ViewBag.homepagetitle = Functions.Appsettings.Get.setting("homepageTitle");
+            ViewBag.homepagetitle  = Functions.Appsettings.Get.setting("homepageTitle");
+            ViewBag.homepagetext= Functions.html_formatting.Replace.ReplaceEnters(Functions.Appsettings.Get.setting("homepageText"));
             return View();
         }
 
         public ActionResult Contact()
-        {     
+        {
+            ViewBag.contactdetails = Functions.html_formatting.Replace.ReplaceEnters(Functions.Appsettings.Get.setting("contactDetails"));
             return View();
         }
     }

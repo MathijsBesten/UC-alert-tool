@@ -266,5 +266,33 @@ namespace UC_alert_tool.Controllers
                 return RedirectToAction("Index", "Instellingen");
             }
         }
+        public ActionResult contact()
+        {
+            ViewBag.contactdetails = Functions.Appsettings.Get.setting("contactDetails");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult contact(string contactdetails)
+        {
+            try
+            {
+                Functions.Appsettings.Edit.ChangeExistingValue("contactDetails", contactdetails);
+                log.Info("Homepage column text has been changed by the user");
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "De waardes op de homepagina zijn aangepast";
+                return RedirectToAction("Index", "Instellingen");
+
+
+            }
+            catch (Exception e)
+            {
+                log.Info("User tried to change homepage text - error: " + e.Message);
+                TempData["showSuccess"] = false;
+                TempData["showError"] = true;
+                TempData["ErrorMessage"] = "Er was een probleem bij het opslaan van de nieuwe homepagina teskten - raadpleeg het logbestand voor meer informatie";
+                return RedirectToAction("Index", "Instellingen");
+            }
+        }
     }
 }

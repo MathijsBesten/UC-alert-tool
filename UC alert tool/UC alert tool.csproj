@@ -419,6 +419,7 @@
     <Content Include="Views\Instellingen\homepage.cshtml" />
     <Content Include="Views\Shared\_partialSMS.cshtml" />
     <Content Include="Views\Shared\_partialEmail.cshtml" />
+    <Content Include="Views\Instellingen\contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
