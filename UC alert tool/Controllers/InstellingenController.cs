@@ -233,10 +233,12 @@ namespace UC_alert_tool.Controllers
             ViewBag.PlannedTitle = Functions.Appsettings.Get.setting("plannedIssuesTitle");
             ViewBag.OldTitle = Functions.Appsettings.Get.setting("solvedIssuesTitle");
             ViewBag.OldMessageTime = Functions.Appsettings.Get.setting("OldMessageTime");
+            ViewBag.homepagetext = Functions.Appsettings.Get.setting("homepageText");
+            ViewBag.homepagetitle = Functions.Appsettings.Get.setting("homepageTitle");
             return View();
         }
         [HttpPost]
-        public ActionResult homepage(string ActiveTitle, string PlannedTitle, string OldTitle , string OldMessageTime)
+        public ActionResult homepage(string ActiveTitle, string PlannedTitle, string OldTitle , string OldMessageTime, string homepagetitle, string homepagetext)
         {
             try
             {
@@ -244,6 +246,9 @@ namespace UC_alert_tool.Controllers
                 Functions.Appsettings.Edit.ChangeExistingValue("plannedIssuesTitle", PlannedTitle);
                 Functions.Appsettings.Edit.ChangeExistingValue("solvedIssuesTitle", OldTitle);
                 Functions.Appsettings.Edit.ChangeExistingValue("OldMessageTime", OldMessageTime);
+                Functions.Appsettings.Edit.ChangeExistingValue("homepageTitle", homepagetitle);
+                Functions.Appsettings.Edit.ChangeExistingValue("homepageText",homepagetext);
+
                 log.Info("Homepage column text has been changed by the user");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;

@@ -115,21 +115,26 @@ namespace UC_alert_tool.Controllers
                 }
                 if (emailbody != "")
                 {
-                    var allRecipientsOnlySMSNumber = new List<string>();
+                    var allRecipientsOnlyEmailAddress = new List<string>();
                     foreach (var item in allRecipients)
                     {
-                        string email = item.Klanten.Telefoonnummer;
+                        string email = item.Klanten.PrimaireEmail;
                         if (!string.IsNullOrWhiteSpace(email))
                         {
-                            allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
+                            allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
                         }
                     }
-                    SMS totalToSendMessages = new SMS
+                    //here is space for saving the current recipients to a database
+
+                    //make new email
+                    email mail = new email
                     {
-                        Recipients = allRecipientsOnlySMSNumber,
-                        text = smsbericht
+                        EmailSubject = emailtitle,
+                        EmailBody = emailbody,
+                        FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
+                        Recipients = allRecipientsOnlyEmailAddress,
                     };
-                    Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
+                    Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
                 }
 
                 return RedirectToAction("Index", "home");

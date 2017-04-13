@@ -8,6 +8,7 @@
     $('.readMoreButton').click(showFullArticle);
     $('.readLessButton').click(showOnlyFirstPartOfArticle);
     $('#smsbericht').keyup(setRemainingCount);
+    $('#smsberichtedit').keyup(setRemainingCountEdit);
     $('#emailTitle').keyup(function () { 
         var sourceText = $("#emailTitle").val().replace(/\r?\n/g, '<br/>');
         $("#previewTitle").val(sourceText);
@@ -17,7 +18,48 @@
         var sourceText = $("#emailbody").val().replace(/\r?\n/g, '<br/>');
         $("#previewUserInput").html(sourceText);
     });
+    $('#emailbodyedit').keyup(function () {
+        var sourceText = $("#emailbodyedit").val().replace(/\r?\n/g, '<br/>');
+        $("#previewUserInput").html(sourceText);
+        $('#Summeryfield').text("Het bericht op de website zal worden aangepast. \r\n");
+        if (sourceText != "") {
+            if ($('#smsberichtedit').val() != "") {
+                $('#submitbuttonedit').attr("value", "Opslaan en sms'jes en emails verzenden");
+                getEmailCount(true);
+            }
+            else {
+                $('#submitbuttonedit').attr("value","Opslaan en emails verzenden");
+                getEmailCount(false);
+            }
+        }
+        else {
+            $('#submitbuttonedit').attr("value", "Opslaan");
+            $('#Summeryfield').append("Er zullen geen emails worden verstuurd \r\n");
+        }
+    });
+    $('#smsberichtedit').keyup(function () {
+        var source = $(this).val();
+        $('#Summeryfield').text("Het bericht op de website zal worden aangepast. \r\n");
+        if (source != "") {
+            if ($('#emailbodyedit').val() != "") {
+                $('#submitbuttonedit').attr("value", "Opslaan en sms'jes en emails verzenden");
+                getEmailCount(true);
+            }
+            else {
+                $('#submitbuttonedit').attr("value", "Opslaan en sms'jes verzenden");
+                getSMSCount();
+            }
+        }
+        else {
+            $('#submitbuttonedit').attr("value", "Opslaan");
+            $('#Summeryfield').append("Er zullen geen emails worden verstuurd \r\n");
+        }
+    });
+
     $('#ProductID').change(getInformationForProduct);
+
+
+
     // functions
     function dropdownSMS() {
         $('#smsPanelBody').removeClass('hidden');
@@ -25,6 +67,7 @@
 
     function getInformationForProduct() {
         $('#Summeryfield').text("");// empty textbox - text will be added to the textbox after this
+        fullurl = location.pathname;
         if (url == "meldingmetsms") {
             getSMSCount();
         }
@@ -33,6 +76,26 @@
         }
         else if (url == "meldingmetemailensms") {
             getEmailCount(true); //this will also run getEmailCount
+        }
+        else if (fullurl.indexOf("edit") >= 0) {
+            alert(fullurl);
+            $('#Summeryfield').text("Het bericht op de website zal worden aangepast. \r\n");
+            if ($('#smsberichtedit').val() != "" && $('#emailbodyedit').val() == "") {
+                $('#submitbuttonedit').attr("value", "Opslaan en sms'jes verzenden");
+                getSMSCount();
+            }
+            else if ($('#smsberichtedit').val() == "" && $('#emailbodyedit').val() != "") {
+                $('#submitbuttonedit').attr("value", "Opslaan en emails verzenden");
+                getEmailCount(false);
+            }
+            else if ($('#smsberichtedit').val() != "" && $('#emailbodyedit').val() != "") {
+                $('#submitbuttonedit').attr("value", "Opslaan en sms'jes en emails verzenden");
+                getEmailCount(true);
+            }
+            else {
+                $('#submitbuttonedit').attr("value", "Opslaan");
+                $('#Summeryfield').append("Er zullen geen sms'jes of emails worden verzonden \r\n");
+            }
         }
     }
 
@@ -118,6 +181,25 @@
         else {
             $('#totalSMSForOneMessage').text("1 bericht");
             $('#totalCharacters').text(remaining.toString() + "/160 karakters"); 
+        }
+    };
+
+    function setRemainingCountEdit() {
+        var count = $('#smsberichtedit').val().length;
+        var remaining = 160 - count;
+
+        var ModuloMoreMessages = count % 153; // total used characters in the last message
+        var remainingMoreMessages = 153 - ModuloMoreMessages;
+        if (remainingMoreMessages == 153) { // modulo 153%153 = 0 and 153-0 = 153 characters remaining - this is wrong infomation for the user so it will be set to 0 (chacters remaining)
+            remainingMoreMessages = 0;
+        }
+        if (count > 160) {
+            $('#totalCharacters').text(remainingMoreMessages.toString() + "/153 karakters");
+            $('#totalSMSForOneMessage').text(Math.ceil((count / 153)) + " berichten");
+        }
+        else {
+            $('#totalSMSForOneMessage').text("1 bericht");
+            $('#totalCharacters').text(remaining.toString() + "/160 karakters");
         }
     };
 

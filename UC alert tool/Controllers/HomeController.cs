@@ -36,6 +36,8 @@ namespace UC_alert_tool.Controllers
             ViewBag.RunningStoringenTitle = ActiveStoringenName;
             ViewBag.PlannedStoringenTitle = PlannedStoringenName;
             ViewBag.OldStoringenTitle = OldStoringenName;
+            ViewBag.homepagetext = Functions.Appsettings.Get.setting("homepageText");
+            ViewBag.homepagetitle = Functions.Appsettings.Get.setting("homepageTitle");
             return View();
         }
 
