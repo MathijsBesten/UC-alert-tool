@@ -55,6 +55,9 @@ namespace UC_alert_tool.Controllers
                 db.Storingen.Add(storing);
                 db.SaveChanges();
                 log.Info("user created a report");
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "Melding is succesvol aangemaakt";
                 return RedirectToAction("Index", "home");
             }
             else
@@ -101,6 +104,9 @@ namespace UC_alert_tool.Controllers
                     text = model.smsbericht
                 };
                 Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "Melding is succesvol aangemaakt, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de sms verzending";
                 return RedirectToAction("Index", "home");
             }
             else
@@ -155,6 +161,9 @@ namespace UC_alert_tool.Controllers
                     FromEmailAddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value,
                     Recipients = allRecipientsOnlyEmailAddress,
                 };
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "Melding is succesvol aangemaakt, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de email verzending";
                 Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
 
                 return RedirectToAction("Index", "home");
@@ -230,6 +239,9 @@ namespace UC_alert_tool.Controllers
                 //send email and sms messages async
                 Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
                 Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "Melding is succesvol aangemaakt, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de sms en email verzending";
                 return RedirectToAction("Index", "home");
 
             }

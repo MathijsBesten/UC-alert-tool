@@ -280,7 +280,7 @@ namespace UC_alert_tool.Controllers
                 log.Info("Homepage column text has been changed by the user");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
-                TempData["SuccessMessage"] = "De waardes op de homepagina zijn aangepast";
+                TempData["SuccessMessage"] = "De contactgegevens zijn aangepast";
                 return RedirectToAction("Index", "Instellingen");
 
 

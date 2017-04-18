@@ -5,6 +5,8 @@
     };
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
+    $('#submitbuttonedit').click(checkIfstartIsBeforeEnddate);
+    $('#submitbuttonedit').click(closeStoringIfAllDatesAreValid);
     $('.readMoreButton').click(showFullArticle);
     $('.readLessButton').click(showOnlyFirstPartOfArticle);
     $('#smsbericht').keyup(setRemainingCount);

@@ -61,10 +61,13 @@ textarea{
     font-style:italic;
 }
 #isGeslotenCheckbox{
-    margin-left:0px;
+    margin-left: 0px;
 }
-.fullText{
-    display:none;
+#logincheckbox{
+    margin-left: 0px;
+}
+.fullText {
+    display: none;
 }
 .readmorelink{
     color:blue;
@@ -73,7 +76,7 @@ textarea{
 
 }
 #Summeryfield{
-   max-width:560px;
+   max-width:310px;
 }
 .article{
     padding-left: 0px;

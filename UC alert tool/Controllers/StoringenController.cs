@@ -95,7 +95,7 @@ namespace UC_alert_tool.Controllers
                 var selectedProductID = selectedProduct.Id;
                 var allRecipients = selectedProduct.Klanten2Producten;
 
-                if (smsbericht != "") // email
+                if (smsbericht != "")
                 {
                     var allRecipientsOnlySMSNumber = new List<string>();
                     foreach (var item in allRecipients)
@@ -112,6 +112,9 @@ namespace UC_alert_tool.Controllers
                         text = smsbericht
                     };
                     Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(totalToSendMessages));
+                    TempData["showSuccess"] = true;
+                    TempData["showError"] = false;
+                    TempData["SuccessMessage"] = "Melding is succesvol aangepast, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de sms verzending";
                 }
                 if (emailbody != "")
                 {
@@ -135,6 +138,22 @@ namespace UC_alert_tool.Controllers
                         Recipients = allRecipientsOnlyEmailAddress,
                     };
                     Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(mail, true));
+                    TempData["showSuccess"] = true;
+                    TempData["showError"] = false;
+                    TempData["SuccessMessage"] = "Melding is succesvol aangepast, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de email verzending";
+                }
+
+                if (emailbody == "" && smsbericht == "")
+                {
+                    TempData["showSuccess"] = true;
+                    TempData["showError"] = false;
+                    TempData["SuccessMessage"] = "Melding is succesvol aangepast";
+                }
+                if (emailbody != "" && smsbericht != "")
+                {
+                    TempData["showSuccess"] = true;
+                    TempData["showError"] = false;
+                    TempData["SuccessMessage"] = "Melding is succesvol aangepast, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de sms en email verzending";
                 }
 
                 return RedirectToAction("Index", "home");
