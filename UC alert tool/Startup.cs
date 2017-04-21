@@ -21,6 +21,7 @@ namespace UC_alert_tool
             {
                 AuthorizationFilters = new[] { new HangfireAuthorizationFilter() }
             });
+            Functions.Helpdesk.Get.getAllUsers();
             RecurringJob.AddOrUpdate(() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);
         }
     }
