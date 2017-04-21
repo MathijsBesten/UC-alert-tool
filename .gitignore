@@ -241,3 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /UC alert tool/Properties/PublishProfiles
+/UC alert tool/Models

@@ -235,7 +235,304 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AaaAccAdminProfile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccBadLoginStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccHttpSession.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccount.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccountStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccOwnerProfile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccSession.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccSessionProp.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAccUserProfile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAce.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaAppService.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaContactInfo.cs">
+      <DependentUpon>HelpdeskModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaEnvironmentEntry.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaGenderHonorific.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaGroups.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaImpliedByTableColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaImpliedPermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaImpliedTableColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaLogin.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaMethodParams.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaMethodPermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaOrganization.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaOrgDetail.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaOrgStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaOrgUser.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPamConf.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPamModule.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPamModuleOption.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPassword.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPasswordHint.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPasswordProfile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPasswordRule.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPasswordStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaPostalAddress.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaRole.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaRoleCategory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaService.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaSimplePermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaTableAccessSPI.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaTablePermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaTableReadPermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaTableUpdatePermission.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaTrustedRole.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaUser.cs">
+      <DependentUpon>HelpdeskModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaUserProfile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaUserProperty.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AaaUserStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACBoxConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACCacheConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACColumnConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACColumnConfigurationList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACContextHelp.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountAdvisory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Account_DomainName.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account_Manager.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account_Report.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACDropDown.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACDropDownParams.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACElement.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACElementAttr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACFeedBackProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACFormConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACFunctionColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACGridLayoutChildConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACGridLayoutConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACGroupByColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACInstantFeedBack.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACMailConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACNavigationConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACPageLengthConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACPanelElement.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACPSConfigList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACPSConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACRendererConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTabChildConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTableColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTableLayoutChildConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACTableViewConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Action.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActiveDirectoryInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityComments.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityHistoryDiff.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityPriority.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityReminderTask.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACUserClientState.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACUserPreference.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACViewToGroupMapping.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adapter.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdapterProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADAuthenticationInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdditionalViewParams.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADOrganizationalUnits.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADUser.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdventNetErrorCode.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdvMatrixReportDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AlertToolModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -251,30 +548,2248 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AlertToolModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AllowedPattern.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AllowedValues.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Announcement.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\APIAccessLogs.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiAppDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApiDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AppDependency.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Application.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApprovalDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApprovalHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApprovalStage.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ApprovalStatusDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Archive_Exceptions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_ActivityDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_ApprovalDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_ApprovalHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_ApprovalStage.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Conversation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Conv_History.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Conv_Label.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Conv_Recipients.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_EventDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Information.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Notification.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Notify_Recipients.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_Notif_Label.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_RequestCharges.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_RequestResolution.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_TaskDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrderHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrderHistoryDiff.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrder_CCList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrder_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrder_Notes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrder_Recipients.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Arc_WorkOrder_Tags.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AreaChartProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Array_List.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetDepartment.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetInfoHolder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetInventory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetOwner.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetRequester.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetWorkstation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Asset_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Attachment.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditConfigProperty.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditGroup.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditLevel.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditNotifyCriteria.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditOperation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditOperProperty.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditRecord.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditResourceProp.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditResultProperty.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditSeverityLevel.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditTableConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditUserProperty.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Auto_Actions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Auto_Trigger.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BackupSchedule.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BarChartProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boolean_Constants.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boolean_DataObj_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boolean_Expressions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boolean_Reg_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boolean_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boolean_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Composed_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Const_Comp_Str.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Exists_Var.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Expr_Comp_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Expr_Terms.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Expr_With_Terms.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Num_Comp_Const.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Num_Dataobj_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Set_Comp_Var.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Str_Comp_Const.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Str_Comp_Str.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Str_Dataobj_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Time_Comp_Const.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bool_Time_Comp_Time.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boundary_Matchers.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calendar.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CallHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CategoryDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CC_Address.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Char_Class_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CISExtension.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CISExtensionParameter.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CISExtensionParameters.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CITypeConstraint.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Class_Expr_Opr_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClientServiceProviders.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Coll_Iterat_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ColumnAliases.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ColumnDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComponentDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComponentStore.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComponentType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComponentVendor.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Composite.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Concat_Task_List.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Concat_Task_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfFile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfigurationMetaData.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfigurationRecord.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfigurationTableInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConstituentTable.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConstraintDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContractDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContractStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contract_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Conversation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConversationDescription.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConversationHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConversationMergeInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Conversation_Label.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Conversation_Recipients.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Criteria.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cr_DataObj_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cr_Row_Task_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cr_Table_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CsvHeader.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CsvHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CsvMap.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CsvNotification.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerType_Definition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_Product.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_Requester.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer_Salesrep.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomFilter_CritCols.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomFilter_Details.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomFilter_Order.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomHandler.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReportFilterColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReportQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReportSettings.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReportTimeChoice.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReportTypes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_ColsToTotal.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_DateFilter.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_Department.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_Details.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_DisplayCols.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_Folder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_Grouping.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_QueryID.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_Sorting.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomReport_Summary.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomViewConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomViewServiceProviders.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Custom_Bool_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Custom_Schedule.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C_Task_Apis.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DashboardColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DashBoardDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataObj_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataObj_Var_Columns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataObj_Var_Tables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataSource.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DateUnAvailability.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DaysOfOperation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DefaultConfigValue.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DefaultDashboards.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DefaultDateFormat.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DefaultDepartment.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DefaultTimeFormat.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Default_Task_Conf.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Default_Task_Input.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Del_Row_Task_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DepartmentDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DepartmentUser.cs">
+      <DependentUpon>HelpdeskModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department_Account.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department_Email.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department_ReplyAddress.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department_ViewName.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DiscoveryConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DomainInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DomainLoginInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DominantTableConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DONotificationColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DONotificationModule.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DONotificationTable.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Drafts.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Drafts_Notification.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DriveInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DynamicNotifications.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\EmailViewController.cs" />
+    <Compile Include="Models\Email_Message.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Email_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Email_Task_Input.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ErrorLog.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ErrorLogOwner.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Error_Data.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EscalateToMediator.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EscalateToN.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EventDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Event_Participants.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Event_Response.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exceptions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExcludedDomainNameList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exclude_EmailID.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expressions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expressions_PIDX.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExtensionHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\External_Action.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeatureParams.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FileHandler.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FKColumnDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FKDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fk_Paths.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Fk_Pointers.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Form_Customizer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Forward.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FunctionHandler.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalAccount_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalAdmin.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalContact_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GlobalSupportRep_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GraphType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupAttributes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupMemberAttributes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupMetaData.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GroupTemplate.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Group_ReplyAddress.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Handler.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HardDiskInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelpDeskCrew.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelpdeskModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpdeskModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelpdeskModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpdeskModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelpdeskModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpdeskModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hold_Period_Group.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hold_Period_Tech.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HolidayDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoursOfOperation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HwAuditHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HyperlinkConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImportADFields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IncomingMailAliases.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IncomingMailServer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IndexDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IndexDetailsQueue.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Industry_Definition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inner_Join.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inner_Join_Attribs.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inner_Join_Tables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Instances.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Instance_Data.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IsGroupSync.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Iterat_Task_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Iter_DataObj_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Iter_Table_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JavaScriptAction.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Java_Api.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JespaConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JobSheet.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JoinColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\JoinTable.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KB_Topics.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KeyboardInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Klanten.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Klanten2Producten.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LabelDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LeaveTypeDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LevelDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LicenseReminder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LineChartProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LocationDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Logger.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Loop_Task_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MailPortDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MailProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mail_Server.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaintenanceContract.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MatrixReportDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemoryInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuAndMenuItem.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MenuItem.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu_Actions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu_To_Roles.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Menu_To_Templates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message_Keys.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message_Templates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\MigrationDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModeSpecificServiceProviders.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Module.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModuleContext.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModuleInstance.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModuleTier.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MonitorInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MouseInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MssqlErrorCode.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MultiMediaInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MySQLErrorCode.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NetworkDnsInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NetworkDomainInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NetworkInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NetworkLoginInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotificationAttributes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotificationContent.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotificationToDescription.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification_Label.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification_MessageId.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notification_Recipients.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotifyContentDef.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotifyDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NotifyTypeDef.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notify_Solution.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_Agg_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_DataObj_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_Expressions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_Rank_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_Row_Count.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Numeric_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Num_Const_Opr_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Num_DataObj_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Num_Expr_Opr_Const.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Num_Expr_Opr_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Num_Obj_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ObjectIdentifierColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OpenViewInContentArea.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperatingHours.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperationAuditRecord.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OracleErrorCode.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OsHotFixInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OsInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OutgoingMailAliases.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OutgoingMailServer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Out_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Out_Var_Instances.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ownership_Definition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Parent_Child_Req.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Parent_Class_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PartialClasses.cs" />
+    <Compile Include="Models\PasswordInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pattern_DataObj_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pattern_Expressions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pattern_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pattern_To_Char_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pattern_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PdfUIComponent.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PdfViewConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PendingUploadRecords.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Periodic.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalityConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonalizedViewMap.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PgSQLErrorCode.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhysicalDriveInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PieChartProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PKDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pointers_In_Path.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pointer_Fk_Attributes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalColourConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalDepartments.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalLayout.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalLinkConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalSectionConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortalSubSection.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PortInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\POStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\POStatusHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Presence.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pre_Def_Char_Class.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrinterInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Print_Log.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Print_Log_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Print_Log_RelVars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Print_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Print_Task_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Print_Task_Relvar.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PriorityDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProcessorInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Producten.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Product_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product_ReplyAddress.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Projection_Operator.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Proj_Opr_Output.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProxySettings.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseCategory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseConfigValue.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseLot.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseLotExt.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrderExt.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseOrder_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseRequest.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PurchaseStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quantifier.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quantifier_Operator.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quantifier_Range.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QueryFilterColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QueryReport.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QueryReportMapping.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QueryReport_DateFilter.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QueueDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QueueEscalation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Queue_Email.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Queue_ReplyAddress.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quotation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RangeValues.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\RapporterenViewModel.cs" />
+    <Compile Include="Models\RateTypeDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RCTechnicianIDs.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RDTDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecentItems.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecentWO_EmailHeaders.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rec_Info.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegionDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RegisterList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Reg_Expr_Split_List.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RelationalCriteria.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Relvars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Relvars_To_Tables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rename_Operator.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Replace_Reg_Expr_Str.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReplyTemplate.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportChartTypes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportColumnDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportColumn_Department.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportCriteria.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportCriteriaType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportDisplayFormat.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportRI.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportScheduleTask.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportSchedule_Department.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ReportSubModules.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Report_Modules.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestAging.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestCharges.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestChargeType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Requester.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Requester_Fields.cs">
+      <DependentUpon>HelpdeskModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestOnHold.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestResolution.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestTemplate_Customizer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestTemplate_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestTemplate_List.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RequestTemplate_UDF.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Request_Trash.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResourceBundle.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ResourceBundleStack.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Resource_Location.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoboFailureOptions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoboSuccessOptions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoboTaskConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RoboTaskList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role_Department.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleActionFieldsMap.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleActionsMap.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleActionTypes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleCriteriaFieldValues.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleCriteriaMap.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleData.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleEventTypes.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RuleFormField.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rules.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rules_To_Statements.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rule_Notifications.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rule_SelectQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rule_Triggers.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rule_WO.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rule_WOFields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rule_WOStates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sales_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SB_Applications.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Schedule.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ScheduleCsvInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Scheduled_WorkFlow.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Schedule_Audit.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SCPGlobalConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Scrm_SCP_Account.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Scrm_SCP_Contact.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SDActiveDirectoryInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SDeskAttachment.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SDUser.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SDUserProfile.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchModules.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SearchTable.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Selection_Operator.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SelectTable.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SeqGenState.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServerServiceProviders.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceAction.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceActionConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceActionFields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceActionFieldsData.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServicecenterModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServicecenterModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServicecenterModel.cs" />
+    <Compile Include="Models\ServicecenterModel.Designer.cs">
+      <DependentUpon>ServicecenterModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\ServicecenterModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceContract.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceContractCost.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceContractStatus.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceContract_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCTR.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCTRInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCTR_Cost.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceCTR_Product.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceDeskTableView.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceIntegAudit.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceRequestData.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceResponseScript.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Services.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServicesCredentials.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Settings.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Simple_Class_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SLADefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SLAEscalation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SLA_SelectQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SLA_WOStates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmsConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SMSViewModel.cs" />
+    <Compile Include="Models\SMTPAuthLoginInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SoftwareInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SoftwareList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SoftwareType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SolExpireInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SolRatingInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Solution.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SolutionComments.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SolutionInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Solution_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Solution_Keywords.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sol_CommentHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Sol_StatusDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SortColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SoundCardInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SQinTreeQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SRepKeyInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Start_End_Count.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Statements.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StatusDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StepChartProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Storingen.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\String_DataObj_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\String_Expressions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\String_Matcher_Group.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\String_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\String_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Str_Const_Opr_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Str_DataObj_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Str_Deriv_Num_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Str_Expr_Opr_Const.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Str_Expr_Opr_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Str_Obj_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SUBACCOUNT_SALESFORCE.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubCategoryDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subject_Keys.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubQueryReport.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubReportColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubReportDisplayItems.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SubReportMapping.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SummaryMainReportDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupportPlanDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupportPlanTypeDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupportPlan_Cost.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyAnswers.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyConfigValue.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyEscalation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyPerRequest.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyPerRequestExt.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SurveyQuestions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Survey_SelectQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SwAuditHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWMeter.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWMeterHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWorkOrder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWorkOrderStates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWorkOrder_CCList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWorkOrder_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SWorkOrder_Product.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemInfoDepartment.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemInfoOwner.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemInfoRequester.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemUserInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TabDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TableDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TableDSMap.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TablesInTree.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TableViewSortColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tags.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDetailsHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskDetailsHistoryDiff.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tasks_To_Exceptions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaskTable.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task_Conf.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task_Input.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task_Instances.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task_Owner.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Task_Templates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TechLeaveInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Technician_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TechUnavailability.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeleCallType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TelephonyServer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TelephonyService.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Templates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TemplateViewParams.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Template_Constants.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Template_Data.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Template_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Theme.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThemeAttributesMapping.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TierComponent.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiledView.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeChartProperties.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeEntry_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeZoneDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeZone_Definition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_Agg_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_Constants.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_DataObj_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_Expressions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_Operator_Delta.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Time_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TmpColumnRenderer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TmpViewColumn.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TmpViewCriteria.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TmpViewDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TopicGroupDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TopicGroup_Topics.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Topic_Root.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\To_Address.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TreeDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TreeIdentifierColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TreeQuery.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TreeQueryIdentifierColumns.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TriggerActions.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TweetMessage.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TweetReply.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TwitterSettings.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TwitterUser.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Twitter_Keywords.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Udef_Char_Cls_Const.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Udef_Char_Cls_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Udef_Class_Range.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Udef_Expr_Opr_Expr.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UDF_PickListValues.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UIComponent.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UIComponent_PIDX.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UINavigationConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UnInsSoftwareInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Update_Index_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Update_Template_Vars.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Upd_DataObj_Var_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Upd_Row_Task_Template.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UsbInfo.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserManager.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserNotifications.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserSearchModules.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserTabOrder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserViewTime.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_Def_Char_Class.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User_DepartmentRoles.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UVHValues.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ValidateRegisterList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VendorDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewConfiguration.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewConfiguration_PIDX.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewCustomizer.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewDataTableMapping.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Views.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebMenuItem.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebMenuParamDetails.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebUIComponent.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebViewConfig.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_Allowed_Values.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_Column_Details.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_Const_Definition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_FK_Definition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_FK_Definition_Col.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_Range_Values.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WE_Table_Details.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WF_Task_Variables.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\While_Loop_Tasks.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WidgetAssociation.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WidgetDefinition.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WidgetLevel.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WidgetProperty.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WidgetSource.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WidgetToJSP.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WmiErrorCode.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkEngine_Config.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workflow_Instances.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workflow_Statements.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workflow_Task.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workflow_Templates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkFlow_Type.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workflow_Unit.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workflow_Unit_PIDX.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderHistory.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderHistoryDiff.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderStates.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderThread_Forums.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderToDescription.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrderToTrimmedDescription.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Account.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_CCList.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_EmailHeaders.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Product.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Queue.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Recipients.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Tags.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WorkOrder_Tweet.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workstation_Fields.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WO_Assessment.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WO_Group_Info.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WO_RuleExecutionLog.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WO_Status_Info.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WO_Tech_Info.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zcrm_SCP_Account.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zcrm_SCP_Contact.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ZRSharedUsers.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ZRSharedUserType.cs">
+      <DependentUpon>ServicecenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -302,8 +2817,42 @@
       <DependentUpon>AlertToolModel.edmx</DependentUpon>
       <LastGenOutput>AlertToolModel.cs</LastGenOutput>
     </Content>
+    <EntityDeploy Include="Models\HelpdeskModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HelpdeskModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HelpdeskModel.edmx.diagram">
+      <DependentUpon>HelpdeskModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ServicecenterModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ServicecenterModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ServicecenterModel.edmx.diagram">
+      <DependentUpon>ServicecenterModel.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Models\HelpdeskModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HelpdeskModel.edmx</DependentUpon>
+      <LastGenOutput>HelpdeskModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HelpdeskModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HelpdeskModel.edmx</DependentUpon>
+      <LastGenOutput>HelpdeskModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ServicecenterModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServicecenterModel.edmx</DependentUpon>
+      <LastGenOutput>ServicecenterModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ServicecenterModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ServicecenterModel.edmx</DependentUpon>
+      <LastGenOutput>ServicecenterModel1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
