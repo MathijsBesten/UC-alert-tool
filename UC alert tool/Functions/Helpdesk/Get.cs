@@ -13,10 +13,11 @@ namespace UC_alert_tool.Functions.Helpdesk
         {
             using (var db = new Models.supportcenterEntities())
             {;
-                Console.WriteLine("");
+                Console.WriteLine("");         
                 var usersWithAlert = db.Requester_Fields.Where(u => u.UDF_CHAR1 == "Ja");
                 var allDepartmentuserID = usersWithAlert.Select(u => u.DEPARTMENTUSERID).ToList<long>();
                 var allContactInfo = new List<AaaContactInfo>();
+                var allNewContacts = new List<Klanten>();
                 foreach (long departmentUserID in allDepartmentuserID)
                 {
                     var departmentuser = db.DepartmentUser.First(u => u.DEPARTMENTUSERID == departmentUserID);

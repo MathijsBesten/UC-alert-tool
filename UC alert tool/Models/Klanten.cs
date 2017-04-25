@@ -26,6 +26,7 @@ namespace UC_alert_tool.Models
         public string SecundaireEmail { get; set; }
         public string Telefoonnummer { get; set; }
         public Nullable<int> ProductID { get; set; }
+        public string debiteurnummer { get; set; }
     
         public virtual Producten Producten { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

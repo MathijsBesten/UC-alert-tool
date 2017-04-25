@@ -15,6 +15,7 @@
           <Property Name="SecundaireEmail" Type="varchar(max)" />
           <Property Name="Telefoonnummer" Type="varchar(max)" />
           <Property Name="ProductID" Type="int" />
+          <Property Name="debiteurnummer" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Klanten2Producten">
           <Key>
@@ -137,6 +138,7 @@
           <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Klanten_Producten" FromRole="Klanten" ToRole="Producten" />
           <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Klanten" FromRole="Klanten" ToRole="Klanten2Producten" />
           <Property Name="ProductID" Type="Int32" />
+          <Property Name="debiteurnummer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Producten">
           <Key>
@@ -274,6 +276,7 @@
           <EntitySetMapping Name="Klanten">
             <EntityTypeMapping TypeName="alertDatabaseModel.Klanten">
               <MappingFragment StoreEntitySet="Klanten">
+                <ScalarProperty Name="debiteurnummer" ColumnName="debiteurnummer" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Naam" ColumnName="Naam" />
