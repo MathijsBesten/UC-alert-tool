@@ -25,6 +25,8 @@ namespace UC_alert_tool.Models
         public int Id { get; set; }
         public string Naam { get; set; }
         public int HelpdeskID { get; set; }
+        public Nullable<int> ProductgroepID { get; set; }
+        public Nullable<int> ProducttypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storingen> Storingen { get; set; }
@@ -32,5 +34,7 @@ namespace UC_alert_tool.Models
         public virtual ICollection<Klanten> Klanten { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Klanten2Producten> Klanten2Producten { get; set; }
+        public virtual Productgroep Productgroep { get; set; }
+        public virtual Producttype Producttype { get; set; }
     }
 }

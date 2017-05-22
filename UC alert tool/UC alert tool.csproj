@@ -89,6 +89,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SharePoint.Client, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SharePoint.Client.Runtime, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Common Files\microsoft shared\Web Server Extensions\16\ISAPI\Microsoft.SharePoint.Client.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -1707,6 +1715,12 @@
       <DependentUpon>SupportcenterModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producten.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Productgroep.cs">
+      <DependentUpon>AlertToolModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Producttype.cs">
       <DependentUpon>AlertToolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Product_Fields.cs">
