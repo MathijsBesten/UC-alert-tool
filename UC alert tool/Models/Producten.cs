@@ -24,7 +24,6 @@ namespace UC_alert_tool.Models
     
         public int Id { get; set; }
         public string Naam { get; set; }
-        public int HelpdeskID { get; set; }
         public Nullable<int> ProductgroepID { get; set; }
         public Nullable<int> ProducttypeID { get; set; }
     

@@ -212,7 +212,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HelpdeskID" Nullable="false" Type="Int32" />
           <NavigationProperty Name="Storingen" Relationship="Self.FK_Storingen_Producten" FromRole="Producten" ToRole="Storingen" />
           <NavigationProperty Name="Klanten" Relationship="alertDatabaseModel.FK_Klanten_Producten" FromRole="Producten" ToRole="Klanten" />
           <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Producten" ToRole="Klanten2Producten" />

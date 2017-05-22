@@ -13,10 +13,8 @@
         <EntityTypeShape EntityType="alertDatabaseModel.Klanten2Producten" Width="1.75" PointX="4.125" PointY="5.625" />
         <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Klanten" />
         <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Producten" ManuallyRouted="true" >
-          <ConnectorPoint PointX="1.7531293842900164" PointY="4.4417936197916656" />
-          <ConnectorPoint PointX="1.7531293842900164" PointY="4.5808541695963534" />
-          <ConnectorPoint PointX="1.7592699453357983" PointY="4.5808541695963534" />
-          <ConnectorPoint PointX="1.7592699453357983" PointY="5.71875" />
+          <ConnectorPoint PointX="2.1875062499999998" PointY="4.2494921875" />
+          <ConnectorPoint PointX="2.1875062499999998" PointY="5.71875" />
           <ConnectorPoint PointX="4.125" PointY="5.71875" />
         </AssociationConnector>
         <EntityTypeShape EntityType="alertDatabaseModel.Settings" Width="1.5" PointX="10.125" PointY="2" />
@@ -25,8 +23,8 @@
         <AssociationConnector Association="alertDatabaseModel.FK_Producttype_Productgroep" />
         <AssociationConnector Association="alertDatabaseModel.FK_Producten_Productgroep" ManuallyRouted="true" >
           <ConnectorPoint PointX="8" PointY="5.09375" />
-          <ConnectorPoint PointX="2.1875025" PointY="5.09375" />
-          <ConnectorPoint PointX="2.1875025" PointY="4.4417936197916656" />
+          <ConnectorPoint PointX="2.15625375" PointY="5.09375" />
+          <ConnectorPoint PointX="2.15625375" PointY="4.2494921875" />
         </AssociationConnector>
         <AssociationConnector Association="alertDatabaseModel.FK_Producten_Producttype" />
       </Diagram>
