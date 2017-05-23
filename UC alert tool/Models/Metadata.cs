@@ -47,8 +47,6 @@ namespace UC_alert_tool.Models
     {
         public int Id { get; set; }
         public string Naam { get; set; }
-        [Display(Name ="Helpdesk ID")]
-        public int HelpdeskID { get; set; }
     }
 
 }

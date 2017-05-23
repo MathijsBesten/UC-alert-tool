@@ -100,13 +100,13 @@ namespace UC_alert_tool.Functions.Helpdesk
 
         public static void getAllUsers()
         {
+            var allNewContacts = new List<Klanten>();
             using (var db = new Models.supportcenterEntities())
-            {;
-                Console.WriteLine("");         
+            {
+                Console.WriteLine("");
                 var usersWithAlert = db.Requester_Fields.Where(u => u.UDF_CHAR1 == "Ja");
                 var allDepartmentuserID = usersWithAlert.Select(u => u.DEPARTMENTUSERID).ToList<long>();
                 var allContactInfo = new List<AaaContactInfo>();
-                var allNewContacts = new List<Klanten>();
                 foreach (long departmentUserID in allDepartmentuserID)
                 {
                     var departmentuser = db.DepartmentUser.First(u => u.DEPARTMENTUSERID == departmentUserID);
@@ -126,14 +126,26 @@ namespace UC_alert_tool.Functions.Helpdesk
                     }
                     catch (Exception e)
                     {
-                        log.Error("Could not add user \'" +aaaUserItem.AaaContactInfo.First().EMAILID + " \' to the database, user has probably no company assigned to him/her");
+                        log.Error("Could not add user \'" + aaaUserItem.AaaContactInfo.First().EMAILID + " \' to the database, user has probably no company assigned to him/her");
                         log.Error("Error: " + e);
                     }
 
                 }
-                
+
                 Console.Write("");
-                Console.WriteLine("");
+            }
+            using (var db = new alertDatabaseEntities())
+            {
+                //db.Database.ExecuteSqlCommand("delete * from dbo.Klanten");
+                foreach (var item in allNewContacts)
+                {
+                    if (!string.IsNullOrEmpty(item.Naam)) // check if there is a email in the item
+                    {
+                        db.Klanten.Add(item);
+                    }
+                }
+                db.SaveChanges();
+                log.Info("synced all the 'klanten' in dbo.Klanten");
             }
         }
     }

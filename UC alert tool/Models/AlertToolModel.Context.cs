@@ -25,7 +25,6 @@ namespace UC_alert_tool.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Klanten> Klanten { get; set; }
         public virtual DbSet<Producten> Producten { get; set; }
         public virtual DbSet<Storingen> Storingen { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
@@ -33,5 +32,6 @@ namespace UC_alert_tool.Models
         public virtual DbSet<Settings> Settings { get; set; }
         public virtual DbSet<Productgroep> Productgroep { get; set; }
         public virtual DbSet<Producttype> Producttype { get; set; }
+        public virtual DbSet<Klanten> Klanten { get; set; }
     }
 }

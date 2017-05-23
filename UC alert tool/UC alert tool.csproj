@@ -1049,6 +1049,7 @@
     <Compile Include="Models\DashBoardDefinition.cs">
       <DependentUpon>SupportcenterModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DatabaseViewModel.cs" />
     <Compile Include="Models\DataObj_Variables.cs">
       <DependentUpon>SupportcenterModel.tt</DependentUpon>
     </Compile>

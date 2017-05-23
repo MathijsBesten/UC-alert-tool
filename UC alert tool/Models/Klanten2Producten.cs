@@ -18,7 +18,7 @@ namespace UC_alert_tool.Models
         public int KlantID { get; set; }
         public int ProductID { get; set; }
     
-        public virtual Klanten Klanten { get; set; }
         public virtual Producten Producten { get; set; }
+        public virtual Klanten Klanten { get; set; }
     }
 }
