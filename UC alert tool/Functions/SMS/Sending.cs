@@ -38,10 +38,13 @@ namespace UC_alert_tool.Functions.SMS
                 int count = 0;
                 foreach (string recipient in sms.Recipients)
                 {
-                    string InternationReadyPhoneNumber = recipient.Replace("+", "00"); // this will make all interational phonenumers usable for the sms gateway
+                    string completeFormattedNumber;
+                    completeFormattedNumber = recipient.Replace("+", "00"); // this will make all interational phonenumers usable for the sms gateway
+                    completeFormattedNumber = completeFormattedNumber.Replace("-", "");// remove all dash characters from phonenumber
+                    completeFormattedNumber = completeFormattedNumber.Replace(" ", ""); //remove all whitespaces from phonenumber
                     try
                     {
-                        string completeURL = string.Format(url, sms.server, sms.username, sms.password, InternationReadyPhoneNumber, sms.text);
+                        string completeURL = string.Format(url, sms.server, sms.username, sms.password, completeFormattedNumber, sms.text);
                         var respone = client.DownloadString(completeURL);
                         if (!respone.Contains("OK"))// there are no other responses that contains the letters "OK"
                         {
