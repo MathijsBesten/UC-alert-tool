@@ -21,7 +21,7 @@ namespace UC_alert_tool
             {
                 AuthorizationFilters = new[] { new HangfireAuthorizationFilter() }
             });
-            Functions.Helpdesk.Get.getAllUsers();
+            //Functions.Helpdesk.Get.ClearDatabaseAndSync();
             RecurringJob.AddOrUpdate(() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);
         }
     }

@@ -30,7 +30,7 @@ namespace UC_alert_tool.Controllers
             Storingen model = new Storingen();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
             ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(model);
         }
@@ -70,7 +70,7 @@ namespace UC_alert_tool.Controllers
             rapporterenMetSMS model = new rapporterenMetSMS();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
             ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(model);
         }
@@ -121,7 +121,7 @@ namespace UC_alert_tool.Controllers
             rapporterenMetEmail model = new rapporterenMetEmail();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
             ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
@@ -178,7 +178,7 @@ namespace UC_alert_tool.Controllers
             rapporterenMetEmailenSMS model = new rapporterenMetEmailenSMS();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
             ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list

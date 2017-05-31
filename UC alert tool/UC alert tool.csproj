@@ -233,6 +233,7 @@
     <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Functions\Email template\Set.cs" />
     <Compile Include="Functions\Files\GeneralFiles.cs" />
+    <Compile Include="Functions\Formatting\SharepointFormatting.cs" />
     <Compile Include="Functions\Helpdesk\Get.cs" />
     <Compile Include="Functions\html formatting\Replace.cs" />
     <Compile Include="Functions\Recipients\Email\Get.cs" />

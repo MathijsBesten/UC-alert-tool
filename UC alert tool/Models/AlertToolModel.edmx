@@ -29,10 +29,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Naam" Type="varchar(max)" Nullable="false" />
-          <Property Name="ProductgroepID" Type="int" />
-          <Property Name="ProducttypeID" Type="int" />
+          <Property Name="ProductgroepID" Type="int" Nullable="false" />
+          <Property Name="ProducttypeID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Productgroep">
           <Key>
@@ -46,7 +46,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Producttypenaam" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Producttypenaam" Type="varchar(max)" Nullable="false" />
           <Property Name="ProductMainID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Settings">
@@ -107,7 +107,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Producten_Productgroep">
-          <End Role="Productgroep" Type="Self.Productgroep" Multiplicity="0..1" />
+          <End Role="Productgroep" Type="Self.Productgroep" Multiplicity="1" />
           <End Role="Producten" Type="Self.Producten" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Productgroep">
@@ -119,7 +119,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Producten_Producttype">
-          <End Role="Producttype" Type="Self.Producttype" Multiplicity="0..1" />
+          <End Role="Producttype" Type="Self.Producttype" Multiplicity="1" />
           <End Role="Producten" Type="Self.Producten" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producttype">
@@ -192,19 +192,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="alertDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Producten">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Naam" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Storingen" Relationship="Self.FK_Storingen_Producten" FromRole="Producten" ToRole="Storingen" />
-          <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Producten" ToRole="Klanten2Producten" />
-          <Property Name="ProductgroepID" Type="Int32" />
-          <Property Name="ProducttypeID" Type="Int32" />
-          <NavigationProperty Name="Productgroep" Relationship="alertDatabaseModel.FK_Producten_Productgroep" FromRole="Producten" ToRole="Productgroep" />
-          <NavigationProperty Name="Producttype" Relationship="alertDatabaseModel.FK_Producten_Producttype" FromRole="Producten" ToRole="Producttype" />
-          </EntityType>
         <EntityType Name="Storingen">
           <Key>
             <PropertyRef Name="Id" />
@@ -219,39 +206,28 @@
           <Property Name="Einddatum" Type="DateTime" Precision="0" />
           <Property Name="Eindtijd" Type="Time" Precision="7" />
           <Property Name="IsGesloten" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Producten" Relationship="Self.FK_Storingen_Producten" FromRole="Storingen" ToRole="Producten" />
+          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Storingen_Producten" FromRole="Storingen" ToRole="Producten" />
         </EntityType>
-        <Association Name="FK_Storingen_Producten">
-          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
-          <End Role="Storingen" Type="Self.Storingen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producten">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Storingen">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="alertDatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Producten" EntityType="Self.Producten" />
           <EntitySet Name="Storingen" EntityType="Self.Storingen" />
-          <AssociationSet Name="FK_Storingen_Producten" Association="Self.FK_Storingen_Producten">
-            <End Role="Producten" EntitySet="Producten" />
-            <End Role="Storingen" EntitySet="Storingen" />
-          </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="alertDatabaseModel.sysdiagrams" />
           <EntitySet Name="Klanten2Producten" EntityType="alertDatabaseModel.Klanten2Producten" />
-          <AssociationSet Name="FK_Klanten2Producten_Producten" Association="alertDatabaseModel.FK_Klanten2Producten_Producten">
-            <End Role="Producten" EntitySet="Producten" />
-            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
-          </AssociationSet>
           <EntitySet Name="Settings" EntityType="alertDatabaseModel.Settings" />
           <EntitySet Name="Productgroep" EntityType="alertDatabaseModel.Productgroep" />
+          <EntitySet Name="Klanten" EntityType="alertDatabaseModel.Klanten" />
+          <AssociationSet Name="FK_Klanten2Producten_Klanten" Association="alertDatabaseModel.FK_Klanten2Producten_Klanten">
+            <End Role="Klanten" EntitySet="Klanten" />
+            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
+          </AssociationSet>
           <EntitySet Name="Producttype" EntityType="alertDatabaseModel.Producttype" />
           <AssociationSet Name="FK_Producttype_Productgroep" Association="alertDatabaseModel.FK_Producttype_Productgroep">
             <End Role="Productgroep" EntitySet="Productgroep" />
             <End Role="Producttype" EntitySet="Producttype" />
+          </AssociationSet>
+          <EntitySet Name="Producten" EntityType="alertDatabaseModel.Producten" />
+          <AssociationSet Name="FK_Klanten2Producten_Producten" Association="alertDatabaseModel.FK_Klanten2Producten_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
           </AssociationSet>
           <AssociationSet Name="FK_Producten_Productgroep" Association="alertDatabaseModel.FK_Producten_Productgroep">
             <End Role="Productgroep" EntitySet="Productgroep" />
@@ -261,10 +237,9 @@
             <End Role="Producttype" EntitySet="Producttype" />
             <End Role="Producten" EntitySet="Producten" />
           </AssociationSet>
-          <EntitySet Name="Klanten" EntityType="alertDatabaseModel.Klanten" />
-          <AssociationSet Name="FK_Klanten2Producten_Klanten" Association="alertDatabaseModel.FK_Klanten2Producten_Klanten">
-            <End Role="Klanten" EntitySet="Klanten" />
-            <End Role="Klanten2Producten" EntitySet="Klanten2Producten" />
+          <AssociationSet Name="FK_Storingen_Producten" Association="alertDatabaseModel.FK_Storingen_Producten">
+            <End Role="Producten" EntitySet="Producten" />
+            <End Role="Storingen" EntitySet="Storingen" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagrams">
@@ -284,21 +259,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="KlantID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Klanten2Producten" ToRole="Producten" />
           <NavigationProperty Name="Klanten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Klanten" FromRole="Klanten2Producten" ToRole="Klanten" />
+          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Klanten2Producten" ToRole="Producten" />
         </EntityType>
-        <Association Name="FK_Klanten2Producten_Producten">
-          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="1" />
-          <End Type="alertDatabaseModel.Klanten2Producten" Role="Klanten2Producten" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producten">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Klanten2Producten">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Settings">
           <Key>
             <PropertyRef Name="Id" />
@@ -316,52 +279,6 @@
           <NavigationProperty Name="Producttype" Relationship="alertDatabaseModel.FK_Producttype_Productgroep" FromRole="Productgroep" ToRole="Producttype" />
           <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Producten_Productgroep" FromRole="Productgroep" ToRole="Producten" />
         </EntityType>
-        <EntityType Name="Producttype">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Producttypenaam" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductMainID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Productgroep" Relationship="alertDatabaseModel.FK_Producttype_Productgroep" FromRole="Producttype" ToRole="Productgroep" />
-          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Producten_Producttype" FromRole="Producttype" ToRole="Producten" />
-        </EntityType>
-        <Association Name="FK_Producttype_Productgroep">
-          <End Type="alertDatabaseModel.Productgroep" Role="Productgroep" Multiplicity="1" />
-          <End Type="alertDatabaseModel.Producttype" Role="Producttype" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productgroep">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Producttype">
-              <PropertyRef Name="ProductMainID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Producten_Productgroep">
-          <End Type="alertDatabaseModel.Productgroep" Role="Productgroep" Multiplicity="0..1" />
-          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Productgroep">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Producten">
-              <PropertyRef Name="ProductgroepID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Producten_Producttype">
-          <End Type="alertDatabaseModel.Producttype" Role="Producttype" Multiplicity="0..1" />
-          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producttype">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Producten">
-              <PropertyRef Name="ProducttypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Klanten">
           <Key>
             <PropertyRef Name="Id" />
@@ -387,22 +304,95 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Producttype">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Producttypenaam" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProductMainID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Productgroep" Relationship="alertDatabaseModel.FK_Producttype_Productgroep" FromRole="Producttype" ToRole="Productgroep" />
+          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Producten_Producttype" FromRole="Producttype" ToRole="Producten" />
+        </EntityType>
+        <Association Name="FK_Producttype_Productgroep">
+          <End Type="alertDatabaseModel.Productgroep" Role="Productgroep" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Producttype" Role="Producttype" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productgroep">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Producttype">
+              <PropertyRef Name="ProductMainID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Producten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProductgroepID" Type="Int32" Nullable="false" />
+          <Property Name="ProducttypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Producten" ToRole="Klanten2Producten" />
+          <NavigationProperty Name="Productgroep" Relationship="alertDatabaseModel.FK_Producten_Productgroep" FromRole="Producten" ToRole="Productgroep" />
+          <NavigationProperty Name="Producttype" Relationship="alertDatabaseModel.FK_Producten_Producttype" FromRole="Producten" ToRole="Producttype" />
+          <NavigationProperty Name="Storingen" Relationship="alertDatabaseModel.FK_Storingen_Producten" FromRole="Producten" ToRole="Storingen" />
+        </EntityType>
+        <Association Name="FK_Klanten2Producten_Producten">
+          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Klanten2Producten" Role="Klanten2Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klanten2Producten">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producten_Productgroep">
+          <End Type="alertDatabaseModel.Productgroep" Role="Productgroep" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productgroep">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Producten">
+              <PropertyRef Name="ProductgroepID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Producten_Producttype">
+          <End Type="alertDatabaseModel.Producttype" Role="Producttype" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producttype">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Producten">
+              <PropertyRef Name="ProducttypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Storingen_Producten">
+          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="1" />
+          <End Type="alertDatabaseModel.Storingen" Role="Storingen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producten">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Storingen">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="alertDatabaseModelStoreContainer" CdmEntityContainer="alertDatabaseEntities">
-          <EntitySetMapping Name="Producten">
-            <EntityTypeMapping TypeName="alertDatabaseModel.Producten">
-              <MappingFragment StoreEntitySet="Producten">
-                <ScalarProperty Name="ProducttypeID" ColumnName="ProducttypeID" />
-                <ScalarProperty Name="ProductgroepID" ColumnName="ProductgroepID" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Naam" ColumnName="Naam" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Storingen">
             <EntityTypeMapping TypeName="alertDatabaseModel.Storingen">
               <MappingFragment StoreEntitySet="Storingen">
@@ -456,6 +446,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Klanten">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Klanten">
+              <MappingFragment StoreEntitySet="Klanten">
+                <ScalarProperty Name="debiteurnummer" ColumnName="debiteurnummer" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Telefoonnummer" ColumnName="Telefoonnummer" />
+                <ScalarProperty Name="SecundaireEmail" ColumnName="SecundaireEmail" />
+                <ScalarProperty Name="PrimaireEmail" ColumnName="PrimaireEmail" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Producttype">
             <EntityTypeMapping TypeName="alertDatabaseModel.Producttype">
               <MappingFragment StoreEntitySet="Producttype">
@@ -465,14 +468,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Klanten">
-            <EntityTypeMapping TypeName="alertDatabaseModel.Klanten">
-              <MappingFragment StoreEntitySet="Klanten">
-                <ScalarProperty Name="debiteurnummer" ColumnName="debiteurnummer" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-                <ScalarProperty Name="Telefoonnummer" ColumnName="Telefoonnummer" />
-                <ScalarProperty Name="SecundaireEmail" ColumnName="SecundaireEmail" />
-                <ScalarProperty Name="PrimaireEmail" ColumnName="PrimaireEmail" />
+          <EntitySetMapping Name="Producten">
+            <EntityTypeMapping TypeName="alertDatabaseModel.Producten">
+              <MappingFragment StoreEntitySet="Producten">
+                <ScalarProperty Name="ProducttypeID" ColumnName="ProducttypeID" />
+                <ScalarProperty Name="ProductgroepID" ColumnName="ProductgroepID" />
                 <ScalarProperty Name="Naam" ColumnName="Naam" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -17,20 +17,20 @@ namespace UC_alert_tool.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producten()
         {
-            this.Storingen = new HashSet<Storingen>();
             this.Klanten2Producten = new HashSet<Klanten2Producten>();
+            this.Storingen = new HashSet<Storingen>();
         }
     
         public int Id { get; set; }
         public string Naam { get; set; }
-        public Nullable<int> ProductgroepID { get; set; }
-        public Nullable<int> ProducttypeID { get; set; }
+        public int ProductgroepID { get; set; }
+        public int ProducttypeID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storingen> Storingen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Klanten2Producten> Klanten2Producten { get; set; }
         public virtual Productgroep Productgroep { get; set; }
         public virtual Producttype Producttype { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Storingen> Storingen { get; set; }
     }
 }
