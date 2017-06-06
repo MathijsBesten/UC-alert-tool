@@ -88,3 +88,6 @@ textarea{
 .allStoringen {
     overflow: auto;
 }
+.check-box {
+    margin-left: 0px !important;
+}

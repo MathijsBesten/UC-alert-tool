@@ -12,24 +12,47 @@ namespace UC_alert_tool.Functions.Recipients.SMS
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static alertDatabaseEntities db = new alertDatabaseEntities();
 
-        public static int getTotalCountRecipients(string productName)
+        public static int getTotalCountRecipients(string productInputName, bool useProducttype) // productInputName could be a productgroep and producttype
         {
             //receive all recipients form db
             var allProducts = db.Producten.ToList();
-            var selectedProduct = allProducts.SingleOrDefault(product => product.Naam == productName);
-            var selectedProductID = selectedProduct.Id;
-            var allRecipients = selectedProduct.Klanten2Producten;
-            var allRecipientsOnlySMSNumber = new List<string>();
-
-            //fill list with people who wants to receive sms message
-            foreach (var item in allRecipients)
+            var allProductsThatContainsK2P = new List<Producten>();
+            var allProductGroepen = db.Productgroep;
+            var allproducttypes = db.Producttype;
+            List<Producten> alleSelectedProducts = new List<Producten>();
+            if (useProducttype == true)
             {
-                string email = item.Klanten.Telefoonnummer;
-                if (!string.IsNullOrWhiteSpace(email))
+                Producttype selectedProducttype = allproducttypes.SingleOrDefault(p => p.Producttypenaam == productInputName);
+                alleSelectedProducts = selectedProducttype.Producten.ToList();
+            }
+            else // use productgroepen
+            {
+                Productgroep selectedProductgroep = allProductGroepen.SingleOrDefault(p => p.Naam == productInputName);
+                alleSelectedProducts = selectedProductgroep.Producten.ToList();
+            }
+            allProductsThatContainsK2P = alleSelectedProducts.Where(b => b.Klanten2Producten.Count != 0).ToList();
+            List<int> klantenThatWantsMessageIDS = new List<int>();
+            foreach (var item in allProductsThatContainsK2P)
+            {
+                foreach (var user in item.Klanten2Producten)
                 {
-                    allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
+                    if (!klantenThatWantsMessageIDS.Contains(user.KlantID))
+                    {
+                        klantenThatWantsMessageIDS.Add(user.KlantID);
+                    }
                 }
             }
+            var allRecipientsOnlySMSNumber = new List<string>();
+            klantenThatWantsMessageIDS.Sort();
+            ////fill list with people who wants to receive sms message
+            foreach (var item in klantenThatWantsMessageIDS)
+            {
+                string tel = db.Klanten.First(u=>u.Id == item).Telefoonnummer;
+                if (!string.IsNullOrWhiteSpace(tel))
+                {
+                    allRecipientsOnlySMSNumber.Add(tel);
+                }
+            }            
             return allRecipientsOnlySMSNumber.Count;
         }
     }

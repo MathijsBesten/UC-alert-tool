@@ -229,6 +229,7 @@
     <Compile Include="Controllers\TestersController.cs" />
     <Compile Include="Functions\Appsettings\Edit.cs" />
     <Compile Include="Functions\Appsettings\Get.cs" />
+    <Compile Include="Functions\Database\Get.cs" />
     <Compile Include="Functions\Email\Information.cs" />
     <Compile Include="Functions\Email\Sending.cs" />
     <Compile Include="Functions\Email template\Set.cs" />

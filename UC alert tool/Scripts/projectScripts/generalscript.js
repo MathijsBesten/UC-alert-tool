@@ -3,6 +3,7 @@
     if (url == "meldingmetsms" || url == "meldingmetemail" || url == "meldingmetemailensms") {
         getInformationForProduct();
     };
+    $('#UseProducttype').click(function () { if ($('#UseProducttype').is(":checked")) { getProducttype(); } });
     $('#submitbutton').click(checkIfstartIsBeforeEnddate);
     $('#submitbutton').click(closeStoringIfAllDatesAreValid);
     $('#submitbuttonedit').click(checkIfstartIsBeforeEnddate);
@@ -100,10 +101,22 @@
             }
         }
     }
+    function getProducttype() {
+        var url = '/rapporteren/getProducttypes';
+        $.ajax({
+            type: 'POST',
+            url: url,
+            contentType: "application/json; charset=utf-8",
+            dataType: 'json', 
+            success: onReciveProducttype,
+            Error: FailedProducttype
+        });
+    }
 
     function getSMSCount() {
         var selectedProduct = $('#ProductID').find(":selected").text();
-        var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString();
+        var useProducttype = $('#UseProducttype').is(":checked");
+        var url = '/rapporteren/recipientSMSCount?productname=' + selectedProduct.toString() + "&useProducttype=" + useProducttype.toString();
         $.ajax({
             type: 'POST',
             url: url,
@@ -113,7 +126,8 @@
         }
     function getEmailCount(getSMS) {
             var selectedProduct = $('#ProductID').find(":selected").text();
-            var url = '/rapporteren/recipientEmailCount?productname=' + selectedProduct.toString();
+            var useProducttype = $('#UseProducttype').is(":checked");
+            var url = '/rapporteren/recipientEmailCount?productname=' + selectedProduct.toString() + "&useProducttype=" + useProducttype.toString();
             if (getSMS == true) {
                 $.ajax({
                     type: 'POST',
@@ -148,7 +162,14 @@
     function failedRecipientReceive(response) {
         alert('Error tijdens het ophalen van aantal ontvangers - ' + response);
     }
-
+    function onReciveProducttype(response)
+    {
+        var bla = 0;
+        alert(response);
+    }
+    function FailedProducttype(response) {
+        alert('Error tijdens het ophalen producttypes - ' + response);
+    }
     function showFullArticle() {
         $(this).parent().css(
             'display','none'

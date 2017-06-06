@@ -19,7 +19,21 @@ namespace UC_alert_tool.Controllers
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private alertDatabaseEntities db = new alertDatabaseEntities();
-
+        public List<SelectListItem> productgroepsAndProducttypes()
+        {
+            List<SelectListItem> ListWithAllTypes = new List<SelectListItem>();
+            ListWithAllTypes.Add(new SelectListItem() { Text = "---Productgroepen---", Value = "header" });
+            foreach (var item in db.Productgroep)
+            {
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Naam, Value ="g"+ item.Id.ToString() }); //g is to define groups
+            }
+            ListWithAllTypes.Add(new SelectListItem() { Text = "---Producttypes---", Value = "header" });
+            foreach (var item in db.Producttype)
+            {
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + item.Id.ToString() }); //t is to define types
+            }
+            return null;
+        }
         // GET: Rapporteren
         public ActionResult Index()
         {
@@ -251,13 +265,18 @@ namespace UC_alert_tool.Controllers
             }
         }
 
-        public string recipientSMSCount(string productname)
+        public string recipientSMSCount(string productname, bool useProducttype)
         {
-            return Functions.Recipients.SMS.Get.getTotalCountRecipients(productname).ToString();
+            return Functions.Recipients.SMS.Get.getTotalCountRecipients(productname, useProducttype).ToString();
         }
-        public string recipientEmailCount(string productname)
+        public string recipientEmailCount(string productname, bool useProducttype)
         {
-            return Functions.Recipients.Email.Get.getTotalCountRecipients(productname).ToString();
+            return Functions.Recipients.Email.Get.getTotalCountRecipients(productname, useProducttype).ToString();
+        }
+        public List<Producttype> getProducttypes()
+        {
+            var bla = new List<Producttype>(db.Producttype);
+            return bla;
         }
     }
 }
