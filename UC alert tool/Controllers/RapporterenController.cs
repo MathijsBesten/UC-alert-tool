@@ -19,8 +19,9 @@ namespace UC_alert_tool.Controllers
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private alertDatabaseEntities db = new alertDatabaseEntities();
-        public List<SelectListItem> productgroepsAndProducttypes()
+        public static SelectList productgroepsAndProducttypes()
         {
+            alertDatabaseEntities db = new alertDatabaseEntities();
             List<SelectListItem> ListWithAllTypes = new List<SelectListItem>();
             ListWithAllTypes.Add(new SelectListItem() { Text = "---Productgroepen---", Value = "header" });
             foreach (var item in db.Productgroep)
@@ -32,7 +33,7 @@ namespace UC_alert_tool.Controllers
             {
                 ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + item.Id.ToString() }); //t is to define types
             }
-            return null;
+            return new SelectList(ListWithAllTypes,"Value","Text");
         }
         // GET: Rapporteren
         public ActionResult Index()
@@ -44,8 +45,8 @@ namespace UC_alert_tool.Controllers
             Storingen model = new Storingen();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
-            ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
+            ViewBag.ProductID = productgroepsAndProducttypes() ;
+            //ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(model);
         }
         [HttpPost]
@@ -84,8 +85,8 @@ namespace UC_alert_tool.Controllers
             rapporterenMetSMS model = new rapporterenMetSMS();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
-            ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
+            ViewBag.ProductID = productgroepsAndProducttypes();
+            //ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(model);
         }
         [HttpPost]
@@ -135,10 +136,10 @@ namespace UC_alert_tool.Controllers
             rapporterenMetEmail model = new rapporterenMetEmail();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
+            ViewBag.ProductID = productgroepsAndProducttypes();
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
-            ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
+            //ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(model);
         }
         [HttpPost]
@@ -192,10 +193,10 @@ namespace UC_alert_tool.Controllers
             rapporterenMetEmailenSMS model = new rapporterenMetEmailenSMS();
             model.Begindatum = DateTime.Now;
             model.Begintijd = DateTime.Now.TimeOfDay;
-            ViewBag.ProductID = new SelectList(db.Productgroep, "Id", "Naam");
+            ViewBag.ProductID = productgroepsAndProducttypes();
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
-            ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
+            //ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(model);
         }
         [HttpPost]
@@ -265,13 +266,35 @@ namespace UC_alert_tool.Controllers
             }
         }
 
-        public string recipientSMSCount(string productname, bool useProducttype)
+        public string recipientSMSCount(string productID)
         {
-            return Functions.Recipients.SMS.Get.getTotalCountRecipients(productname, useProducttype).ToString();
+            if (productID.Contains("g")&& !productID.Contains("header"))
+            {
+                return Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), false).ToString();
+            }
+            else if (productID.Contains("t") && !productID.Contains("header"))
+            {
+                return Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), true).ToString();
+            }
+            else
+            {
+                return "0";
+            }
         }
-        public string recipientEmailCount(string productname, bool useProducttype)
+        public string recipientEmailCount(string productID)
         {
-            return Functions.Recipients.Email.Get.getTotalCountRecipients(productname, useProducttype).ToString();
+            if (productID.Contains("g") && !productID.Contains("header"))
+            {
+                return Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), false).ToString();
+            }
+            else if (productID.Contains("t") && !productID.Contains("header"))
+            {
+                return Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), true).ToString();
+            }
+            else
+            {
+                return "0";
+            }
         }
         public List<Producttype> getProducttypes()
         {

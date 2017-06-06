@@ -14,6 +14,7 @@ namespace UC_alert_tool.Functions.Recipients.Email
         public static int getTotalCountRecipients(string productInputName, bool useProducttype)
         {
             //receive all recipients form db
+            int ID = int.Parse(productInputName);
             var allProducts = db.Producten.ToList();
             var allProductsThatContainsK2P = new List<Producten>();
             var allProductGroepen = db.Productgroep;
@@ -21,12 +22,12 @@ namespace UC_alert_tool.Functions.Recipients.Email
             List<Producten> alleSelectedProducts = new List<Producten>();
             if (useProducttype == true)
             {
-                Producttype selectedProducttype = allproducttypes.SingleOrDefault(p => p.Producttypenaam == productInputName);
+                Producttype selectedProducttype = allproducttypes.SingleOrDefault(p => p.Id == ID);
                 alleSelectedProducts = selectedProducttype.Producten.ToList();
             }
             else // use productgroepen
             {
-                Productgroep selectedProductgroep = allProductGroepen.SingleOrDefault(p => p.Naam == productInputName);
+                Productgroep selectedProductgroep = allProductGroepen.SingleOrDefault(p => p.Id == ID);
                 alleSelectedProducts = selectedProductgroep.Producten.ToList();
             }
             allProductsThatContainsK2P = alleSelectedProducts.Where(b => b.Klanten2Producten.Count != 0).ToList();
