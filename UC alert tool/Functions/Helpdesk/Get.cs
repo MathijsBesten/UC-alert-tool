@@ -321,7 +321,7 @@ namespace UC_alert_tool.Functions.Helpdesk
                             }
                             countOfaddedProducts++;
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             if (!listOfMissingProducts.Contains(productVanKlant.artikel))
                             {

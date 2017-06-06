@@ -18,7 +18,7 @@ namespace UC_alert_tool.Controllers
         // GET: Storingen
         public ActionResult Index()
         {
-            var storingen = db.Storingen.Include(s => s.Producten);
+            var storingen = db.Storingen;
             return View(storingen.ToList());
         }
 
@@ -91,10 +91,15 @@ namespace UC_alert_tool.Controllers
                 db.SaveChanges();
                 //receive all recipients form db
                 var allProducts = db.Producten.ToList();
-                var selectedProduct = allProducts[(storingen.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
-                var selectedProductID = selectedProduct.Id;
-                var allRecipients = selectedProduct.Klanten2Producten;
-
+                var list = Functions.Database.Get.getProductenFromGroupOrType(storingen.ProductID);
+                List<Klanten2Producten> allRecipients = new List<Klanten2Producten>();
+                foreach (var item in list)
+                {
+                    foreach (var k2p in item.Klanten2Producten)
+                    {
+                        allRecipients.Add(k2p);
+                    }
+                }
                 if (smsbericht != "")
                 {
                     var allRecipientsOnlySMSNumber = new List<string>();

@@ -125,7 +125,7 @@
         });
         }
     function getEmailCount(getSMS) {
-            var selectedProduct = $('#ProductID').find(":selected").text();
+            var selectedProduct = $('#ProductID').val();
             var useProducttype = $('#UseProducttype').is(":checked");
             var url = '/rapporteren/recipientEmailCount?productID=' + selectedProduct.toString() + "&useProducttype=" + useProducttype.toString();
             if (getSMS == true) {

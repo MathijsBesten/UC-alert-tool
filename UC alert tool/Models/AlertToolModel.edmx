@@ -62,7 +62,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ProductID" Type="varchar(max)" Nullable="false" />
           <Property Name="Titel" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Inhoud" Type="nvarchar(max)" Nullable="false" />
           <Property Name="EigenaarID" Type="int" Nullable="false" />
@@ -142,18 +142,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Storingen_Producten">
-          <End Role="Producten" Type="Self.Producten" Multiplicity="1" />
-          <End Role="Storingen" Type="Self.Storingen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producten">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Storingen">
-              <PropertyRef Name="ProductID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="alertDatabaseModelStoreContainer">
           <EntitySet Name="Klanten" EntityType="Self.Klanten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Klanten2Producten" EntityType="Self.Klanten2Producten" Schema="dbo" store:Type="Tables" />
@@ -183,10 +171,6 @@
             <End Role="Productgroep" EntitySet="Productgroep" />
             <End Role="Producttype" EntitySet="Producttype" />
           </AssociationSet>
-          <AssociationSet Name="FK_Storingen_Producten" Association="Self.FK_Storingen_Producten">
-            <End Role="Producten" EntitySet="Producten" />
-            <End Role="Storingen" EntitySet="Storingen" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -197,7 +181,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ProductID" Type="String" Nullable="false" />
           <Property Name="Titel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Inhoud" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="EigenaarID" Type="Int32" Nullable="false" />
@@ -206,7 +190,6 @@
           <Property Name="Einddatum" Type="DateTime" Precision="0" />
           <Property Name="Eindtijd" Type="Time" Precision="7" />
           <Property Name="IsGesloten" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Producten" Relationship="alertDatabaseModel.FK_Storingen_Producten" FromRole="Storingen" ToRole="Producten" />
         </EntityType>
         <EntityContainer Name="alertDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Storingen" EntityType="Self.Storingen" />
@@ -236,10 +219,6 @@
           <AssociationSet Name="FK_Producten_Producttype" Association="alertDatabaseModel.FK_Producten_Producttype">
             <End Role="Producttype" EntitySet="Producttype" />
             <End Role="Producten" EntitySet="Producten" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Storingen_Producten" Association="alertDatabaseModel.FK_Storingen_Producten">
-            <End Role="Producten" EntitySet="Producten" />
-            <End Role="Storingen" EntitySet="Storingen" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagrams">
@@ -337,7 +316,6 @@
           <NavigationProperty Name="Klanten2Producten" Relationship="alertDatabaseModel.FK_Klanten2Producten_Producten" FromRole="Producten" ToRole="Klanten2Producten" />
           <NavigationProperty Name="Productgroep" Relationship="alertDatabaseModel.FK_Producten_Productgroep" FromRole="Producten" ToRole="Productgroep" />
           <NavigationProperty Name="Producttype" Relationship="alertDatabaseModel.FK_Producten_Producttype" FromRole="Producten" ToRole="Producttype" />
-          <NavigationProperty Name="Storingen" Relationship="alertDatabaseModel.FK_Storingen_Producten" FromRole="Producten" ToRole="Storingen" />
         </EntityType>
         <Association Name="FK_Klanten2Producten_Producten">
           <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="1" />
@@ -372,18 +350,6 @@
             </Principal>
             <Dependent Role="Producten">
               <PropertyRef Name="ProducttypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Storingen_Producten">
-          <End Type="alertDatabaseModel.Producten" Role="Producten" Multiplicity="1" />
-          <End Type="alertDatabaseModel.Storingen" Role="Storingen" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Producten">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Storingen">
-              <PropertyRef Name="ProductID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

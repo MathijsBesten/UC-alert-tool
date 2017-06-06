@@ -17,7 +17,6 @@
         <AssociationConnector Association="alertDatabaseModel.FK_Klanten2Producten_Producten" />
         <AssociationConnector Association="alertDatabaseModel.FK_Producten_Productgroep" />
         <AssociationConnector Association="alertDatabaseModel.FK_Producten_Producttype" />
-        <AssociationConnector Association="alertDatabaseModel.FK_Storingen_Producten" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

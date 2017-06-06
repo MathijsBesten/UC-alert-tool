@@ -18,7 +18,6 @@ namespace UC_alert_tool.Models
         public Producten()
         {
             this.Klanten2Producten = new HashSet<Klanten2Producten>();
-            this.Storingen = new HashSet<Storingen>();
         }
     
         public int Id { get; set; }
@@ -30,7 +29,5 @@ namespace UC_alert_tool.Models
         public virtual ICollection<Klanten2Producten> Klanten2Producten { get; set; }
         public virtual Productgroep Productgroep { get; set; }
         public virtual Producttype Producttype { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Storingen> Storingen { get; set; }
     }
 }

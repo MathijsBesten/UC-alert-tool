@@ -100,15 +100,20 @@ namespace UC_alert_tool.Controllers
                 log.Info("user created a report");
 
                 //receive all recipients form db
-                var allProducts = db.Producten.ToList();
-                var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
-                var selectedProductID = selectedProduct.Id;
-                var allRecipients = selectedProduct.Klanten2Producten;
+                var list =  Functions.Database.Get.getProductenFromGroupOrType(model.ProductID);
+                List<Klanten2Producten> allRecipients = new List<Klanten2Producten>();
+                foreach (var item in list)
+                {
+                    foreach (var k2pItem in item.Klanten2Producten)
+                    {
+                        allRecipients.Add(k2pItem);
+                    }
+                }
                 var allRecipientsOnlySMSNumber = new List<string>();
                 foreach (var item in allRecipients)
                 {
                     string email = item.Klanten.Telefoonnummer;
-                    if (!string.IsNullOrWhiteSpace(email))
+                    if (!string.IsNullOrWhiteSpace(email) && !allRecipientsOnlySMSNumber.Contains(item.Klanten.Telefoonnummer))
                     {
                         allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
                     }
@@ -154,14 +159,20 @@ namespace UC_alert_tool.Controllers
 
                 //receive all recipients form db
                 var allProducts = db.Producten.ToList();
-                var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
-                var selectedProductID = selectedProduct.Id;
-                var allRecipients = selectedProduct.Klanten2Producten;
+                var list = Functions.Database.Get.getProductenFromGroupOrType(model.ProductID);
+                List<Klanten2Producten> allRecipients = new List<Klanten2Producten>();
+                foreach (var item in list)
+                {
+                    foreach (var k2p in item.Klanten2Producten)
+                    {
+                        allRecipients.Add(k2p);
+                    }
+                }
                 var allRecipientsOnlyEmailAddress = new List<string>();
                 foreach (var item in allRecipients)
                 {
                     string email = item.Klanten.PrimaireEmail;
-                    if (!string.IsNullOrWhiteSpace(email))
+                    if (!string.IsNullOrWhiteSpace(email) && !allRecipientsOnlyEmailAddress.Contains(email))
                     {
                         allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
                     }
@@ -211,17 +222,23 @@ namespace UC_alert_tool.Controllers
 
                 //receive all recipients form db
                 var allProducts = db.Producten.ToList();
-                var selectedProduct = allProducts[(model.ProductID - 1)]; // the selectlist is always in order as in the database - minus 1 because the list startes with a 1 instaid of a 0
-                var selectedProductID = selectedProduct.Id;
-                var allRecipients = selectedProduct.Klanten2Producten;
+                var list = Functions.Database.Get.getProductenFromGroupOrType(model.ProductID);
+                List<Klanten2Producten> allRecipients = new List<Klanten2Producten>();
+                foreach (var item in list)
+                {
+                    foreach (var k2p in item.Klanten2Producten)
+                    {
+                        allRecipients.Add(k2p);
+                    }
+                }
                 var allRecipientsOnlySMSNumber = new List<string>();
                 var allRecipientsOnlyEmailAddress = new List<string>();
 
                 //fill list with people who wants to receive sms message
                 foreach (var item in allRecipients)
                 {
-                    string email = item.Klanten.Telefoonnummer;
-                    if (!string.IsNullOrWhiteSpace(email))
+                    string sms = item.Klanten.Telefoonnummer;
+                    if (!string.IsNullOrWhiteSpace(sms) && !allRecipientsOnlySMSNumber.Contains(sms))
                     {
                         allRecipientsOnlySMSNumber.Add(item.Klanten.Telefoonnummer);
                     }
@@ -230,7 +247,7 @@ namespace UC_alert_tool.Controllers
                 foreach (var item in allRecipients)
                 {
                     string email = item.Klanten.PrimaireEmail;
-                    if (!string.IsNullOrWhiteSpace(email))
+                    if (!string.IsNullOrWhiteSpace(email) && !allRecipientsOnlyEmailAddress.Contains(email))
                     {
                         allRecipientsOnlyEmailAddress.Add(item.Klanten.PrimaireEmail);
                     }

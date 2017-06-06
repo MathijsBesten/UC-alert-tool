@@ -15,7 +15,7 @@ namespace UC_alert_tool.Models
     public partial class Storingen
     {
         public int Id { get; set; }
-        public int ProductID { get; set; }
+        public string ProductID { get; set; }
         public string Titel { get; set; }
         public string Inhoud { get; set; }
         public int EigenaarID { get; set; }
@@ -24,7 +24,5 @@ namespace UC_alert_tool.Models
         public Nullable<System.DateTime> Einddatum { get; set; }
         public Nullable<System.TimeSpan> Eindtijd { get; set; }
         public bool IsGesloten { get; set; }
-    
-        public virtual Producten Producten { get; set; }
     }
 }
