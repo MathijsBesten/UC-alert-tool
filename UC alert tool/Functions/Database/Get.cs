@@ -34,5 +34,21 @@ namespace UC_alert_tool.Functions.Database
             }
             return allProducts;
         }
+        public static SelectList productgroepsAndProducttypes()
+        {
+            alertDatabaseEntities db = new alertDatabaseEntities();
+            List<SelectListItem> ListWithAllTypes = new List<SelectListItem>();
+            ListWithAllTypes.Add(new SelectListItem() { Text = "---Productgroepen---", Value = "header" });
+            foreach (var item in db.Productgroep)
+            {
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Naam, Value = "g" + item.Id.ToString() }); //g is to define groups
+            }
+            ListWithAllTypes.Add(new SelectListItem() { Text = "---Producttypes---", Value = "header" });
+            foreach (var item in db.Producttype)
+            {
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + item.Id.ToString() }); //t is to define types
+            }
+            return new SelectList(ListWithAllTypes, "Value", "Text");
+        }
     }
 }
