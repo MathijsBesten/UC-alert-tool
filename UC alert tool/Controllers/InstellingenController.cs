@@ -137,21 +137,50 @@ namespace UC_alert_tool.Controllers
             }
             return RedirectToAction("index", "Instellingen");
         }
+        public ActionResult hangfire()
+        {
+            ViewBag.DatabaseSyncInterval = int.Parse(db.Settings.Single(s => s.Setting == "DatabaseUpdateTimer").Value);
+            return View();
+        }
+        [HttpPost]
+        public ActionResult hangfire(string DatabaseSyncInterval)
+        {
+            try
+            {
+                Functions.Appsettings.Edit.ChangeExistingValue("DatabaseUpdateTimer", DatabaseSyncInterval);
+
+                log.Info("User changed the Hangfire settings");
+                TempData["showSuccess"] = true;
+                TempData["showError"] = false;
+                TempData["SuccessMessage"] = "Hangfire instellingen zijn succesvol aangepast";
+            }
+            catch (Exception e)
+            {
+                log.Error("User tried to change the Hangfire settings - failed - " + e);
+                TempData["showSuccess"] = false;
+                TempData["showError"] = true;
+                TempData["ErrorMessage"] = "Kon de Hangfire instellingen niet aanpassen, raadpleeg het logbestand voor meer informatie ";
+            }
+            return RedirectToAction("index", "Instellingen");
+        }
 
         public ActionResult emailserver()
         {
             ViewBag.emailserverip = db.Settings.Single(s => s.Setting == "EmailServerIP").Value;
             ViewBag.emailserverport = db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
+            ViewBag.alertMailAdres = db.Settings.Single(s => s.Setting == "keepAliveEmailAddresses").Value;
             return View();
         }
 
         [HttpPost]
-        public ActionResult emailserver(string emailServerIP, string emailServerPort)
+        public ActionResult emailserver(string emailServerIP, string emailServerPort, string keepaliveemailaddresses)
         {
             try
             {
                 Functions.Appsettings.Edit.ChangeExistingValue( "EmailServerIP", emailServerIP);
                 Functions.Appsettings.Edit.ChangeExistingValue("EmailServerPort",emailServerPort);
+                Functions.Appsettings.Edit.ChangeExistingValue("keepAliveEmailAddresses", keepaliveemailaddresses);
+
                 log.Info("User changed the mailserver settings");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
@@ -167,7 +196,6 @@ namespace UC_alert_tool.Controllers
             return RedirectToAction("index", "Instellingen");
 
         }
-
         public ActionResult emailtemplate()
         {
             Functions.Files.GeneralFiles.MakeSignatureFolderIfItNotExist();

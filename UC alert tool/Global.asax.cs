@@ -17,6 +17,11 @@ namespace UC_alert_tool
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             log4net.Config.XmlConfigurator.Configure();
+            HangfireBootstrapper.Instance.Start();
+        }
+        protected void Application_End(object sender, EventArgs e)
+        {
+            HangfireBootstrapper.Instance.Stop();
         }
     }
 }

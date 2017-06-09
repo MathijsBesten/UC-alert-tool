@@ -17,16 +17,19 @@
             @Html.DisplayNameFor(model => model.Begindatum)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Einddatum)
+            @Html.DisplayNameFor(model => model.Begintijd)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Begintijd)
+            @Html.DisplayNameFor(model => model.Einddatum)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Eindtijd)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsGesloten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
         </th>
         <th></th>
     </tr>
@@ -43,16 +46,19 @@
             @Html.DisplayFor(modelItem => item.Begindatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Einddatum)
+            @Html.DisplayFor(modelItem => item.Begintijd)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Begintijd)
+            @Html.DisplayFor(modelItem => item.Einddatum)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Eindtijd)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsGesloten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductID)
         </td>
         <td>
             @Html.ActionLink("Aanpassen", "Edit", new { id=item.Id }) 

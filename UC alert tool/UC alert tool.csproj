@@ -212,6 +212,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationPreload.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -246,6 +247,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HangfireBootstrapper.cs" />
     <Compile Include="Models\AaaAccAdminProfile.cs">
       <DependentUpon>SupportcenterModel.tt</DependentUpon>
     </Compile>
@@ -2954,6 +2956,7 @@
     <Content Include="Views\Shared\_partialSMS.cshtml" />
     <Content Include="Views\Shared\_partialEmail.cshtml" />
     <Content Include="Views\Instellingen\contact.cshtml" />
+    <Content Include="Views\Instellingen\Hangfire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

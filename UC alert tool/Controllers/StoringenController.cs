@@ -18,8 +18,12 @@ namespace UC_alert_tool.Controllers
         // GET: Storingen
         public ActionResult Index()
         {
-            var storingen = db.Storingen;
-            return View(storingen.ToList());
+            var storingen = db.Storingen.ToList();
+            for (int i = 0; i < storingen.Count; i++)
+            {
+                storingen[i].ProductID = Functions.Database.Get.getProductNameFromStoring(storingen[i].Id);
+            }
+            return View(storingen);
         }
 
         // GET: Storingen/Details/5
@@ -34,6 +38,7 @@ namespace UC_alert_tool.Controllers
             {
                 return HttpNotFound();
             }
+            storingen.ProductID = Functions.Database.Get.getProductNameFromStoring(storingen.Id);
             return View(storingen);
         }
 
@@ -76,7 +81,12 @@ namespace UC_alert_tool.Controllers
             }
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
-            ViewBag.ProductID = Functions.Database.Get.productgroepsAndProducttypes()
+            var selectlistItems = Functions.Database.Get.productgroepsAndProducttypes();
+            var selectlistItemsAsList = selectlistItems.ToList();
+            var productgroep = db.Storingen.SingleOrDefault(i => i.Id == id).ProductID;
+            var indexOfProduct = selectlistItemsAsList.FindIndex(i=>i.Value == productgroep) ;
+            selectlistItemsAsList[indexOfProduct].Selected = true;
+            ViewBag.ProductID = selectlistItemsAsList;
             ViewBag.ProductCustomerCount = string.Join(",", Functions.Email.Information.GetCountOfEmailRecipients()); // this list has the same order as the 'default' product list
             return View(storingen);
         }
@@ -179,6 +189,7 @@ namespace UC_alert_tool.Controllers
             {
                 return HttpNotFound();
             }
+            storingen.ProductID = Functions.Database.Get.getProductNameFromStoring(storingen.Id);
             return View(storingen);
         }
 

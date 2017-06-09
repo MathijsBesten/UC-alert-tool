@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Hangfire";
+    @Html.Partial("_SettingsPartial")
+
+}
+<div class="settingsContentWrapper">
+    <h2>Hangfire instellingen</h2>
+    <p>Hier kunt u instellingen aanpassen met betrekking tot de Hangfire functie</p>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <h4><b>Databases synchroniseren</b></h4>
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-md-3">Interval in uren</label>
+                <div class="col-md-9">
+                    <input type="number" name="contactdetails" value=@ViewBag.DatabaseSyncInterval/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Opslaan" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

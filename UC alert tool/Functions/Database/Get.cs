@@ -32,7 +32,7 @@ namespace UC_alert_tool.Functions.Database
                     allProducts.Add(item);
                 }
             }
-            return allProducts;
+            return allProducts; 
         }
         public static SelectList productgroepsAndProducttypes()
         {
@@ -49,6 +49,16 @@ namespace UC_alert_tool.Functions.Database
                 ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + item.Id.ToString() }); //t is to define types
             }
             return new SelectList(ListWithAllTypes, "Value", "Text");
+        }
+
+        public static string getProductNameFromStoring(int storingID)
+        {
+            alertDatabaseEntities db = new alertDatabaseEntities();
+            var selectlistItems = Functions.Database.Get.productgroepsAndProducttypes();
+            var selectlistItemsAsList = selectlistItems.ToList();
+            var productgroep = db.Storingen.SingleOrDefault(i => i.Id == storingID).ProductID;
+            var indexOfProduct = selectlistItemsAsList.FindIndex(i => i.Value == productgroep);
+            return selectlistItemsAsList[indexOfProduct].Text;
         }
     }
 }

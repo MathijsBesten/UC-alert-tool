@@ -15,7 +15,7 @@ namespace UC_alert_tool.Functions.Webserver
                 EmailBody = "UC alert tool is active and alive :)",
                 EmailSubject = "UC alert tool - online",
                 FromEmailAddress = Appsettings.Get.setting("EmailSendingMailAddress"),
-                Recipients = new List<string>() { "mike@ucsystems.nl","m88_db@hotmail.com"},
+                Recipients = Functions.Appsettings.Get.setting("keepAliveEmailAddresses").Split(';').ToList<string>(),
             };
             Email.Sending.sendEmail(mail,true); // if set to 'false' the mailgateway will not accept the mail and thinks it is spam
         }

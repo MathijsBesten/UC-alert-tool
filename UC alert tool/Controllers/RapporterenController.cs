@@ -24,14 +24,18 @@ namespace UC_alert_tool.Controllers
             alertDatabaseEntities db = new alertDatabaseEntities();
             List<SelectListItem> ListWithAllTypes = new List<SelectListItem>();
             ListWithAllTypes.Add(new SelectListItem() { Text = "---Productgroepen---", Value = "header" });
+            int groepindex = 0;
+            int typeindex = 0;
             foreach (var item in db.Productgroep)
             {
-                ListWithAllTypes.Add(new SelectListItem() { Text = item.Naam, Value ="g"+ item.Id.ToString() }); //g is to define groups
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Naam, Value ="g"+ groepindex }); //g is to define groups
+                groepindex++;
             }
             ListWithAllTypes.Add(new SelectListItem() { Text = "---Producttypes---", Value = "header" });
             foreach (var item in db.Producttype)
             {
-                ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + item.Id.ToString() }); //t is to define types
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + typeindex }); //t is to define types
+                typeindex++;
             }
             return new SelectList(ListWithAllTypes,"Value","Text");
         }
@@ -56,12 +60,12 @@ namespace UC_alert_tool.Controllers
             ViewBag.dateNow = DateTime.Now;
             if (model.Begindatum > model.Einddatum || (model.Begindatum == model.Einddatum && model.Begintijd > model.Eindtijd)) // if startdate is greater than startdate - including time
             {
-                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+                ViewBag.ProductID = productgroepsAndProducttypes();
                 return View(model);
             }
             if (model.IsGesloten == true && model.Einddatum == null) // user cannot close storing if there is no end date
             {
-                ViewBag.ProductID = new SelectList(db.Producten, "Id", "Naam");
+                ViewBag.ProductID = productgroepsAndProducttypes();
                 return View(model);
             }
             if (ModelState.IsValid)
