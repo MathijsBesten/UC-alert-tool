@@ -38,15 +38,19 @@ namespace UC_alert_tool.Functions.Database
         {
             alertDatabaseEntities db = new alertDatabaseEntities();
             List<SelectListItem> ListWithAllTypes = new List<SelectListItem>();
+            int groepCount = 0;
+            int typeCount = 0;
             ListWithAllTypes.Add(new SelectListItem() { Text = "---Productgroepen---", Value = "header" });
             foreach (var item in db.Productgroep)
             {
-                ListWithAllTypes.Add(new SelectListItem() { Text = item.Naam, Value = "g" + item.Id.ToString() }); //g is to define groups
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Naam, Value = "g" + groepCount }); //g is to define groups
+                groepCount++;
             }
             ListWithAllTypes.Add(new SelectListItem() { Text = "---Producttypes---", Value = "header" });
             foreach (var item in db.Producttype)
             {
-                ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + item.Id.ToString() }); //t is to define types
+                ListWithAllTypes.Add(new SelectListItem() { Text = item.Producttypenaam, Value = "t" + typeCount }); //t is to define types
+                typeCount++;
             }
             return new SelectList(ListWithAllTypes, "Value", "Text");
         }

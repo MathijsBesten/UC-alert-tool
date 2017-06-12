@@ -35,8 +35,8 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Alle storingen", "Index", "Storingen")</li>
                                 <li role="presentation" class="divider"></li>
-                                <li>@Html.ActionLink("email functie testen", "emailtester", "Testers")</li>
-                                <li>@Html.ActionLink("sms functie testen", "smstester", "Testers")</li>
+                                <li>@Html.ActionLink("Email functie testen", "emailtester", "Testers")</li>
+                                <li>@Html.ActionLink("Sms functie testen", "smstester", "Testers")</li>
                                 <li>@Html.ActionLink("Nieuw account aanmaken", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                                 <li role="presentation" class="divider"></li>
                                 <li>@Html.ActionLink("Achtergrondtaken", "", "Hangfire")</li>
@@ -50,12 +50,14 @@
                             <ul class="dropdown-menu">
                                 <li>@Html.ActionLink("Instellingen", "Index", "Instellingen")</li>
                                 <li role="presentation" class="divider"></li>
-                                <li>@Html.ActionLink("email template", "emailtemplate", "Instellingen")</li>
-                                <li>@Html.ActionLink("Logging", "logging", "Instellingen")</li>
+                                <li>@Html.ActionLink("Database synchronisatie", "hangfire", "Instellingen")</li>
+                                <li>@Html.ActionLink("Email template", "emailtemplate", "Instellingen")</li>
+                                <li>@Html.ActionLink("Log instellingen", "logging", "Instellingen")</li>
                                 <li>@Html.ActionLink("SMS gateway", "smsgateway", "Instellingen")</li>
                                 <li>@Html.ActionLink("SMTP server", "emailserver", "Instellingen")</li>
+                                <li role="presentation" class="divider"></li>
                                 <li>@Html.ActionLink("Homepagina instellingen", "homepage", "Instellingen")</li>
-                                <li>@Html.ActionLink("contactpagina instellingen", "contact", "Instellingen")</li>
+                                <li>@Html.ActionLink("Contactpagina instellingen", "contact", "Instellingen")</li>
                             </ul>
                         </li>   
                     }

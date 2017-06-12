@@ -81,7 +81,7 @@ namespace UC_alert_tool.Controllers
             }
             ViewBag.previewSignaturetext = db.Settings.Single(s => s.Setting == "SignatureText").Value;
             ViewBag.previewImage = db.Settings.Single(s => s.Setting == "SignaturePath").Value;
-            var selectlistItems = Functions.Database.Get.productgroepsAndProducttypes();
+            var selectlistItems = Functions.Database.Get.productgroepsAndProducttypes(); // a custom selectlist
             var selectlistItemsAsList = selectlistItems.ToList();
             var productgroep = db.Storingen.SingleOrDefault(i => i.Id == id).ProductID;
             var indexOfProduct = selectlistItemsAsList.FindIndex(i=>i.Value == productgroep) ;

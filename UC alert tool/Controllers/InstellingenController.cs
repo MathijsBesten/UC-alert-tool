@@ -143,11 +143,11 @@ namespace UC_alert_tool.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult hangfire(string DatabaseSyncInterval)
+        public ActionResult hangfire(int Interval)
         {
             try
             {
-                Functions.Appsettings.Edit.ChangeExistingValue("DatabaseUpdateTimer", DatabaseSyncInterval);
+                Functions.Appsettings.Edit.ChangeExistingValue("DatabaseUpdateTimer", Interval.ToString());
 
                 log.Info("User changed the Hangfire settings");
                 TempData["showSuccess"] = true;

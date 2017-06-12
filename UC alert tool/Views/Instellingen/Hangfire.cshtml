@@ -4,7 +4,7 @@
 
 }
 <div class="settingsContentWrapper">
-    <h2>Hangfire instellingen</h2>
+    <h2>Database instellingen</h2>
     <p>Hier kunt u instellingen aanpassen met betrekking tot de Hangfire functie</p>
     @using (Html.BeginForm())
     {
@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label class="control-label col-md-3">Interval in uren</label>
                 <div class="col-md-9">
-                    <input type="number" name="contactdetails" value=@ViewBag.DatabaseSyncInterval/>
+                    <input type="number" name="Interval" value="@ViewBag.DatabaseSyncInterval"/>
                 </div>
             </div>
             <div class="form-group">

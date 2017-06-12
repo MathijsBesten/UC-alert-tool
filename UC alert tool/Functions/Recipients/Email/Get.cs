@@ -22,12 +22,12 @@ namespace UC_alert_tool.Functions.Recipients.Email
             List<Producten> alleSelectedProducts = new List<Producten>();
             if (useProducttype == true)
             {
-                Producttype selectedProducttype = allproducttypes.SingleOrDefault(p => p.Id == ID);
+                Producttype selectedProducttype = allproducttypes.ToList<Producttype>()[ID];
                 alleSelectedProducts = selectedProducttype.Producten.ToList();
             }
             else // use productgroepen
             {
-                Productgroep selectedProductgroep = allProductGroepen.SingleOrDefault(p => p.Id == ID);
+                Productgroep selectedProductgroep = allProductGroepen.ToList<Productgroep>()[ID];
                 alleSelectedProducts = selectedProductgroep.Producten.ToList();
             }
             allProductsThatContainsK2P = alleSelectedProducts.Where(b => b.Klanten2Producten.Count != 0).ToList();
