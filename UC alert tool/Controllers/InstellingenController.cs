@@ -1,4 +1,5 @@
-﻿using log4net;
+﻿using Hangfire;
+using log4net;
 using log4net.Core;
 using System;
 using System.Collections.Generic;
@@ -148,7 +149,7 @@ namespace UC_alert_tool.Controllers
             try
             {
                 Functions.Appsettings.Edit.ChangeExistingValue("DatabaseUpdateTimer", Interval.ToString());
-
+                RecurringJob.AddOrUpdate("Database updaten", () => Functions.Helpdesk.Get.ClearDatabaseAndSync(), Cron.HourInterval(Interval));
                 log.Info("User changed the Hangfire settings");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;

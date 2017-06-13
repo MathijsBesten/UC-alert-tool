@@ -23,8 +23,8 @@ namespace UC_alert_tool
             });
             //Functions.Helpdesk.Get.ClearDatabaseAndSync();
             int syncinterval = int.Parse(Functions.Appsettings.Get.setting("DatabaseUpdateTimer"));
-            RecurringJob.AddOrUpdate(() => Functions.Helpdesk.Get.ClearDatabaseAndSync(), Cron.HourInterval(syncinterval));
-            RecurringJob.AddOrUpdate(() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);
+            RecurringJob.AddOrUpdate("Database updaten", () => Functions.Helpdesk.Get.ClearDatabaseAndSync(), Cron.HourInterval(syncinterval));
+            RecurringJob.AddOrUpdate("I am Alive email",() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);
         }
     }
     public class HangfireAuthorizationFilter : IAuthorizationFilter
