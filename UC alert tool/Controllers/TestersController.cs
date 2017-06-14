@@ -25,7 +25,9 @@ namespace UC_alert_tool.Controllers
             List<string> recipients = EmailToSend.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
             EmailToSend.Recipients = recipients;
             Hangfire.BackgroundJob.Enqueue(() => Functions.Email.Sending.sendEmail(EmailToSend, true));
-
+            TempData["showSuccess"] = true;
+            TempData["showError"] = false;
+            TempData["SuccessMessage"] = "Email wordt verzonden, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de email verzending";
             return RedirectToAction("index","Home");
         }
         public ActionResult smstester()
@@ -41,6 +43,9 @@ namespace UC_alert_tool.Controllers
             List<string> recipients = sms.Recipients[0].Split(',').ToList<string>(); // splitting the input on comma and creating multiple numbers
             sms.Recipients = recipients;
             Hangfire.BackgroundJob.Enqueue(() => Functions.SMS.Sending.sendSMSMessages(sms));
+            TempData["showSuccess"] = true;
+            TempData["showError"] = false;
+            TempData["SuccessMessage"] = "sms(jes) wordt verzonden, controleer \"Admin tools > Achtergrondtaken\" om de voortgang te zien van de sms verzending";
             return RedirectToAction("index", "Home");
         }
     }

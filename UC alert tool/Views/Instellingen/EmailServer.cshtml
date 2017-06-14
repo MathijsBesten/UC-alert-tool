@@ -4,8 +4,8 @@
     @Html.Partial("_SettingsPartial")
 }
 <div class="settingsContentWrapper">
-    <h2>Server instellingen</h2>
-    <p>Hieronder kunt u de gegevens aanpassen van de sms gateway</p>
+    <h2>Email instellingen</h2>
+    <p>Hieronder kunt u de gegevens aanpassen van de Email gateway</p>
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -21,6 +21,12 @@
                 <label class="control-label col-md-3">Email server poort</label>
                 <div class="col-md-9">
                     <input type="text" name="emailServerPort" value=@ViewBag.emailserverport />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Verzend emailadres</label>
+                <div class="col-md-9">
+                    <input type="text" name="sendingEmailAddress" value="@ViewBag.emailsendaddress" />
                 </div>
             </div>
             <div class="form-group">

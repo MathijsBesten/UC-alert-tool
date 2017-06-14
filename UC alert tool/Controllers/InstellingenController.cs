@@ -169,17 +169,19 @@ namespace UC_alert_tool.Controllers
         {
             ViewBag.emailserverip = db.Settings.Single(s => s.Setting == "EmailServerIP").Value;
             ViewBag.emailserverport = db.Settings.Single(s => s.Setting == "EmailServerPort").Value;
+            ViewBag.emailsendaddress = db.Settings.Single(s => s.Setting == "EmailSendingMailAddress").Value;
             ViewBag.alertMailAdres = db.Settings.Single(s => s.Setting == "keepAliveEmailAddresses").Value;
             return View();
         }
 
         [HttpPost]
-        public ActionResult emailserver(string emailServerIP, string emailServerPort, string keepaliveemailaddresses)
+        public ActionResult emailserver(string emailServerIP, string emailServerPort, string keepaliveemailaddresses, string sendingEmailAddress)
         {
             try
             {
-                Functions.Appsettings.Edit.ChangeExistingValue( "EmailServerIP", emailServerIP);
+                Functions.Appsettings.Edit.ChangeExistingValue("EmailServerIP", emailServerIP);
                 Functions.Appsettings.Edit.ChangeExistingValue("EmailServerPort",emailServerPort);
+                Functions.Appsettings.Edit.ChangeExistingValue("EmailSendingMailAddress", sendingEmailAddress);
                 Functions.Appsettings.Edit.ChangeExistingValue("keepAliveEmailAddresses", keepaliveemailaddresses);
 
                 log.Info("User changed the mailserver settings");
