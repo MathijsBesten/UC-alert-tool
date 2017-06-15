@@ -141,19 +141,32 @@ namespace UC_alert_tool.Controllers
         public ActionResult hangfire()
         {
             ViewBag.DatabaseSyncInterval = int.Parse(db.Settings.Single(s => s.Setting == "DatabaseUpdateTimer").Value);
+
+            ViewBag.sharepointURL = db.Settings.Single(s => s.Setting == "SharepointURL").Value;
+            ViewBag.sharepointusername = db.Settings.Single(s => s.Setting == "SharepointUsername").Value;
+            ViewBag.sharepointpassword = db.Settings.Single(s => s.Setting == "SharepointPassword").Value;
+            ViewBag.sharepointdomain = db.Settings.Single(s => s.Setting == "SharepointDomain").Value;
             return View();
         }
         [HttpPost]
-        public ActionResult hangfire(int Interval)
+        public ActionResult hangfire(int Interval, string url, string username, string password, string domain )
         {
             try
             {
                 Functions.Appsettings.Edit.ChangeExistingValue("DatabaseUpdateTimer", Interval.ToString());
-                RecurringJob.AddOrUpdate("Database updaten", () => Functions.Helpdesk.Get.ClearDatabaseAndSync(), Cron.HourInterval(Interval));
-                log.Info("User changed the Hangfire settings");
+                Functions.Appsettings.Edit.ChangeExistingValue("SharepointURL", url.ToString());
+                Functions.Appsettings.Edit.ChangeExistingValue("SharepointUsername", username.ToString());
+                Functions.Appsettings.Edit.ChangeExistingValue("SharepointPassword", password.ToString());
+                Functions.Appsettings.Edit.ChangeExistingValue("SharepointDomain", domain.ToString());
+
+                if (ViewBag.DatabaseSyncInterval = int.Parse(db.Settings.Single(s => s.Setting == "DatabaseUpdateTimer").Value) != Interval)
+                {
+                    RecurringJob.AddOrUpdate("Database updaten", () => Functions.Helpdesk.Get.ClearDatabaseAndSync(), Cron.HourInterval(Interval));
+                }
+                log.Info("User changed the Database settings");
                 TempData["showSuccess"] = true;
                 TempData["showError"] = false;
-                TempData["SuccessMessage"] = "Hangfire instellingen zijn succesvol aangepast";
+                TempData["SuccessMessage"] = "Database instellingen zijn succesvol aangepast";
             }
             catch (Exception e)
             {

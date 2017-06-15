@@ -30,7 +30,9 @@ namespace UC_alert_tool
                 HostingEnvironment.RegisterObject(this);
 
                 GlobalConfiguration.Configuration
-                    .UseSqlServerStorage(@"Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-UC alert tool-Hangfire.mdf;Initial Catalog=aspnet-UC alert tool-Hangfire;Integrated Security=True");
+                    //Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-UC alert tool-Hangfire.mdf;Initial Catalog=aspnet-UC alert tool-Hangfire;Integrated Security=True
+                    //Data Source=DC-110\ALERTTOOL;Initial Catalog=aspnet-UC alert tool-Hangfire;Integrated Security=True
+                    .UseSqlServerStorage(@"Data Source=DC-110\ALERTTOOL;Initial Catalog=aspnet-UC alert tool-Hangfire;Integrated Security=True");
                 // Specify other options here
 
                 _backgroundJobServer = new BackgroundJobServer();

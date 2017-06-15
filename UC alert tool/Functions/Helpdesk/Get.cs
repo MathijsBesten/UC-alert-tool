@@ -32,25 +32,40 @@ namespace UC_alert_tool.Functions.Helpdesk
                 {
                     log.Error("There was a error while clearing the tables - Please read the full errormessage below");
                     log.Error("Error: " + e.Message);
-                    throw e;
+                    throw new InvalidOperationException("Error while trying to clear tables - " + e.Message);
                 }
                 log.Info("All data from the tables: Klanten2Producten,Producten,Producttype,Productgroep and Klanten are cleared");
-                getAllUsers();
-                getAllProductgroepen();
-                getAllProducttype();
-                getAllProducten();
-                getAllKlanten2Producten();
-
+                try
+                {
+                    getAllUsers();
+                    getAllProductgroepen();
+                    getAllProducttype();
+                    getAllProducten();
+                    getAllKlanten2Producten();
+                }
+                catch (Exception e)
+                {
+                    log.Error("There was a error while getting the items from the sharepoint database");
+                    log.Error("Error - " + e.Message);
+                    log.Error("Please make sure all the Sharepoint database details are correct under 'Settings -> Database instellingen'");
+                    throw new InvalidOperationException("Error while trying to copy data from sharepoint database - Errormessage: " + e.Message + " - Please make sure you entered the correct Sharepoint details 'Settings -> Database instellingen'");
+                }
             }
         }
 
         public static ListItemCollection GetItemsFromSharepointDatabaseFunction(bool getAbbos)
         {
+            var db = new alertDatabaseEntities();
+            
+            string sharepointURL = db.Settings.Single(s => s.Setting == "SharepointURL").Value;
+            string sharepointusername = db.Settings.Single(s => s.Setting == "SharepointUsername").Value;
+            string sharepointpassword = db.Settings.Single(s => s.Setting == "SharepointPassword").Value;
+            string sharepointdomain = db.Settings.Single(s => s.Setting == "SharepointDomain").Value;
             try
             {
-                string url = "http://dc-139.ucsystems.net/sites/ucsystems/"; // site url
+                string url = sharepointURL; // site url
                 ClientContext client = new ClientContext(url); //client that connects to the sharepoint
-                client.Credentials = new NetworkCredential("stagesoftware", "MoeimakerEersteKlas", "ucsystems"); //login details
+                client.Credentials = new NetworkCredential(sharepointusername, sharepointpassword, sharepointdomain); //login details
                 SharepointClient.List abbos = client.Web.Lists.GetByTitle("abonnementen"); //table
                 SharepointClient.List allProducten = client.Web.Lists.GetByTitle("Productcode"); //producten table
 

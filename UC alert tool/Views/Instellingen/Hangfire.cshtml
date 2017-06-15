@@ -9,8 +9,33 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <h4><b>Databases synchroniseren</b></h4>
         <div class="form-horizontal">
+            <h4><b>Gegevens Sharepoint database</b></h4>
+            <div class="form-group">
+                <label class="control-label col-md-3">Sharepoint URL</label>
+                <div class="col-md-9">
+                    <input type="text" name="url" value="@ViewBag.sharepointURL" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Sharepoint gebruikersnaam</label>
+                <div class="col-md-9">
+                    <input type="text" name="username" value="@ViewBag.sharepointusername" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Sharepoint wachtwoord</label>
+                <div class="col-md-9">
+                    <input type="password" name="password" value="@ViewBag.sharepointpassword" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-3">Sharepoint domain (default 'ucsystems')</label>
+                <div class="col-md-9">
+                    <input type="text" name="domain" value="@ViewBag.sharepointdomain" />
+                </div>
+            </div>
+            <h4><b>Databases synchroniseren</b></h4>
             <div class="form-group">
                 <label class="control-label col-md-3">Interval in uren</label>
                 <div class="col-md-9">
