@@ -11,7 +11,7 @@ namespace UC_alert_tool.Functions.Recipients.Email
     {
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static alertDatabaseEntities db = new alertDatabaseEntities();
-        public static int getTotalCountRecipients(string productInputName, bool useProducttype)
+        public static string getTotalCountRecipients(string productInputName, bool useProducttype, bool returnOnlyCount)
         {
             //receive all recipients form db
             int ID = int.Parse(productInputName);
@@ -53,7 +53,14 @@ namespace UC_alert_tool.Functions.Recipients.Email
                     allRecipientsOnlyEmail.Add(email);
                 }
             }
-            return allRecipientsOnlyEmail.Count;
+            if (returnOnlyCount)
+            {
+                return allRecipientsOnlyEmail.Count.ToString();
+            }
+            else
+            {
+                return string.Join(",", allRecipientsOnlyEmail); // a list that is now a string seperated by ','
+            }
         }
     }
 }

@@ -291,11 +291,17 @@ namespace UC_alert_tool.Controllers
         {
             if (productID.Contains("g")&& !productID.Contains("header"))
             {
-                return Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), false).ToString();
+                string returnCountAndAllNumbers = Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), false, true);
+                returnCountAndAllNumbers += ";";
+                returnCountAndAllNumbers += Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), false, false);
+                return returnCountAndAllNumbers;
             }
             else if (productID.Contains("t") && !productID.Contains("header"))
             {
-                return Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), true).ToString();
+                string returnCountAndAllNumbers = Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), true, true);
+                returnCountAndAllNumbers += ";";
+                returnCountAndAllNumbers += Functions.Recipients.SMS.Get.getTotalCountRecipients(productID.Substring(1), true, false);
+                return returnCountAndAllNumbers;
             }
             else
             {
@@ -306,11 +312,17 @@ namespace UC_alert_tool.Controllers
         {
             if (productID.Contains("g") && !productID.Contains("header"))
             {
-                return Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), false).ToString();
+                string returnCountAndAllEmails = Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), false, true);
+                returnCountAndAllEmails += ";";
+                returnCountAndAllEmails += Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), false, false);
+                return returnCountAndAllEmails;
             }
             else if (productID.Contains("t") && !productID.Contains("header"))
             {
-                return Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), true).ToString();
+                string returnCountAndAllEmails = Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), true,true);
+                returnCountAndAllEmails += ";";
+                returnCountAndAllEmails += Functions.Recipients.Email.Get.getTotalCountRecipients(productID.Substring(1), true, false);
+                return returnCountAndAllEmails;
             }
             else
             {

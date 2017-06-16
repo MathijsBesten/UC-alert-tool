@@ -21,7 +21,6 @@ namespace UC_alert_tool
             {
                 AuthorizationFilters = new[] { new HangfireAuthorizationFilter() }
             });
-            //Functions.Helpdesk.Get.ClearDatabaseAndSync();
             int syncinterval = int.Parse(Functions.Appsettings.Get.setting("DatabaseUpdateTimer"));
             RecurringJob.AddOrUpdate("Database updaten", () => Functions.Helpdesk.Get.ClearDatabaseAndSync(), Cron.HourInterval(syncinterval));
             RecurringJob.AddOrUpdate("I am Alive email",() => Functions.Webserver.FeedbackMessage.sendIamAliveEmail(), Cron.Daily);

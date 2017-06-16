@@ -12,7 +12,7 @@ namespace UC_alert_tool.Functions.Recipients.SMS
         private static ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static alertDatabaseEntities db = new alertDatabaseEntities();
 
-        public static int getTotalCountRecipients(string productInputName, bool useProducttype) // productInputName could be a productgroep and producttype
+        public static string getTotalCountRecipients(string productInputName, bool useProducttype, bool returnOnlyCount) // productInputName could be a productgroep and producttype
         {
             //receive all recipients form db
             int ID = int.Parse(productInputName);
@@ -53,8 +53,15 @@ namespace UC_alert_tool.Functions.Recipients.SMS
                 {
                     allRecipientsOnlySMSNumber.Add(tel);
                 }
-            }            
-            return allRecipientsOnlySMSNumber.Count;
+            }
+            if (returnOnlyCount)
+            {
+                return allRecipientsOnlySMSNumber.Count.ToString();
+            }
+            else
+            {
+                return string.Join(",", allRecipientsOnlySMSNumber);
+            }
         }
     }
 }

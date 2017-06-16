@@ -148,15 +148,39 @@
 
 
     function onRecipientReceiveSMS(response) {
-        $('#Summeryfield').append("Het aantal ontvangers dat een sms krijgen: " + response + "\n");
-        $('#Summeryfield').append("Geschatte procestijd: " + response*4 + " seconden" + "\n");
+        var count = response.split(';')[0];
+        var numbersAsString = response.split(';')[1];
+        $('#Summeryfield').append("Het aantal ontvangers dat een sms krijgt: " + response.split(';')[0] + "\n");
+        $('#Summeryfield').append("De telefoonnummers die een bericht zullen ontvangen\, \n");
+        var numbers = numbersAsString.split(',');
+        for (var i = 0; i < numbers.length; i++) {
+            $('#Summeryfield').append(numbers[i] + "\n");
+        }
+        $('#Summeryfield').append("\n");
+        $('#Summeryfield').append("Geschatte procestijd: " + response.split(';')[0] * 4 + " seconden" + "\n");
     }
     function onRecipientReceiveEmail(response) {
-        $('#Summeryfield').append("Het aantal ontvangers die een email krijgen: " + response + "\n");
-        $('#Summeryfield').append("Geschatte procestijd: " + 3 + " seconden"+"\n");
+        var count = response.split(';')[0];
+        var numbersAsString = response.split(';')[1];
+        $('#Summeryfield').append("Het aantal ontvangers die een email krijgen: " + count + "\n");
+        $('#Summeryfield').append("De emailadressen die een bericht zullen ontvangen\, \n");
+        var numbers = numbersAsString.split(',');
+        for (var i = 0; i < numbers.length; i++) {
+            $('#Summeryfield').append(numbers[i] + "\n");
+        }
+        $('#Summeryfield').append("\n");
+        $('#Summeryfield').append("Geschatte procestijd: 3 seconden" + "\n");
     }
     function onRecipientReceiveEmailcontinueSMS(response) {
-        $('#Summeryfield').append("Het aantal ontvangers die een email krijgen: " + response + "\n");
+        var count = response.split(';')[0];
+        var numbersAsString = response.split(';')[1];
+        $('#Summeryfield').append("Het aantal ontvangers die een email ontvangen: " + count + "\n");
+        $('#Summeryfield').append("De emailadressen die een bericht zullen krijgen\, \n");
+        var numbers = numbersAsString.split(',');
+        for (var i = 0; i < numbers.length; i++) {
+            $('#Summeryfield').append(numbers[i] + "\n");
+        }
+        $('#Summeryfield').append("\n");
         getSMSCount();
     }
     function failedRecipientReceive(response) {
